@@ -1,8 +1,1 @@
-*.class
-*.jar
-orb.db
 .idea
-out
-*.iml
-src/Echo.idl
-EchoApp/*
