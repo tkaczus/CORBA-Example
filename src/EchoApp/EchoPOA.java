@@ -17,7 +17,8 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
   private static java.util.Hashtable _methods = new java.util.Hashtable ();
   static
   {
-    _methods.put ("echoString", new java.lang.Integer (0));
+    _methods.put ("PIK_OtworzSesje", new java.lang.Integer (0));
+    _methods.put ("PIK_SprawdzSerwer", new java.lang.Integer (1));
   }
 
   public org.omg.CORBA.portable.OutputStream _invoke (String $method,
@@ -34,11 +35,19 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
        case 0:  // EchoApp/Echo/echoString
        {
          String $result = null;
-         $result = this.echoString ();
+         $result = this.PIK_OtworzSesje();
          out = $rh.createReply();
          out.write_string ($result);
          break;
        }
+      case 1:  // EchoApp/Echo/echoString
+      {
+        String $result = null;
+        $result = this.PIK_SprawdzSerwer();
+        out = $rh.createReply();
+        out.write_string ($result);
+        break;
+      }
 
        default:
          throw new org.omg.CORBA.BAD_OPERATION (0, org.omg.CORBA.CompletionStatus.COMPLETED_MAYBE);

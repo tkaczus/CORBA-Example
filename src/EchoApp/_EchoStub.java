@@ -11,11 +11,11 @@ package EchoApp;
 public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements EchoApp.Echo
 {
 
-  public String echoString ()
+  public String PIK_OtworzSesje()
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {
-                org.omg.CORBA.portable.OutputStream $out = _request ("echoString", true);
+                org.omg.CORBA.portable.OutputStream $out = _request ("PIK_OtworzSesje", true);
                 $in = _invoke ($out);
                 String $result = $in.read_string ();
                 return $result;
@@ -24,11 +24,30 @@ public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements Echo
                 String _id = $ex.getId ();
                 throw new org.omg.CORBA.MARSHAL (_id);
             } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-                return echoString (        );
+                return PIK_OtworzSesje(        );
             } finally {
                 _releaseReply ($in);
             }
-  } // echoString
+  } // PIK_OtworzSesje
+
+    public String PIK_SprawdzSerwer()
+    {
+        org.omg.CORBA.portable.InputStream $in = null;
+        try {
+            org.omg.CORBA.portable.OutputStream $out = _request ("PIK_SprawdzSerwer", true);
+            $in = _invoke ($out);
+            String $result = $in.read_string ();
+            return $result;
+        } catch (org.omg.CORBA.portable.ApplicationException $ex) {
+            $in = $ex.getInputStream ();
+            String _id = $ex.getId ();
+            throw new org.omg.CORBA.MARSHAL (_id);
+        } catch (org.omg.CORBA.portable.RemarshalException $rm) {
+            return PIK_OtworzSesje(        );
+        } finally {
+            _releaseReply ($in);
+        }
+    } // PIK_SprawdzSerwer
 
   // Type-specific CORBA::Object operations
   private static String[] __ids = {

@@ -28,7 +28,7 @@ public class Server {
             org.omg.CORBA.Object objRef =  orb.resolve_initial_references("NameService");
             NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
-            NameComponent path[] = ncRef.to_name( "ECHO-SERVER" );
+            NameComponent path[] = ncRef.to_name( "MSERVER" );
             ncRef.rebind(path, href);
 
             System.out.println("Server ready and waiting ...");
