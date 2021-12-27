@@ -350,7 +350,7 @@ public class DefApi_R_BS_EXE_5x {
         System.out.println("PIK_PlikLogu   : " + wynik);
         
         idSesji = api.PIK_OtworzSesje(idSystem, user, userPASS);
-        System.out.println("PIK_OtworssssssssssssssszSesje: " + idSesji);
+        System.out.println("PIK_OtworzSesje: " + idSesji);
 
         wynik = api.PIK_UstawUsluge(omniIP, omniPORT);
         System.out.println("PIK_UstawUsluge  : " + wynik + "\nidSesji: " + idSesji);

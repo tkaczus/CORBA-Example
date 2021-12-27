@@ -11,7 +11,7 @@ package EchoApp;
 public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements EchoApp.Echo
 {
 
-  public String PIK_OtworzSesje()
+  public int PIK_OtworzSesje()
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {

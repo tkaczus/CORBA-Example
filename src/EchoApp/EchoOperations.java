@@ -10,6 +10,7 @@ package EchoApp;
 
 public interface EchoOperations 
 {
-  String PIK_OtworzSesje();
+  int PIK_OtworzSesje();
+  int PIK_WybierzSerwer();
   String PIK_SprawdzSerwer();
 } // interface EchoOperations
