@@ -10,8 +10,7 @@ package EchoApp;
 
 public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements EchoApp.Echo {
 
-    public int PIK_OtworzSesje() {
-        org.omg.CORBA.portable.InputStream $in = null;
+    public int PIK_OtworzSesje(org.omg.CORBA.portable.InputStream $in) {
         try {
             org.omg.CORBA.portable.OutputStream $out = _request("PIK_OtworzSesje", true);
             $in = _invoke($out);
@@ -22,7 +21,7 @@ public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements Echo
             String _id = $ex.getId();
             throw new org.omg.CORBA.MARSHAL(_id);
         } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-            return PIK_OtworzSesje();
+            return PIK_OtworzSesje($in);
         } finally {
             _releaseReply($in);
         }
