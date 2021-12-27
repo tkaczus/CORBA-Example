@@ -17,7 +17,7 @@ public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements Echo
             try {
                 org.omg.CORBA.portable.OutputStream $out = _request ("PIK_OtworzSesje", true);
                 $in = _invoke ($out);
-                String $result = $in.read_string ();
+                int $result = $in.read_long();
                 return $result;
             } catch (org.omg.CORBA.portable.ApplicationException $ex) {
                 $in = $ex.getInputStream ();
@@ -29,6 +29,25 @@ public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements Echo
                 _releaseReply ($in);
             }
   } // PIK_OtworzSesje
+
+    public int PIK_WybierzSerwer()
+    {
+        org.omg.CORBA.portable.InputStream $in = null;
+        try {
+            org.omg.CORBA.portable.OutputStream $out = _request ("PIK_WybierzSerwer", true);
+            $in = _invoke ($out);
+            int $result = $in.read_long();
+            return $result;
+        } catch (org.omg.CORBA.portable.ApplicationException $ex) {
+            $in = $ex.getInputStream ();
+            String _id = $ex.getId ();
+            throw new org.omg.CORBA.MARSHAL (_id);
+        } catch (org.omg.CORBA.portable.RemarshalException $rm) {
+            return PIK_WybierzSerwer(        );
+        } finally {
+            _releaseReply ($in);
+        }
+    } // PIK_OtworzSesje
 
     public String PIK_SprawdzSerwer()
     {
@@ -43,7 +62,7 @@ public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements Echo
             String _id = $ex.getId ();
             throw new org.omg.CORBA.MARSHAL (_id);
         } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-            return PIK_OtworzSesje(        );
+            return PIK_SprawdzSerwer(        );
         } finally {
             _releaseReply ($in);
         }

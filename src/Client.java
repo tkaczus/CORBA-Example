@@ -17,7 +17,7 @@ public class Client {
             NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
             Echo href = EchoHelper.narrow(ncRef.resolve_str("ECHO-SERVER"));
 
-            String hello = href.PIK_OtworzSesje();
+            int hello = href.PIK_OtworzSesje();
             System.out.println(hello);
         } catch (InvalidName invalidName) {
             invalidName.printStackTrace();
