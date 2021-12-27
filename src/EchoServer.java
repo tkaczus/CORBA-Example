@@ -2,8 +2,8 @@ import EchoApp.EchoPOA;
 
 public class EchoServer extends EchoPOA {
     @Override
-    public int PIK_OtworzSesje() {
-        return 2598;
+    public int PIK_OtworzSesje(org.omg.CORBA.portable.InputStream in) {
+        return 1;
     }
 
     @Override

@@ -34,7 +34,7 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
             case 0:  // EchoApp/Echo/echoString
             {
                 int $result = 0;
-                $result = this.PIK_OtworzSesje();
+                $result = this.PIK_OtworzSesje(in);
                 out = $rh.createReply();
                 out.write_long($result);
                 break;

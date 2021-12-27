@@ -10,7 +10,7 @@ package EchoApp;
 
 public interface EchoOperations 
 {
-  int PIK_OtworzSesje();
+  int PIK_OtworzSesje(org.omg.CORBA.portable.InputStream in);
   int PIK_WybierzSerwer();
   int PIK_SprawdzSerwer();
   String PIK_ZeZmiennej();
