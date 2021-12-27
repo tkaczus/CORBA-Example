@@ -37,6 +37,7 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
                 $result = this.PIK_OtworzSesje(in);
                 out = $rh.createReply();
                 out.write_long($result);
+                System.out.println("$result = " + $result);
                 break;
             }
             case 1:  // EchoApp/Echo/echoString
@@ -45,6 +46,7 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
                 $result = this.PIK_WybierzSerwer(in);
                 out = $rh.createReply();
                 out.write_long($result);
+                System.out.println("$result = " + $result);
                 break;
             }
             case 2:  // EchoApp/Echo/echoString
@@ -53,6 +55,7 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
                 $result = this.PIK_SprawdzSerwer(in);
                 out = $rh.createReply();
                 out.write_long($result);
+                System.out.println("$result = " + $result);
                 break;
             }
             case 3:  // EchoApp/Echo/echoString
@@ -61,13 +64,14 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
                 $result = this.PIK_ZeZmiennej(in);
                 out = $rh.createReply();
                 out.write_string($result);
+                System.out.println("$result = " + $result);
                 break;
             }
 
             default:
                 throw new org.omg.CORBA.BAD_OPERATION(0, org.omg.CORBA.CompletionStatus.COMPLETED_MAYBE);
         }
-
+        System.out.println("out = " + out);
         return out;
     } // _invoke
 
