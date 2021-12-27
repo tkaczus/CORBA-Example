@@ -8,35 +8,7 @@ public class EchoServer extends EchoPOA {
 
     @Override
     public String PIK_SprawdzSerwer() {
-        return "SS.Przetwarzanie,3,\n" +
-                "SS.PetlaKsiegujacaBlad,3,\n" +
-                "SS.PetlaKsiegujacaStan,3,\n" +
-                "SS.JednostkaZModulo,3,\n" +
-                "SS.TabelaKursow,3,\n" +
-                "SS.MaxLiczbaProcesow,3,\n" +
-                "SS.MinLiczbaProcesow,3,\n" +
-                "SS.TrybPracy,3,\n" +
-                "SS.LOG_AWARYJNY,3,\n" +
-                "SS.OMNIORB_USEHOSTNAME,3,\n" +
-                "SS.InitialHost,3,\n" +
-                "SS.InitialPort,3,\n" +
-                "SS.OMNIORB_CONFIG,3,\n" +
-                "SS.VVTERM,3,\n" +
-                "SS.VVTERMCAP,3,\n" +
-                "SS.LIBRARY_PATH,3,\n" +
-                "SS.Katalog,3,\n" +
-                "SS.CzasStartu,3,\n" +
-                "SS.DataStartu,3,\n" +
-                "SS.InterwalKontroli,3,\n" +
-                "SS.Port,3,\n" +
-                "SS.WersjaPro,3,\n" +
-                "SS.Wersja,3,\n" +
-                "SS.JEDNOSTKA_BANKU,3,\n" +
-                "SS.Nazwa,3,\n" +
-                "SS.Baza,3,\n" +
-                "SS.DataSystemowa,3,\n" +
-                "SS.DataKsiegowania,3,\n" +
-                "SS.Przetwarzanie,3,0\n" +
+        return  "SS.Przetwarzanie,3,0\n" +
                 "SS.PetlaKsiegujacaBlad,3,\n" +
                 "SS.PetlaKsiegujacaStan,3,0\n" +
                 "SS.JednostkaZModulo,3,Nie\n" +
