@@ -19,6 +19,7 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
         _methods.put("PIK_OtworzSesje", new java.lang.Integer(0));
         _methods.put("PIK_WybierzSerwer", new java.lang.Integer(1));
         _methods.put("PIK_SprawdzSerwer", new java.lang.Integer(2));
+        _methods.put("PIK_ZeZmiennej", new java.lang.Integer(3));
     }
 
     public org.omg.CORBA.portable.OutputStream _invoke(String $method,
@@ -48,8 +49,16 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
             }
             case 2:  // EchoApp/Echo/echoString
             {
-                String $result = null;
+                int $result = 0;
                 $result = this.PIK_SprawdzSerwer();
+                out = $rh.createReply();
+                out.write_long($result);
+                break;
+            }
+            case 3:  // EchoApp/Echo/echoString
+            {
+                String $result = null;
+                $result = this.PIK_ZeZmiennej();
                 out = $rh.createReply();
                 out.write_string($result);
                 break;

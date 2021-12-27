@@ -12,5 +12,6 @@ public interface EchoOperations
 {
   int PIK_OtworzSesje();
   int PIK_WybierzSerwer();
-  String PIK_SprawdzSerwer();
+  int PIK_SprawdzSerwer();
+  String PIK_ZeZmiennej();
 } // interface EchoOperations
