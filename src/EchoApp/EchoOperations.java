@@ -11,7 +11,7 @@ package EchoApp;
 public interface EchoOperations 
 {
   int PIK_OtworzSesje(org.omg.CORBA.portable.InputStream in);
-  int PIK_WybierzSerwer();
-  int PIK_SprawdzSerwer();
-  String PIK_ZeZmiennej();
+  int PIK_WybierzSerwer(org.omg.CORBA.portable.InputStream in);
+  int PIK_SprawdzSerwer(org.omg.CORBA.portable.InputStream in);
+  String PIK_ZeZmiennej(org.omg.CORBA.portable.InputStream in);
 } // interface EchoOperations

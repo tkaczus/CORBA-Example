@@ -27,8 +27,7 @@ public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements Echo
         }
     } // PIK_OtworzSesje
 
-    public int PIK_WybierzSerwer() {
-        org.omg.CORBA.portable.InputStream $in = null;
+    public int PIK_WybierzSerwer(org.omg.CORBA.portable.InputStream $in) {
         try {
             org.omg.CORBA.portable.OutputStream $out = _request("PIK_WybierzSerwer", true);
             $in = _invoke($out);
@@ -39,14 +38,13 @@ public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements Echo
             String _id = $ex.getId();
             throw new org.omg.CORBA.MARSHAL(_id);
         } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-            return PIK_WybierzSerwer();
+            return PIK_WybierzSerwer($in);
         } finally {
             _releaseReply($in);
         }
     } // PIK_OtworzSesje
 
-    public int PIK_SprawdzSerwer() {
-        org.omg.CORBA.portable.InputStream $in = null;
+    public int PIK_SprawdzSerwer(org.omg.CORBA.portable.InputStream $in) {
         try {
             org.omg.CORBA.portable.OutputStream $out = _request("PIK_SprawdzSerwer", true);
             $in = _invoke($out);
@@ -57,14 +55,13 @@ public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements Echo
             String _id = $ex.getId();
             throw new org.omg.CORBA.MARSHAL(_id);
         } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-            return PIK_SprawdzSerwer();
+            return PIK_SprawdzSerwer($in);
         } finally {
             _releaseReply($in);
         }
     } // PIK_SprawdzSerwer
 
-    public String PIK_ZeZmiennej() {
-        org.omg.CORBA.portable.InputStream $in = null;
+    public String PIK_ZeZmiennej(org.omg.CORBA.portable.InputStream $in) {
         try {
             org.omg.CORBA.portable.OutputStream $out = _request("PIK_ZeZmiennej", true);
             $in = _invoke($out);
@@ -75,7 +72,7 @@ public class _EchoStub extends org.omg.CORBA.portable.ObjectImpl implements Echo
             String _id = $ex.getId();
             throw new org.omg.CORBA.MARSHAL(_id);
         } catch (org.omg.CORBA.portable.RemarshalException $rm) {
-            return PIK_ZeZmiennej();
+            return PIK_ZeZmiennej($in);
         } finally {
             _releaseReply($in);
         }

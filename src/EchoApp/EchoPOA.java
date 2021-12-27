@@ -42,7 +42,7 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
             case 1:  // EchoApp/Echo/echoString
             {
                 int $result = 0;
-                $result = this.PIK_WybierzSerwer();
+                $result = this.PIK_WybierzSerwer(in);
                 out = $rh.createReply();
                 out.write_long($result);
                 break;
@@ -50,7 +50,7 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
             case 2:  // EchoApp/Echo/echoString
             {
                 int $result = 0;
-                $result = this.PIK_SprawdzSerwer();
+                $result = this.PIK_SprawdzSerwer(in);
                 out = $rh.createReply();
                 out.write_long($result);
                 break;
@@ -58,7 +58,7 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
             case 3:  // EchoApp/Echo/echoString
             {
                 String $result = null;
-                $result = this.PIK_ZeZmiennej();
+                $result = this.PIK_ZeZmiennej(in);
                 out = $rh.createReply();
                 out.write_string($result);
                 break;
