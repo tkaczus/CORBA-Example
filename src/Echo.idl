@@ -1,5 +1,3009 @@
 module EchoApp {
     interface Echo {
-        string echoString();
-    };
+
+    public static final int B_OK = 0;
+    public static final int B_BRAK_USLUGI = 1;
+    public static final int B_BRAK_DOSTEPU = 2;
+    public static final int B_BLAD_REALIZACJI = 3;
+    public static final int B_BLAD_LOKALIZACJI = 4;
+    public static final int B_CORBA = 5;
+    public static final int B_BLAD_KOMUNIKACJI = 6;
+    public static final int B_BRAK_PAMIECI = 7;
+    public static final int B_NIEZNANA_APLIKACJA = 8;
+    public static final int B_NIEZGODNY_ID_TRANSAKCJI = 9;
+    public static final int B_WERSJA_KLIENTA = 11;
+    public static final int B_ZATRZYMANIE = 100;
+    public static final int B_PRZETWARZANIE = 101;
+    public static final int B_NIEZNANY_BLAD = 1000;
+    public static final int Z_KWOTA = 1;
+    public static final int Z_RACH = 2;
+    public static final int Z_BUFOR = 3;
+    public static final int Z_MEMO = 4;
+    public static final int Z_DATA = 5;
+    public static final int Z_ID_ODWRACANY = 6;
+    public static final int Z_BEZTYPU = 99;
+    public static final int Z_ZNACZNIK = 999;
+    public static final String SWIFT_PREFIX = "SWIFT";
+    public static final String SWIFT_Id = "SWIFT.Id";
+    public static final String SWIFT_Kierunek = "SWIFT.Kierunek";
+    public static final String SWIFT_Piorytet = "SWIFT.Piorytet";
+    public static final String SWIFT_PSD = "SWIFT.PSD";
+    public static final String SWIFT_Jednostka = "SWIFT.Jednostka";
+    public static final String SWIFT_NrRefOryginalny = "SWIFT.NrRefOryginalny";
+    public static final String SWIFT_DataRejestracji = "SWIFT.DataRejestracji";
+    public static final String SWIFT_DataRealizacji = "SWIFT.DataRealizacji";
+    public static final String SWIFT_NrWyciagu = "SWIFT.NrWyciagu";
+    public static final String SWIFT_NrKomunikatu = "SWIFT.NrKomunikatu";
+    public static final String SWIFT_SposobPrzekazania = "SWIFT.SposobPrzekazania";
+    public static final String SWIFT_InfoStatGrupa = "SWIFT.InfoStatGrupa";
+    public static final String SWIFT_InfoStatKraj = "SWIFT.InfoStatKraj";
+    public static final String SWIFT_InfoStatPodmiot = "SWIFT.InfoStatPodmiot";
+    public static final String SWIFT_InfoStatRodzaj = "SWIFT.InfoStatRodzaj";
+    public static final String SWIFT_InfoStatTyp = "SWIFT.InfoStatTyp";
+    public static final String SWIFT_InfoStatTytul = "SWIFT.InfoStatTytul";
+    public static final String SWIFT_InfoStatWaluta = "SWIFT.InfoStatWaluta";
+    public static final String SWIFT_InfoStatRegon = "SWIFT.InfoStatRegon";
+    public static final String SWIFT_ZrodloKomunikatu = "SWIFT.ZrodloKomunikatu";
+    public static final String SWIFT_TxIDZewnetrzne = "SWIFT.TxIDZewnetrzne";
+    public static final String SWIFT_TxID = "SWIFT.TxID";
+    public static final String SWIFT_Uwagi = "SWIFT.Uwagi";
+    public static final String SWIFT_Dane = "SWIFT.Dane";
+    public static final String SWIFT_Status = "SWIFT.Status";
+    public static final int SW_A_PRZEKAZANIE = 1;
+    public static final int SW_A_STATUS = 2;
+    public static final int SW_A_WPIS_MT103 = 3;
+    public static final int SW_A_POBRANIE_MT103 = 4;
+    public static final int SW_A_REJESTRACJA_EXP = 5;
+    public static final String SWIFT_NrRef = "SWIFT.NrRef";
+    public static final String SWIFT_ZleceRach = "SWIFT.ZleceRach";
+    public static final String SWIFT_ZleceNazwa = "SWIFT.ZleceNazwa";
+    public static final String SWIFT_DataWaluty = "SWIFT.DataWaluty";
+    public static final String SWIFT_Waluta = "SWIFT.Waluta";
+    public static final String SWIFT_Kwota = "SWIFT.Kwota";
+    public static final String SWIFT_BenefBank = "SWIFT.BenefBank";
+    public static final String SWIFT_BenefRach = "SWIFT.BenefRach";
+    public static final String SWIFT_BenefNazwa = "SWIFT.BenefNazwa";
+    public static final String SWIFT_SzczegolyOplat = "SWIFT.SzczegółyOpłat";
+    public static final String SWIFT_Tytul = "SWIFT.Tytuł";
+    public static final String SWIFT_BankRach = "SWIFT.BankRach";
+    public static final String SWIFT_BankKod = "SWIFT.BankKod";
+    public static final String SWIFT_BankNazwa = "SWIFT.BankNazwa";
+    public static final String SWIFT_System = "SWIFT.System";
+    public static final String SWIFT_LikwidacjaWirNRB = "SWIFT.LikwidacjaNRBWir";
+    public static final String SWIFT_TypTransKod = "SWIFT.TypTransKod";
+    public static final String SWIFT_MPP = "SWIFT.MPP";
+    public static final String SWIFT_KwotaVAT = "SWIFT.KwotaVAT";
+    public static final String SWIFT_IDC = "SWIFT.IDC";
+    public static final String SWIFT_INV = "SWIFT.INV";
+    public static final String SWIFT_TXT = "SWIFT.TXT";
+    public static final String ODDZ_NUMER = "Oddz.Numer";
+    public static final String ODDZ_SKROT_BANKU = "Oddz.SkrótBanku";
+    public static final String ODDZ_NAZWA_KROTKA = "Oddz.NazwaKrótka";
+    public static final String ODDZ_NAZWA_PELNA1 = "Oddz.NazwaPełna1";
+    public static final String ODDZ_NAZWA_PELNA2 = "Oddz.NazwaPełna2";
+    public static final String ODDZ_ADRES_MIASTO = "Oddz.AdresMiasto";
+    public static final String ODDZ_ADRES_ULICA = "Oddz.AdresUlica";
+    public static final String ODDZ_ELIXIR_STATUS = "Oddz.ELIXIR_Status";
+    public static final String ODDZ_ELIXIR_REPREZENT = "Oddz.ELIXIR_Reprezent";
+    public static final String ODDZ_ELIXIR_IBAN = "Oddz.ELIXIR_IBAN";
+    public static final String ODDZ_ELIXIR_CZEKI = "Oddz.ELIXIR_Czeki";
+    public static final String ODDZ_ELIXIR_PZ = "Oddz.ELIXIR_PZ";
+    public static final String RB_WOLNE_SRODKI = "RB_WolneSrodki";
+    public static final String RB_WOLNE_SRODKI_JAWNE = "RB_WolneSrodkiJawne";
+    public static final String RB_SRODKI_WLASNE = "RB_SrodkiWlasne";
+    public static final String RB_LIMIT_PRZYZNANY = "RB_LimitPrzyznany";
+    public static final String RB_LIMIT_DOSTEPNY = "RB_LimitDostepny";
+    public static final String RB_ZALEGLE_KRD = "RB_ZalegleKrd";
+    public static final String RB_ZALEGLE_OPLATY = "RB_ZalegleOplaty";
+    public static final String RB_SUMA_BLOKAD_KSG = "RB_SumaBlokadKsg";
+    public static final String RB_SUMA_LOKAT = "RB_SumaLokat";
+    public static final String RB_OPROC_RACH = "RB_OprocRach";
+    public static final String RB_OPROC_KRD_N = "RB_OprocKrdN";
+    public static final String RB_OPROC_KRD_Z = "RB_OprocKrdZ";
+    public static final String RB_ODSETKI_WN = "RB_OdsetkiWN";
+    public static final String RB_ODSETKI_MA = "RB_OdsetkiMA";
+    public static final String RB_ZADLUZENIE_KAPITALOWE = "RB_ZadluzenieKapitalowe";
+    public static final String RB_ID = "RB_ID";
+    public static final String RB_ID_STANU = "RB_IDStanu";
+    public static final String RB_MODULO = "RB_Modulo";
+    public static final String RB_KONTO = "RB_Konto";
+    public static final String RB_UWAGA = "RB_Uwaga";
+    public static final String RB_TYP_PRODUKTU = "RB_TypProduktu";
+    public static final String RB_PRODUKT = "RB_Produkt";
+    public static final String RB_NAZWA_PRODUKTU = "RB_NazwaProduktu";
+    public static final String RB_TELE_INFO = "RB_TeleInfo";
+    public static final String RB_HASLO_TELE_INFO = "RB_HasloTeleInfo";
+    public static final String RB_BLOKADA = "RB_Blokada";
+    public static final String RB_BLOKADA_JAWNA = "RB_BlokadaJawna";
+    public static final String RB_STATUS = "RB_Status";
+    public static final String RB_DATA_OTWARCIA = "RB_DataOtwarcia";
+    public static final String RB_DATA_ZAMKNIECIA = "RB_DataZamkniecia";
+    public static final String RB_ID_UZYT = "RB_IDUzyt";
+    public static final String RB_NR_DOKTOZ = "RB_NrDokToz";
+    public static final String RB_NRB = "RB_NRB";
+    public static final String RB_TYP_DOKTOZ = "RB_TypDokToz";
+    public static final String RB_WALUTA = "RB_Waluta";
+    public static final String RB_MASKA = "RB_Maska";
+    public static final String RB_RODZAJ = "RB_Rodzaj";
+    public static final String RB_PODTYP = "RB_Podtyp";
+    public static final String RB_UCZESTNFINANSOWPUB = "RB_UczestFinansowPub";
+    public static final String RB_DATA = "RB_Data";
+    public static final String RB_NUMER_REF = "RB_NumerRef";
+    public static final String RB_IDWLASCICIELA = "RB_IDWlasciciela";
+    public static final String RB_INFORMACJAWUP = "RB_InformacjaWUP";
+    public static final String RB_LOKATA_OVERNIGHT = "RB_LokataOvernight";
+    public static final String RB_OOVER_PROG = "RB_OOver.Prog";
+    public static final String RB_OOVER_SPOSOB = "RB_OOver.Sposob";
+    public static final String RB_OOVER_KWOTA = "RB_OOver.Kwota";
+    public static final String RB_OOVER_TYPDNIA = "RB_OOver.TypDnia";
+    public static final String RB_OOVER_NRKALEND = "RB_OOver.NrKalend";
+    public static final String RB_OOVER_ZWROTLOK = "RB_OOver.ZwrotLok";
+    public static final String RB_OOVER_WYDRUK = "RB_OOver.Wydruk";
+    public static final String RB_OOVER_RACHKAP = "RB_OOver.RachKap";
+    public static final String RB_OOVER_RACHODS = "RB_OOver.RachOds";
+    public static final String RB_OOVER_TERMZAL = "RB_OOver.TermZal";
+    public static final String RB_OVVER_ZW_KAPIT = "RB_OOverZwrotKap";
+    public static final String RB_OVVER_ZW_ODSET = "RB_OOverZwrotOds";
+    public static final String RB_OVVER_DYS_PRAL = "RB_OOverWyk";
+    public static final String RB_OVVER_DYS_PRAL2 = "RB_OOverWyk2";
+    public static final String RB_OPRCWN = "RB_OprcWn";
+    public static final String RB_NZW_ALG_MA = "RB_NazwaAlgMa";
+    public static final String RB_NZW_ALG_WN = "RB_NazwaAlgWn";
+    public static final String RB_WYC_Z_RKU = "RB_WycZRach";
+    public static final String RB_WYC_CZESTOTLIWOSC = "RB_WycZRachCze";
+    public static final String RB_WYC_CZESTOTLIWOSC_JEDN = "RB_WycZRachJed";
+    public static final String RB_WYC_WYS = "RB_WycZRachWys";
+    public static final String RB_KONSOLIDACJA = "RB_Konsolidacja";
+    public static final String RB_DATA_OST_KAPIT = "RB_DataOstKapit";
+    public static final String RB_KWOTA_OST_KAPIT = "RB_KwotaOstKapit";
+    public static final String RB_OKRES_KAPIT = "RB_OkresKapit";
+    public static final String RB_DZIEN_KAPIT = "RB_DzienKapit";
+    public static final String RB_MIESIAC_KAPIT = "RB_MiesiacKapit";
+    public static final String RB_PRZYCZ_ZAMKN_RACH = "RB_PrzyczZamknRach";
+    public static final String RB_RACHUNEK_WSPOLNY = "RB_RachunekWspolny";
+    public static final String RB_RACHUNEK_USPIONY = "RB_RachunekUspiony";
+    public static final String RB_IDWspolwlascicieli = "RB_IDWspolwlascicieli";
+    public static final String RB_OBSLUGA_MPP = "RB_ObslugaMPP";
+    public static final String RB_RACHUNEK_VAT = "RB_RachunekVAT";
+    public static final int RB_A_LISTA = 1;
+    public static final int RB_A_POBRANIE = 2;
+    public static final int RB_A_PELNOMOCNICTWA = 3;
+    public static final int RB_A_KONTROLA_DOKTOZ = 4;
+    public static final int RB_A_LISTA_AKTYWNYCH = 5;
+    public static final int RB_A_LISTA_ZAMKNIETYCH = 6;
+    public static final int RB_A_POBRANIE_OPROC = 7;
+    public static final int RB_A_LISTA_AKTYWNYCH_PLUS = 8;
+    public static final int RB_A_LISTA_USPIONYCH = 9;
+    public static final int RB_A_LISTA_WG_RVAT = 10;
+    public static final int RB_A_LISTA_AKTYWNYCH_GRUPY = 11;
+    public static final String RB_DRUK_WYC_RACH = "RB_DrukWycRach";
+    public static final String RB_WYS_WYC = "RB_WysWyc";
+    public static final String RB_NR_WZORCA = "RB_NrWzorca";
+    public static final String RB_CZEST_SPORZ_WYC_IL_JEDN = "RB_CzestSporzWycIlJedn";
+    public static final String RB_CZEST_SPORZ_WYC_JEDN = "RB_CzestSporzWycJedn";
+    public static final int RB_PAR_POBRANIE = 1;
+    public static final int RB_PAR_USTAW = 2;
+    public static final int RB_A_ZALOZENIE = 1;
+    public static final int RB_A_POPRAWA = 2;
+    public static final int RB_A_ODBL_KRED = 3;
+    public static final int RB_A_LIMIT_KRED_PRZYZNANIE = 4;
+    public static final int RB_A_LIMIT_KRED_ZMIANA = 5;
+    public static final int RB_A_LIMIT_KRED_URUCHOMIENIE = 6;
+    public static final int RB_A_LIMIT_KRED_POBRANIE = 7;
+    public static final int RB_A_DODANIE_WSPOLWLASCICIELA = 9;
+    public static final int RB_A_SPRZEDAWCA_LIMITU = 10;
+    public static final int RB_A_POBRANIE_POLA = 11;
+    public static final int RB_A_ZMIANA_POLA = 12;
+    public static final int RB_A_ZALOZENIE_LIMITU = 13;
+    public static final int RB_A_ZAKONCZENIE_LIMITU = 14;
+    public static final int RB_A_LIMIT_KRED_ZAKONCZENIE = 15;
+    public static final int RB_A_DEBET_PRZYZNANIE = 16;
+    public static final int RB_A_DEBET_ZMIANA = 17;
+    public static final int RB_A_DEBET_ZAKONCZENIE = 18;
+    public static final int RS_A_POBRANIE_UMOWARS = 0;
+    public static final int RS_A_LISTA_RACHUNKOWRS = 1;
+    public static final int RS_A_LISTA_OPERACJI = 2;
+    public static final String RS_Modulo = "RS.Modulo";
+    public static final String RS_ReferencjaURS = "RS.ReferencjaURS";
+    public static final String RS_NRBRS = "RS.NRBRS";
+    public static final String RS_Typ = "RS.Typ";
+    public static final String RS_PodtypK = "RS.PodtypK";
+    public static final String RS_PodtypKKwota = "RS.PodtypKKwota";
+    public static final String RS_PodtypDK = "RS.PodtypDK";
+    public static final String RS_PodtypDKKwota = "RS.PodtypDKKwota";
+    public static final String RS_Tryb = "RS.Tryb";
+    public static final String RS_HarmonogramK = "RS.HarmonogramK";
+    public static final String RS_HarmonogramDK = "RS.HarmonogramDK";
+    public static final String RS_NumerBledu = "RS.NumerBłędu";
+    public static final String RS_OpisBledu = "RS.OpisBłędu";
+    public static final String RS_Referencja = "RS.Referencja";
+    public static final String RS_NRB = "RS.NRB";
+    public static final String RS_DataKonsolidacji = "RS.DataKonsolidacji";
+    public static final String RS_NumerKolejny = "RS.NumerKolejny";
+    public static final String RS_SaldoRKPrzed = "RS.SaldoRKPrzed";
+    public static final String RS_SaldoRSPrzed = "RS.SaldoRSPrzed";
+    public static final String RS_PrzeplywK = "RS.PrzeplywK";
+    public static final String RS_PrzeplywDK = "RS.PrzeplywDK";
+    public static final String RS_SaldoRKPo = "RS.SaldoRKPo";
+    public static final String RS_SaldoRSPo = "RS.SaldoRSPo";
+    public static final String RS_OdsetkiN = "RS.OdsetkiN";
+    public static final String RS_OdsetkiK = "RS.OdsetkiK";
+    public static final String RS_StopaWn = "RS.StopaWn";
+    public static final String RS_StopaMa = "RS.StopaMa";
+    public static final String RS_Priorytet = "RS.Priorytet";
+    public static final int DOK_A_LISTA_DEKRETOW = 1;
+    public static final String KR_SymbolProduktu = "KR_SymbolProduktu";
+    public static final String KR_WalutaKredytu = "KR_WalutaKredytu";
+    public static final String KR_TypTransakcjiBIK = "KR_TypTransakcjiBIK";
+    public static final String KR_TypEkspozycjiKred = "KR_TypEkspozycjiKred";
+    public static final String KR_CelFinansowania = "KR_CelFinansowania";
+    public static final String KR_DataRejestracji = "KR_DataRejestracji";
+    public static final String KR_DataWyplaty = "KR_DataWyplaty";
+    public static final String KR_DataKonca = "KR_DataKonca";
+    public static final String KR_NumerUmowy = "KR_NumerUmowy";
+    public static final String KR_Operator = "KR_Operator";
+    public static final String KR_Modulo = "KR_Modulo";
+    public static final String KR_KwotaBrutto = "KR_KwotaBrutto";
+    public static final String KR_TypHarmonogramu = "KR_TypHarmonogramu";
+    public static final String KR_DataZawarcia = "KR_DataZawarcia";
+    public static final String KR_KoniecMiesiaca = "KR_KoniecMiesiaca";
+    public static final String KR_RachunekWyplaty = "KR_RachunekWyplaty";
+    public static final String KR_WlascicielRachWypl = "KR_WlascicielRachWypl";
+    public static final String KR_Ubz_Kod = "KR_Ubz_Kod";
+    public static final String KR_Ubz_KwotaSkladki = "KR_Ubz_KwotaSkladki";
+    public static final String KR_Ubz_TrybPobrania = "KR_Ubz_TrybPobrania";
+    public static final String KR_Oprc_Typ = "KR_Oprc_Typ";
+    public static final String KR_Oprc_Tabela = "KR_Oprc_Tabela";
+    public static final String KR_Oprc_Mnoznik = "KR_Oprc_Mnoznik";
+    public static final String KR_Oprc_Podstawa = "KR_Oprc_Podstawa";
+    public static final String KR_DataPierwszejRaty = "KR_DataPierwszejRaty";
+    public static final String KR_LiczbaRat = "KR_LiczbaRat";
+    public static final String KR_JednostkaOkresu = "KR_JednostkaOkresu";
+    public static final String KR_Prw_Id1 = "KR_Prw_Id1";
+    public static final String KR_Prw_KwotaProwizji1 = "KR_Prw_KwotaProwizji1";
+    public static final String KR_Prw_Id2 = "KR_Prw_Id2";
+    public static final String KR_Prw_KwotaProwizji2 = "KR_Prw_KwotaProwizji2";
+    public static final String KR_Prw_Id3 = "KR_Prw_Id3";
+    public static final String KR_Prw_KwotaProwizji3 = "KR_Prw_KwotaProwizji3";
+    public static final String KR_IdSprzedawcy = "KR_IdSprzedawcy";
+    public static final String KR_IdPosrednika = "KR_IdPosrednika";
+    public static final String KR_BladNr = "KR_BladNr";
+    public static final String KR_BladOpis = "KR_BladOpis";
+    public static final String KR_IdUmowy = "KR_IdUmowy";
+    public static final String KR_NumerRef = "KR_NumerRef";
+    public static final String KR_RachunekSplat = "KR_RachunekSplat";
+    public static final String KR_Dyspozycja = "KR_Dyspozycja";
+    public static final String KR_Harmonogram = "KR_Harmonogram";
+    public static final String KR_Status = "KR_Status";
+    public static final String KR_Jednostka = "KR_Jednostka";
+    public static final String KR_Prw = "KR_Prw";
+    public static final String KR_SposobWyplaty = "KR_SposobWyplaty";
+    public static final String KR_Ubz_Stawka = "KR_Ubz_Stawka";
+    public static final String KR_ZaokraglenieRat = "KR_ZaokraglenieRat";
+    public static final String KR_DataZaleglosci = "KR_DataZaleglosci";
+    public static final String KR_NRB = "KR_NRB";
+    public static final String KR_KwotaZalegla = "KR_KwotaZalegla";
+    public static final String KR_KwotaPrzekrLimitu = "KR_KwotaPrzekrLimitu";
+    public static final String KR_OdnowienieUmowy = "KR_OdnowienieUmowy";
+    public static final String KR_KwotaUmowy = "KR_KwotaUmowy";
+    public static final String KR_DataWniosku = "KR_DataWniosku";
+    public static final String KR_DataUmowy = "KR_DataUmowy";
+    public static final String KR_DataOstOdnowienia = "KR_DataOstOdnowienia";
+    public static final String KR_DataUruchomienia = "KR_DataUruchomienia";
+    public static final String KR_TrybZamknUmowy = "KR_TrybZamknUmowy";
+    public static final String KR_DataWypowiedzenia = "KR_DataWypowiedzenia";
+    public static final String KR_SystemObslugiTr = "KR_SystemObsługiTr";
+    public static final String KR_DataWindykacji = "KR_DataWindykacji";
+    public static final String KR_IdKlienta = "KR_IdKlienta";
+    public static final String KR_OdnowienieKarty = "KR_OdnowienieKarty";
+    public static final String KR_HasloJawne = "KR_HasłoJawne";
+    public static final String KR_WniosekMedium = "KR_WniosekMedium";
+    public static final String KR_WniosekAgent = "KR_WniosekAgent";
+    public static final String KR_WniosekSubAgent = "KR_WniosekSubAgent";
+    public static final String KR_WniosekSprzedawca = "KR_WniosekSprzedawca";
+    public static final String KR_WniosekJednDystr = "KR_WniosekJednDystr";
+    public static final String KR_UmowaMedium = "KR_UmowaMedium";
+    public static final String KR_UmowaAgent = "KR_UmowaAgent";
+    public static final String KR_UmowaSubAgent = "KR_UmowaSubAgent";
+    public static final String KR_UmowaSprzedawca = "KR_UmowaSprzedawca";
+    public static final String KR_UmowaJednDystr = "KR_UmowaJednDystr";
+    public static final String KR_StatusUmowy = "KR_StatusUmowy";
+    public static final String KR_KwotaMinSplaty = "KR_KwotaMinSplaty";
+    public static final String KR_DataSplatyMinKwoty = "KR_DataSplatyMinKwoty";
+    public static final String KR_DataSplMinKwotyWyciag = "KR_DataSplMinKwotyWyciag";
+    public static final int KR_A_ZALOZENIE = 1;
+    public static final int KR_A_ZATWIERDZENIE = 2;
+    public static final int KR_A_HARMONOGRAM = 3;
+    public static final int KR_A_KSIEGOWANIE = 4;
+    public static final int KR_A_ZALOZENIE_KARTY = 5;
+    public static final int KR_A_AKCEPTACJA_KARTY = 6;
+    public static final int KR_A_ZMIANA_LIMITU_KARTY = 7;
+    public static final int KR_A_POBRANIE_KARTY = 8;
+    public static final int KR_A_ZALEGLOSC_KARTY = 9;
+    public static final int KR_A_KWOTA_MIN_SPLATY_KARTY = 10;
+    public static final int KR_A_USTAL_AUTOSPLATE = 11;
+    public static final int KR_A_INSPEKTOR_KREDYTOWY = 12;
+    public static final int KR_A_SYMULACJA = 13;
+    public static final int KR_A_WSPOLKREDYTOBIORCA = 14;
+    public static final int KR_A_KOREKTAUMOWY = 15;
+    public static final String ZABEZP_TXT = "Zabezp";
+    public static final String ZB_BladNr = "ZB_BladNr";
+    public static final String ZB_BladOpis = "ZB_BladOpis";
+    public static final String ZB_ID = "Zabezp.ID";
+    public static final String ZB_IDUmowy = "Zabezp.IDUmowy";
+    public static final String ZB_RefUmowy = "Zabezp.RefUmowy";
+    public static final String ZB_IDRachunku = "Zabezp.IDRachunku";
+    public static final String ZB_Kod = "Zabezp.Kod";
+    public static final String ZB_NrKolejny = "Zabezp.NrKolejny";
+    public static final String ZB_Waluta = "Zabezp.Waluta";
+    public static final String ZB_WartoscRynkowa = "Zabezp.WartośćRynkowa";
+    public static final String ZB_Wartosc = "Zabezp.Wartość";
+    public static final String ZB_WartoscKsWiecz = "Zabezp.WartośćKsWiecz";
+    public static final String ZB_KwotaPomnRez = "Zabezp.KwotaPomnRez";
+    public static final String ZB_DataUstanowienia = "Zabezp.DataUstanowienia";
+    public static final String ZB_DataZwolnienia = "Zabezp.DataZwolnienia";
+    public static final String ZB_DataWaznosci = "Zabezp.DataWażności";
+    public static final String ZB_Opis = "Zabezp.Opis";
+    public static final String ZB_IDWystawcy = "Zabezp.IDWystawcy";
+    public static final String ZB_NazwaWystawcy = "Zabezp.NazwaWystawcy";
+    public static final String ZB_IDUmowyZabezp = "Zabezp.IDUmowyZabezp";
+    public static final String ZB_RefUmowyZabezp = "Zabezp.RefUmowyZabezp";
+    public static final String ZB_KlasyfikDodatk = "Zabezp.KlasyfikDodatk";
+    public static final String ZB_Rodzaj = "Zabezp.Rodzaj";
+    public static final String ZB_Cechy = "Zabezp.Cechy";
+    public static final String ZB_StronaKsiegowa = "Zabezp.StronaKsięgowa";
+    public static final String ZB_Priorytet = "Zabezp.Priorytet";
+    public static final String ZB_WalutaWyceny = "Zabezp.WalutaWyceny";
+    public static final String ZB_WalutaKsWiecz = "Zabezp.WalutaKsWiecz";
+    public static final String ZB_IDZewnetrzne = "Zabezp.Zewnętrzne";
+    public static final int ZB_A_DODANIE = 1;
+    public static final int ZB_A_LISTA_WSZYSTKICH = 2;
+    public static final int ZB_A_ZMIANA = 3;
+    public static final int ZB_A_USUNIECIE = 4;
+    public static final String RM_PREFIX = "RM.";
+    public static final String RM_DATA_KS = "RM.DataKs";
+    public static final String RM_NR_DOK = "RM.NrDokumentu";
+    public static final String RM_RACH_BENEF = "RM.RachBeneficjenta";
+    public static final String RM_KWOTA = "RM.Kwota";
+    public static final String RM_ZLECENIODAWCA = "RM.Zleceniodawca";
+    public static final String RM_TYTUL = "RM.Tytul";
+    public static final String RM_RACH_ZLEC = "RM.RachZleceniodawcy";
+    public static final String RM_MASKA = "RM.Maska";
+    public static final String RM_DATA_WAL = "RM.DataWaluty";
+    public static final String RM_NRB = "RM.NRB";
+    public static final String RM_DataOd = "RM.DataOd";
+    public static final String RM_DataDo = "RM.DataDo";
+    public static final String RM_Raport = "RM.Raport";
+    public static final int KL_A_POBRANIE = 1;
+    public static final int KL_A_LISTA_ZMIAN = 2;
+    public static final int KL_A_DODANIE = 3;
+    public static final int KL_A_MODYFIKACJA = 4;
+    public static final int KL_A_LISTA_NR_KLIENTA = 5;
+    public static final int KL_A_DODANIE_NR_KLIENTA = 6;
+    public static final int KL_A_DODANIE_DO_GRUPY = 7;
+    public static final int KL_A_USUNIECIE_Z_GRUPY = 8;
+    public static final int KL_A_POBRANIE_OSOB = 9;
+    public static final int KL_A_POBRANIE_PES_REG = 10;
+    public static final int KL_A_POBRANIE_NIP = 11;
+    public static final int KL_A_POBRANIE2 = 12;
+    public static final int KL_A_POBRANIE_DOWOD = 13;
+    public static final int KL_A_POBRANIE_GRUP = 14;
+    public static final int KL_A_POBRANIE3 = 15;
+    public static final int KL_A_DODANIE_UPOWAZNIENIA = 16;
+    public static final int KL_A_USUNIECIE_UPOWAZNIENIA = 17;
+    public static final int KL_A_POBRANIE_NRB = 18;
+    public static final int KL_A_DODANIE_POW_PERSONALNEGO = 19;
+    public static final int KL_A_USUNIECIE_POW_PERSONALNEGO = 20;
+    public static final int KL_A_DODANIE_POW_KAPITALOWEGO = 21;
+    public static final int KL_A_USUNIECIE_POW_KAPITALOWEGO = 22;
+    public static final int KL_A_DODANIE_WLASCICIELA = 23;
+    public static final int KL_A_USUNIECIE_WLASCICIELA = 24;
+    public static final int KL_A_POBRANIE_KRS = 25;
+    public static final int KL_A_DODANIE_WSPOLNOTA_MAJATKOWA = 26;
+    public static final int KL_A_USUNIECIE_WSPOLNOTA_MAJATKOWA = 27;
+    public static final int KL_A_DODANIE_BENEFICJENT_RZECZYWISTY = 28;
+    public static final int KL_A_USUNIECIE_BENEFICJENT_RZECZYWISTY = 29;
+    public static final int KL_A_POBRANIE_INNY_DOK = 30;
+    public static final int KL_A_RYZYKO_STIR = 31;
+    public static final String Ryzyko_KlientID = "Ryzyko.KlientID";
+    public static final String Ryzyko_DataOceny = "Ryzyko.DataOceny";
+    public static final String Ryzyko_Punkty = "Ryzyko.Punkty";
+    public static final String Ryzyko_Kategoria = "Ryzyko.Kategoria";
+    public static final String Ryzyko_Czynniki = "Ryzyko.Czynniki";
+    public static final int KLP_A_POBRANIE = 1;
+    public static final int KLP_A_POBRANIE2 = 2;
+    public static final int KLP_A_POBRANIE3 = 3;
+    public static final int KLP_A_POBRANIE_OSOB = 4;
+    public static final int KLP_A_POBRANIE_PES_REG = 5;
+    public static final int KLP_A_POBRANIE_NIP = 6;
+    public static final int KLP_A_POBRANIE_DOWOD = 7;
+    public static final int KLP_A_POBRANIE_GRUP = 8;
+    public static final int KLP_A_POBRANIE_NRB = 9;
+    public static final int KLP_A_POBRANIE_KRS = 10;
+    public static final int KLP_A_POBRANIE_INNY_DOK = 11;
+    public static final int DS_SRODKI_WLASNE = 0;
+    public static final int DS_SRODKI_WOLNE = 1;
+    public static final String DS_Akcja = "DS_Akcja";
+    public static final int DS_SALDO = 0;
+    public static final int DS_SALDO_MK = 1;
+    public static final int DS_SALDO_KU = 2;
+    public static final int DS_SALDO_K_SYNTET = 3;
+    public static final String DT_ID = "DT_Id";
+    public static final String DT_STATUS = "DT_Status";
+    public static final String DT_DATA_OTWARCIA = "DT_DataOtwarcia";
+    public static final String DT_DATA_KONCA = "DT_DataKonca";
+    public static final String DT_KWOTA = "DT_Kwota";
+    public static final String DT_SALDO = "DT_Saldo";
+    public static final String DT_TYP = "DT_Typ";
+    public static final String DT_PODTYP = "DT_Podtyp";
+    public static final String DT_OKRES = "DT_Okres";
+    public static final String DT_RODZ_OPRC = "DT_RodzOprc";
+    public static final String DT_NR_UMOWY = "DT_NrUmowy";
+    public static final String DT_NAZWA = "DT_Nazwa";
+    public static final String DT_ID_STANU = "DT_IDStanu";
+    public static final String DT_TYP_ROZLICZ_KAPIT = "DT_TypRozliczKapit";
+    public static final String DT_TYP_ROZLICZ_ODSETEK = "DT_TypRozliczOdsetek";
+    public static final String DT_MOZLIWE_DOPLATY = "DT_MozliweDoplaty";
+    public static final String DT_BLOKADA_KAPITALU = "DT_BlokadaKapitalu";
+    public static final String DT_BLOKADA_ODSETEK = "DT_BlokadaOdsetek";
+    public static final String DT_RACHUNEK = "DT_Rachunek";
+    public static final String DT_OPIS = "DT_Opis";
+    public static final String DT_NRB = "DT_NRB";
+    public static final String DT_NR_UMOWY_LOKATY = "DT_NR_UMOWY_LOKATY";
+    public static final String DT_WALUTA = "DT_Waluta";
+    public static final String DT_STOPA_PROCENTOWA = "DT_StopaProcentowa";
+    public static final String DT_SRozlKap_Rachunek = "DT_SRozlKap.Rachunek";
+    public static final String DT_SRozlKap_NrBanku = "DT_SRozlKap.NrBanku";
+    public static final String DT_SRozlKap_SysRozl = "DT_SRozlKap.SysRozl";
+    public static final String DT_SRozlKap_Adresat = "DT_SRozlKap.Adresat";
+    public static final String DT_SRozlOds_Rachunek = "DT_SRozlOds.Rachunek";
+    public static final String DT_SRozlOds_NrBanku = "DT_SRozlOds.NrBanku";
+    public static final String DT_SRozlOds_SysRozl = "DT_SRozlOds.SysRozl";
+    public static final String DT_SRozlOds_Adresat = "DT_SRozlOds.Adresat";
+    public static final String DT_Odsetki = "DT_Odsetki";
+    public static final String DT_DataOdsetek = "DT_DataOdsetek";
+    public static final String DT_DataRejestracji = "DT_DataRejestracji";
+    public static final String DT_ObslOds_Licznik = "DT_ObslOds.Licznik";
+    public static final String DT_ObslOds_Okres = "DT_ObslOds.Okres";
+    public static final String DT_StatusZalozenia = "DT_StatusZalozenia";
+    public static final String DT_RachunekWplaty = "DT_RachunekWplaty";
+    public static final String DT_PrzyczynaZamknRach = "DT_PrzyczynaZamknRach";
+    public static final String DT_RachunekWspolny = "DT_RachunekWspolny";
+    public static final String DT_IDWlasciciela = "DT_IDWlasciciela";
+    public static final String DT_RachunekUspiony = "DT_RachunekUspiony";
+    public static final String DT_IDWspolwlascicieli = "DT_IDWspolwlascicieli";
+    public static final int DT_A_LISTA = 0;
+    public static final int DT_A_LISTA_PLUS = 1;
+    public static final int DT_A_LISTA_USPIONYCH = 2;
+    public static final int DP_A_ZALOZENIE = 1;
+    public static final int DP_A_DODANIE_WSPOLWLASCICIELA = 2;
+    public static final int DP_A_ZMIANA_DYSPOZYCJI = 3;
+    public static final int UP_A_KONTROLA_HASLA = 1;
+    public static final int UP_A_ZMIANA_HASLA = 2;
+    public static final int UP_A_KONTROLA_UPRAWNIENIA = 3;
+    public static final String PP_PREFIX = "Poczta_";
+    public static final String PP_UniNrPoczty = "Poczta_UniNrPoczty";
+    public static final String PP_Data = "Poczta_Data";
+    public static final String PP_TypJednostki = "Poczta_TypJednostki";
+    public static final String PP_NrElementu = "Poczta_NrElementu";
+    public static final String PP_Nazwa = "Poczta_Nazwa";
+    public static final String PP_KodPocztowy = "Poczta_KodPocztowy";
+    public static final String PP_Miejscowosc = "Poczta_Miejscowość";
+    public static final String PP_AdresUlica = "Poczta_AdresUlica";
+    public static final String PP_Telefon = "Poczta_Telefon";
+    public static final String PP_Fax = "Poczta_Fax";
+    public static final String PP_Email = "Poczta_Email";
+    public static final String PP_NrNadrzedny = "Poczta_NrNadrzędny";
+    public static final String PP_NrStempla = "Poczta_NrStempla";
+    public static final String PP_NrStempla2 = "Poczta_NrStempla2";
+    public static final String PP_NrStempla3 = "Poczta_NrStempla3";
+    public static final String PP_NrStempla4 = "Poczta_NrStempla4";
+    public static final String PP_NrStempla5 = "Poczta_NrStempla5";
+    public static final String PP_DaneOdDnia = "Poczta_OdDnia";
+    public static final String PP_DaneDoDnia = "Poczta_DoDnia";
+    public static final String PP_FaxZW = "Poczta_FaxDlaZW";
+    public static final String PP_KontoRozliczeniowe = "Poczta_R-ekRozliczeniowy";
+    public static final String PP_Opcje = "Poczta_Opcje";
+    public static final String PP_Sciezka = "Poczta_Ścieżka";
+    public static final String CZYN_TXT = "CzynNf";
+    public static final String CZYN_PREFIX = "CzynNf.";
+    public static final String CZYN_MODULO = "CzynNf.Modulo";
+    public static final String CZYN_NR_STEMPLA = "CzynNf.NrStempla";
+    public static final String CZYN_RODZAJ = "CzynNf.Rodzaj";
+    public static final String CZYN_RODZAJ_FC = "CzynNf.RodzajFC";
+    public static final String CZYN_DATA = "CzynNf.Data";
+    public static final String CZYN_ILOSC = "CzynNf.Ilosc";
+    public static final String CZYN_KWOTA = "CzynNf.Kwota";
+    public static final String CZYN_REFERENCJA = "CzynNf.Referencja";
+    public static final String CZYN_UMOWA = "CzynNf.Umowa";
+    public static final String CZYN_JEDNOSTKA = "CzynNf.Jednostka";
+    public static final String CZYN_SUMA_PROWIZJI = "CzynNf.SumaProwizji";
+    public static final int AU_A_AUTORYZACJA = 1;
+    public static final int AU_A_ANULOWANIE = 2;
+    public static final int AU_A_AUTORYZACJA_DOWOD = 3;
+    public static final int AU_A_ANULOWANIE_DOWOD = 4;
+    public static final int AU_A_AUTORYZACJA_PRZELEW = 5;
+    public static final int AU_A_ANULOWANIE_PRZELEW = 6;
+    public static final int AU_A_AUTORYZACJA_SYST_ZEWN = 7;
+    public static final int AU_A_ANULOWANIE_SYST_ZEWN = 8;
+    public static final int AU_A_AUTORYZACJA_SYST_ZEWN_UN = 9;
+    public static final int AU_A_ANULOWANIE_SYST_ZEWN_UN = 10;
+    public static final int AU_A_ANULOWANIE_ZLECENIE = 12;
+    public static final int AU_A_ZMIANA_ZAJECIE = 13;
+    public static final int AU_A_ANULOWANIE_ZAJECIE = 14;
+    public static final int LA_AKCJA_STANDARD = 0;
+    public static final int LA_AKCJA_KARTOWE = 1;
+    public static final int LA_AKCJA_AUTORYZACJA = 2;
+    public static final int LA_AKCJA_ZAJECIA = 3;
+    public static final String AUTO_TXT = "Auto";
+    public static final String AUTO_PREFIX = "Auto.";
+    public static final String AUTO_IDAutoryzacji = "Auto.IDAutoryzacji";
+    public static final String AUTO_IDRachunku = "Auto.IDRachunku";
+    public static final String AUTO_Status = "Auto.Status";
+    public static final String AUTO_TypAutoryzacji = "Auto.TypAutoryzacji";
+    public static final String AUTO_RodzajAutoryz = "Auto.RodzajAutoryz";
+    public static final String AUTO_Kwota = "Auto.Kwota";
+    public static final String AUTO_KwotaOplaty = "Auto.KwotaOpłaty";
+    public static final String AUTO_DataAutoryzacji = "Auto.DataAutoryzacji";
+    public static final String AUTO_DataRealizacji = "Auto.DataRealizacji";
+    public static final String AUTO_KwotaRozliczenia = "Auto.KwotaRozliczenia";
+    public static final String AUTO_NrZewnetrzny = "Auto.NrZewnętrzny";
+    public static final String AUTO_IDGdzie = "Auto.IDGdzie";
+    public static final String AUTO_Zlecajacy = "Auto.Zlecający";
+    public static final String AUTO_GdzieAutoryzacja = "Auto.GdzieAutoryzacja";
+    public static final String AUTO_KtoWpisal = "Auto.KtoWpisał";
+    public static final String AUTO_IDKtoWpisal = "Auto.IDKtoWpisał";
+    public static final String AUTO_DataWpisu = "Auto.DataWpisu";
+    public static final String AUTO_CzasWpisu = "Auto.CzasWpisu";
+    public static final String AUTO_KtoRozliczyl = "Auto.KtoRozliczył";
+    public static final String AUTO_DataRozliczenia = "Auto.DataRozliczenia";
+    public static final String AUTO_CzasRozliczenia = "Auto.CzasRozliczenia";
+    public static final String AUTO_KanalAutoryzacji = "Auto.KanałAutoryzacji";
+    public static final String AUTO_MiejsceWyplaty = "Auto.MiejsceWypłaty";
+    public static final String AUTO_NumerDokumentu = "Auto.NumerDokumentu";
+    public static final String AUTO_NumerDekretu = "Auto.NumerDekretu";
+    public static final String AUTO_IDKtoPotwierdzil = "Auto.IDKtoPotwierdził";
+    public static final String AUTO_KtoPotwierdzil = "Auto.KtoPotwierdził";
+    public static final String AUTO_DataPotwierdzenia = "Auto.DataPotwierdzenia";
+    public static final String AUTO_CzasPotwierdzenia = "Auto.CzasPotwierdzenia";
+    public static final String AUTO_Akcja = "Auto.Akcja";
+    public static final String AUTO_NRB = "Auto.NRB";
+    public static final String AUTO_Suma = "Auto.Suma";
+    public static final String AUTO_TypTransakcji = "Auto.TypTransakcji";
+    public static final String AUTO_NrKarty = "Auto.NrKarty";
+    public static final String AUTO_DataCzasGMT = "Auto.DataCzasGMT";
+    public static final String AUTO_DataCzasLok = "Auto.DataCzasLok";
+    public static final String AUTO_NazwaMerchanta = "Auto.NazwaMerchanta";
+    public static final String AUTO_MiastoMerchanta = "Auto.MiastoMerchanta";
+    public static final String AUTO_KrajMerchanta = "Auto.KrajMerchanta";
+    public static final String AUTO_KwotaVAT = "Auto.KwotaVAT";
+    public static final String AUTO_RachBeneficjenta = "AUTO_RachBeneficjenta";
+    public static final String AUTO_TypDokToz = "AUTO_TypDokToz";
+    public static final String AUTO_NrDokToz = "AUTO_NrDokToz";
+    public static final String AUTO_Zleceniodawca = "AUTO_Zleceniodawca";
+    public static final String AUTO_BankZlec = "AUTO_BankZlec";
+    public static final String AUTO_RachWn = "AUTO_RachWn";
+    public static final String AUTO_RachZlec = "AUTO_RachZlec";
+    public static final String AUTO_Beneficjent = "AUTO_Beneficjent";
+    public static final String AUTO_BankBenef = "AUTO_BankBenef";
+    public static final String AUTO_RachMa = "AUTO_RachMa";
+    public static final String AUTO_RachBenef = "AUTO_RachBenef";
+    public static final String AUTO_TypOperacji = "AUTO_TypOperacji";
+    public static final String AUTO_Tytul = "AUTO_Tytul";
+    public static final String AUON_TXT = "Auon";
+    public static final String AUON_PREFIX = "Auon.";
+    public static final String AUON_NrAutoryzacjiCA = "Auon.NrAutoryzacjiCA";
+    public static final String AUON_NrAutoryzacjiDef = "Auon.NrAutoryzacjiDef";
+    public static final String AUON_IdTransakcji = "Auon.IdTransakcji";
+    public static final String AUON_TypTransakcji = "Auon.TypTransakcji";
+    public static final String AUON_NrKarty = "Auon.NrKarty";
+    public static final String AUON_Waluta = "Auon.Waluta";
+    public static final String AUON_Kwota1 = "Auon.Kwota1";
+    public static final String AUON_Kwota2 = "Auon.Kwota2";
+    public static final String AUON_Kwota = "Auon.Kwota";
+    public static final String AUON_DataGMT = "Auon.DataGMT";
+    public static final String AUON_CzasGMT = "Auon.CzasGMT";
+    public static final String AUON_DataTerminala = "Auon.DataTerminala";
+    public static final String AUON_CzasTerminala = "Auon.CzasTerminala";
+    public static final String AUON_IdTerminala = "Auon.IdTerminala";
+    public static final String AUON_IdAcquirera = "Auon.IdAcquirera";
+    public static final String AUON_IdMerchanta = "Auon.IdMerchanta";
+    public static final String AUON_NazwaMerchanta = "Auon.NazwaMerchanta";
+    public static final String AUON_MiastoMerchanta = "Auon.MiastoMerchanta";
+    public static final String AUON_StanMerchanta = "Auon.StanMerchanta";
+    public static final String AUON_KrajMerchanta = "Auon.KrajMerchanta";
+    public static final String AUON_MCC = "Auon.MCC";
+    public static final String AUON_Wydawca = "Auon.Wydawca";
+    public static final String AUON_Referencja = "Auon.Referencja";
+    public static final String AUON_NadRachunek = "Auon.NadRachunek";
+    public static final String AUON_NadNazwa = "Auon.NadNazwa";
+    public static final String AUON_NadAdres = "Auon.NadAdres";
+    public static final String AUON_NadMiasto = "Auon.NadMiasto";
+    public static final String AUON_NadStan = "Auon.NadStan";
+    public static final String AUON_NadKraj = "Auon.NadKraj";
+    public static final String AUON_OdbNazwa = "Auon.OdbNazwa";
+    public static final String AUON_NadTelefon = "Auon.NadTelefon";
+    public static final String AUON_NadDataUrodzenia = "Auon.NadDataUrodzenia";
+    public static final String AUON_Komunikat = "Auon.Komunikat";
+    public static final String AO_TXT = "AO";
+    public static final String AO_PREFIX = "AO.";
+    public static final String AO_ID_TRANSAKCJI = "AO.ID_TRANSAKCJI";
+    public static final String AO_TYP_TRANSAKCJI = "AO.TYP_TRANSAKCJI";
+    public static final String AO_KWOTA = "AO.KWOTA";
+    public static final String AO_KWOTA_1 = "AO.KWOTA_1";
+    public static final String AO_KWOTA_2 = "AO.KWOTA_2";
+    public static final String AO_KWOTA_3 = "AO.KWOTA_3";
+    public static final String AO_WALUTA = "AO.WALUTA";
+    public static final String AO_NR_KARTY = "AO.NR_KARTY";
+    public static final String AO_DATA_CZAS_GMT = "AO.DATA_CZAS_GMT";
+    public static final String AO_DATA_CZAS_LOK = "AO.DATA_CZAS_LOK";
+    public static final String AO_DATA_CA = "AO.DATA_CA";
+    public static final String AO_ID_ACQUIRERA = "AO.ID_ACQUIRERA";
+    public static final String AO_ID_TERMINALA = "AO.ID_TERMINALA";
+    public static final String AO_ID_MERCHANTA = "AO.ID_MERCHANTA";
+    public static final String AO_NAZWA_MERCHANTA = "AO.NAZWA_MERCHANTA";
+    public static final String AO_MIASTO_MERCHANTA = "AO.MIASTO_MERCHANTA";
+    public static final String AO_STAN_MERCHANTA = "AO.STAN_MERCHANTA";
+    public static final String AO_KRAJ_MERCHANTA = "AO.KRAJ_MERCHANTA";
+    public static final String AO_NRB = "AO.NRB";
+    public static final String AO_NR_AUTORYZACJI = "AO.NR_AUTORYZACJI";
+    public static final String AO_KOD_ODPOWIEDZI = "AO.KOD_ODPOWIEDZI";
+    public static final String AO_OPIS_ODPOWIEDZI = "AO.OPIS_ODPOWIEDZI";
+    public static final String AO_WOLNE_SRODKI = "AO.WOLNE_SRODKI";
+    public static final String AO_KWOTA_BLOKAD = "AO.KWOTA_BLOKAD";
+    public static final String AO_DATA_KSIEGOWANIA = "AO.DATA_KSIEGOWANIA";
+    public static final String AO_TYP_CA = "AO.TYP_CA";
+    public static final String AO_MCC = "AO.MCC";
+    public static final String AO_WYDAWCA_KARTY = "AO.WYDAWCA_KARTY";
+    public static final String AO_TYP_OPERACJI = "AO.TYP_OPERACJI";
+    public static final String AO_REFERENCJA = "AO.REFERENCJA";
+    public static final String AO_NAD_RACHUNEK = "AO.NAD_RACHUNEK";
+    public static final String AO_NAD_NAZWA = "AO.NAD_NAZWA";
+    public static final String AO_NAD_ADRES = "AO.NAD_ADRES";
+    public static final String AO_NAD_MIASTO = "AO.NAD_MIASTO";
+    public static final String AO_NAD_STAN = "AO.NAD_STAN";
+    public static final String AO_NAD_KRAJ = "AO.NAD_KRAJ";
+    public static final String AO_ODB_NAZWA = "AO.ODB_NAZWA";
+    public static final String AO_NAD_TELEFON = "AO.NAD_TELEFON";
+    public static final String AO_NAD_DATA_URODZENIA = "AO.NAD_DATA_URODZENIA";
+    public static final String AO_KOMUNIKAT = "AO.KOMUNIKAT";
+    public static final String UZYTC_TXT = "Uzyt";
+    public static final String UZYTC_PREFIX = "Uzyt.";
+    public static final String UZYTC_NR_RACH = "Uzyt.NrRachunku";
+    public static final String UZYTC_TYP = "Uzyt.Typ";
+    public static final String UZYTC_NAZWA = "Uzyt.Nazwa";
+    public static final String UZYTC_NAZWISKO = "Uzyt.Nazwisko";
+    public static final String UZYTC_IMIONA = "Uzyt.Imiona";
+    public static final String UZYTC_ULICA = "Uzyt.Ulica";
+    public static final String UZYTC_KODPOCZTOWY = "Uzyt.KodPocztowy";
+    public static final String UZYTC_MIEJSCOWOSC = "Uzyt.Miejscowość";
+    public static final String UZYTC_NAZWA_WSP = "Uzyt.Nazwa_Wsp";
+    public static final String UZYTC_NAZWISKO_WSP = "Uzyt.Nazwisko_Wsp";
+    public static final String UZYTC_IMIONA_WSP = "Uzyt.Imiona_Wsp";
+    public static final String UZYTC_ULICA_WSP = "Uzyt.Ulica_Wsp";
+    public static final String UZYTC_KODPOCZTOWY_WSP = "Uzyt.KodPocztowy_Wsp";
+    public static final String UZYTC_MIEJSCOWOSC_WSP = "Uzyt.Miejscowość_Wsp";
+    public static final String UZYTC_ULICA_KOR = "Uzyt.Ulica_Kor";
+    public static final String UZYTC_KODPOCZTOWY_KOR = "Uzyt.KodPocztowy_Kor";
+    public static final String UZYTC_MIEJSCOWOSC_KOR = "Uzyt.Miejscowość_Kor";
+    public static final String SROD_PREFIX = "Srod.";
+    public static final String SROD_NR_RACH = "Srod.NrRachunku";
+    public static final String SROD_REF_TRAN = "Srod.ReferencjaTran";
+    public static final String SROD_KWOTA = "Srod.WolneSrodki";
+    public static final int SL_A_DAJ_SLOWNIK = 1;
+    public static final int SL_A_DAJ_SLOWNIK_WP = 2;
+    public static final int SL_A_DAJ_SLOWNIK_ZGOD = 3;
+    public static final String SL_NazwaSlownika = "SL_NazwaSlownika";
+    public static final String SL_TypZapisu = "SL_TypZapisu";
+    public static final String SL_Kod = "SL_Kod";
+    public static final String SL_Opis = "SL_Opis";
+    public static final String SL_DlugoscKodu = "SL_DlugoscKodu";
+    public static final String SL_DlugoscOpisu = "SL_DlugoscOpisu";
+    public static final String SL_TypSlownika = "SL_TypSlownika";
+    public static final String SL_StatusSlownika = "SL_StatusSlownika";
+    public static final String SL_ID = "SL_ID";
+    public static final String SL_IDRodzica = "SL_IDRodzica";
+    public static final String SL_Tresc = "SL_Tresc";
+    public static final String SL_Typ = "SL_Typ";
+    public static final String SL_Status = "SL_Status";
+    public static final String KWAL_PREFIX = "KWAL_";
+    public static final String KWAL_TABELA = "KWAL_Tabela";
+    public static final String KWAL_TABELA_DATA_OD = "KWAL_Tabela_DataOd";
+    public static final String KWAL_TABELA_CZAS_OD = "KWAL_Tabela_CzasOd";
+    public static final String KWAL_KRAJ = "KWAL_Kraj";
+    public static final String KWAL_JEDNOSTKA = "KWAL_Jednostka";
+    public static final String KWAL_SYMBOL = "KWAL_Symbol";
+    public static final String KWAL_KUPNO = "KWAL_Kupno";
+    public static final String KWAL_SPRZEDAZ = "KWAL_Sprzedaz";
+    public static final String KWAL_KUPNO_DEWIZ = "KWAL_KupnoDewiz";
+    public static final String KWAL_SPRZEDAZ_DEWIZ = "KWAL_SprzedazDewiz";
+    public static final String KWAL_SREDNI = "KWAL_Sredni";
+    public static final String ELIXIR_PREFIX = "ELIXIR.";
+    public static final String ELIXIR_ID = "ELIXIR.ID";
+    public static final String ELIXIR_TypKomunikatu = "ELIXIR.TypKomunikatu";
+    public static final String ELIXIR_Status = "ELIXIR.Status";
+    public static final String ELIXIR_Kwota = "ELIXIR.Kwota";
+    public static final String ELIXIR_DataKomunikatu = "ELIXIR.DataKomunikatu";
+    public static final String ELIXIR_BankNadawca = "ELIXIR.BankNadawca";
+    public static final String ELIXIR_BankAdresat = "ELIXIR.BankAdresat";
+    public static final String ELIXIR_KorespondentNad = "ELIXIR.KorespondentNad";
+    public static final String ELIXIR_AdresatFinalny = "ELIXIR.AdresatFinalny";
+    public static final String ELIXIR_R_ekNadawcy = "ELIXIR.R-ekNadawcy";
+    public static final String ELIXIR_R_ekAdresata = "ELIXIR.R-ekAdresata";
+    public static final String ELIXIR_NazwaNadawcy = "ELIXIR.NazwaNadawcy";
+    public static final String ELIXIR_NazwaAdresata = "ELIXIR.NazwaAdresata";
+    public static final String ELIXIR_KodDokumentu = "ELIXIR.KodDokumentu";
+    public static final String ELIXIR_OpisDodatkowy = "ELIXIR.OpisDodatkowy";
+    public static final String ELIXIR_IDKomunikatu = "ELIXIR.IDKomunikatu";
+    public static final String ELIXIR_Strumien = "ELIXIR.Strumień";
+    public static final String ELIXIR_Inf_Miedzybank = "ELIXIR.Inf.Międzybank.";
+    public static final String ELIXIR_KodOdmowy = "ELIXIR.KodOdmowy";
+    public static final String ELIXIR_Wstrzymany = "ELIXIR.Wstrzymany";
+    public static final String ELIXIR_Odsetki = "ELIXIR.Odsetki";
+    public static final String ELIXIR_DataRealizacji = "ELIXIR.DataRealizacji";
+    public static final String ELIXIR_NIP = "ELIXIR.NIP";
+    public static final String ELIXIR_IDP = "ELIXIR.IDP";
+    public static final String ELIXIR_OpisReklamacji = "ELIXIR.OpisReklamacji";
+    public static final String ELIXIR_TypSkladki = "ELIXIR.TypSkładki";
+    public static final String ELIXIR_TypIdentyfik = "ELIXIR.TypIdentyfik.";
+    public static final String ELIXIR_Identyfikator = "ELIXIR.Identyfikator";
+    public static final String ELIXIR_TypWplaty = "ELIXIR.TypWpłaty";
+    public static final String ELIXIR_Deklaracja = "ELIXIR.Deklaracja";
+    public static final String ELIXIR_NrDeklaracji = "ELIXIR.NrDeklaracji";
+    public static final String ELIXIR_Kwota_51 = "ELIXIR.Kwota_51";
+    public static final String ELIXIR_Kwota_52 = "ELIXIR.Kwota_52";
+    public static final String ELIXIR_Kwota_53 = "ELIXIR.Kwota_53";
+    public static final String ELIXIR_Kwota_54 = "ELIXIR.Kwota_54";
+    public static final String ELIXIR_Czek = "ELIXIR.Czek";
+    public static final String ELIXIR_NumerBledu = "ELIXIR.NumerBłędu";
+    public static final String ELIXIR_TypZlecenia = "ELIXIR.TypZlecenia";
+    public static final String ELIXIR_Rozliczenie = "ELIXIR.Rozliczenie";
+    public static final String ELIXIR_Waluta = "ELIXIR.Waluta";
+    public static final String ELIXIR_NrDokumentu = "ELIXIR.NrDokumentu";
+    public static final String ELIXIR_DataDokumentu = "ELIXIR.DataDokumentu";
+    public static final String ELIXIR_NrDekretu = "ELIXIR.NrDekretu";
+    public static final String ELIXIR_Okres = "ELIXIR.Okres";
+    public static final String ELIXIR_Symbol = "ELIXIR.Symbol";
+    public static final String ELIXIR_AdresatOryginalny = "ELIXIR.AdresatOryginalny";
+    public static final String ELIXIR_DaneDoPralni = "ELIXIR.DaneDoPralni";
+    public static final String ELIXIR_DataOd = "ELIXIR.DataOd";
+    public static final String ELIXIR_DataDo = "ELIXIR.DataDo";
+    public static final String ELIXIR_Identyfik_Spraw = "ELIXIR.Identyfik.Spraw";
+    public static final String ELIXIR_MPS = "ELIXIR.MPS";
+    public static final String ELIXIR_NrSekwencyjny = "ELIXIR.NrSekwencyjny";
+    public static final String ELIXIR_NumerJednostki = "ELIXIR.NumerJednostki";
+    public static final String ELIXIR_OpcjaCORBY = "ELIXIR.OpcjaCORBY";
+    public static final String ELIXIR_ParametryWe = "ELIXIR.ParametryWe";
+    public static final String ELIXIR_ParametryWy = "ELIXIR.ParametryWy";
+    public static final String ELIXIR_R_ekDrogi = "ELIXIR.R-ekDrogi";
+    public static final String ELIXIR_R_ekKlienta = "ELIXIR.R-ekKlienta";
+    public static final String ELIXIR_RodzajPodatku = "ELIXIR.RodzajPodatku";
+    public static final String ELIXIR_TypDrogi = "ELIXIR.TypDrogi";
+    public static final String ELIXIR_TypKlienta = "ELIXIR.TypKlienta";
+    public static final String ELIXIR_TypObslugi = "ELIXIR.TypObsługi";
+    public static final String ELIXIR_TypUpowaznienia = "ELIXIR.TypUpoważnienia";
+    public static final String ELIXIR_TytWyk = "ELIXIR.NrDecyzji_Umowy";
+    public static final String ELIXIR_ZlecenieNBP = "ELIXIR.ZlecenieNBP";
+    public static final String ELIXIR_DataZmianyStatusu = "ELIXIR_DataZmianyStatusu";
+    public static final String ELIXIR_ModuloNadawcy = "ELIXIR.ModuloNadawcy";
+    public static final String ELIXIR_Niezrealizowane = "ELIXIR.Niezrealizowane";
+    public static final String ELIXIR_AltTytul = "ELIXIR.AltTytuł";
+    public static final String ELIXIR_KwotaVAT = "ELIXIR.KwotaVAT";
+    public static final String ELIXIR_IDC = "ELIXIR.IDC";
+    public static final String ELIXIR_INV = "ELIXIR.INV";
+    public static final String ELIXIR_TXT = "ELIXIR.TXT";
+    public static final String ELIXIR_DanePodm = "ELIXIR.DanePodm";
+    public static final String Podm_Zleceniodawcy = "Podm_Zleceniodawcy";
+    public static final String Podm_Beneficjenci = "Podm_Beneficjenci";
+    public static final String ELX_RK_UZNANIE_ZUS = "0";
+    public static final String ELX_RK_UZNANIE = "1";
+    public static final String ELX_RK_POLECENIE_ZAP = "2";
+    public static final String ELX_RK_OBCIAZENIE_21 = "3";
+    public static final String ELX_RK_OBCIAZENIE_22 = "4";
+    public static final String ELX_RK_ZWROT_19X = "5";
+    public static final String ELX_RK_PLATNOSC_DO_US = "6";
+    public static final String ELX_RK_ZWROT_29X = "7";
+    public static final String ELX_RK_ODMOWA_231 = "8";
+    public static final String ELX_RK_UZNANIE_MPS = "9";
+    public static final String ELX_RK_UZNANIE_KOK = "10";
+    public static final String ELX_RK_GOBI = "11";
+    public static final String ELX_RK_AKCEPTACJA_24X = "12";
+    public static final String ELX_RK_ODRZUCENIE_25X = "13";
+    public static final String ELX_RK_UZNANIE_MPP = "15";
+    public static final String ELX_RK_POLEC_ZAP_MPP = "16";
+    public static final String ElixHB = "ElixHB";
+    public static final String ElixRokKsiegowy = "ElixRokKsiegowy";
+    public static final String ElixZlecenieZbiorcze = "ElixZlecZbiorcze";
+    public static final String ELPA_ID = "ELPA.ID";
+    public static final String ELPA_Status = "ELPA.Status";
+    public static final String ELPA_DataDokumentu = "ELPA.DataDokumentu";
+    public static final String ELPA_NrDokumentu = "ELPA.NrDokumentu";
+    public static final String ELPA_NrBledu = "ELPA.NrBledu";
+    public static final String ELPA_PomTypPaczki = "ELPA.PomTypPaczki";
+    public static final int EXELIX_A_DOST_SYSTEM = 1;
+    public static final int EXELIX_A_DOST_USLUGA = 2;
+    public static final int EXELIX_A_POBIERZ_STATUS = 3;
+    public static final int EXELIX_A_REJESTRACJA = 4;
+    public static final int EXELIX_A_AUTORYZUJ_OTRZYMANE = 5;
+    public static final int EXELIX_A_KSIEGUJ_OTRZYMANE = 6;
+    public static final int EXELIX_A_KSIEGUJ_WYSYLANE = 7;
+    public static final int EXELIX_A_ODRZUC_PRZELEW = 8;
+    public static final int EXELIX_A_REJESTRACJA_RTSP = 9;
+    public static final String EX_ELIX_PREFIX = "ExElix.";
+    public static final String EX_ELIX_ID = "ExElix.ID";
+    public static final String EX_ELIX_Status = "ExElix.Status";
+    public static final String EX_ELIX_NrDokumentu = "ExElix.NrDokumentu";
+    public static final String EX_ELIX_DataDokumentu = "ExElix.DataDokumentu";
+    public static final String EX_ELIX_NrDekretu = "ExElix.NrDekretu";
+    public static final String EX_ELIX_DataKomunikatu = "ExElix.DataKomunikatu";
+    public static final String EX_ELIX_CzasKomunikatu = "ExElix.CzasKomunikatu";
+    public static final String EX_ELIX_MsgId = "ExElix.MsgId";
+    public static final String EX_ELIX_EndToEnd = "ExElix.EndToEnd";
+    public static final String EX_ELIX_TxId = "ExElix.TxId";
+    public static final String EX_ELIX_BankNadawcy = "ExElix.BankNadawcy";
+    public static final String EX_ELIX_BankOdbiorcy = "ExElix.BankOdbiorcy";
+    public static final String EX_ELIX_KwotaRozliczenia = "ExElix.KwotaRozliczenia";
+    public static final String EX_ELIX_DataWaluty = "ExElix.DataWaluty";
+    public static final String EX_ELIX_Kwota = "ExElix.Kwota";
+    public static final String EX_ELIX_NadawcaNazwa = "ExElix.NadawcaNazwa";
+    public static final String EX_ELIX_Nadawca_Nazwa = "ExElix.Nadawca_Nazwa";
+    public static final String EX_ELIX_NadawcaMiasto = "ExElix.NadawcaMiasto";
+    public static final String EX_ELIX_NadawcaKod = "ExElix.NadawcaKod";
+    public static final String EX_ELIX_NadawcaKraj = "ExElix.NadawcaKraj";
+    public static final String EX_ELIX_NadawcaAdres1 = "ExElix.NadawcaAdres1";
+    public static final String EX_ELIX_NadawcaAdres2 = "ExElix.NadawcaAdres2";
+    public static final String EX_ELIX_IBANNadawcy = "ExElix.IBANNadawcy";
+    public static final String EX_ELIX_OddzialNadawcy = "ExElix.OddzialNadawcy";
+    public static final String EX_ELIX_OddzialAdresata = "ExElix.OddzialAdresata";
+    public static final String EX_ELIX_OddzialNadNazwa = "ExElix.OddzialNadNazwa";
+    public static final String EX_ELIX_OddzialAdrNazwa = "ExElix.OddzialAdrNazwa";
+    public static final String EX_ELIX_AdresatNazwa = "ExElix.AdresatNazwa";
+    public static final String EX_ELIX_Adresat_Nazwa = "ExElix.Adresat_Nazwa";
+    public static final String EX_ELIX_AdresatMiasto = "ExElix.AdresatMiasto";
+    public static final String EX_ELIX_AdresatKod = "ExElix.AdresatKod";
+    public static final String EX_ELIX_AdresatKraj = "ExElix.AdresatKraj";
+    public static final String EX_ELIX_AdresatAdres1 = "ExElix.AdresatAdres1";
+    public static final String EX_ELIX_AdresatAdres2 = "ExElix.AdresatAdres2";
+    public static final String EX_ELIX_IBANAdresata = "ExElix.IBANAdresata";
+    public static final String EX_ELIX_Tytulem = "ExElix.Tytulem";
+    public static final String EX_ELIX_PrzyczynaKod = "ExElix.PrzyczynaKod";
+    public static final String EX_ELIX_PrzyczynaSRPN = "ExElix.PrzyczynaSRPN";
+    public static final String EX_ELIX_PrzyczynaOpis = "ExElix.PrzyczynaOpis";
+    public static final String EX_ELIX_WpisalKto = "ExElix.WpisalKto";
+    public static final String EX_ELIX_WpisalData = "ExElix.WpisalData";
+    public static final String EX_ELIX_WpisalCzas = "ExElix.WpisalCzas";
+    public static final String EX_ELIX_ZmienilKto = "ExElix.ZmienilKto";
+    public static final String EX_ELIX_ZmienilData = "ExElix.ZmienilData";
+    public static final String EX_ELIX_ZmienilCzas = "ExElix.ZmienilCzas";
+    public static final String EX_ELIX_ZatwKto = "ExElix.ZatwKto";
+    public static final String EX_ELIX_ZatwData = "ExElix.ZatwData";
+    public static final String EX_ELIX_ZatwCzas = "ExElix.ZatwCzas";
+    public static final String EX_ELIX_AutoryzacjaID = "ExElix.AutoryzacjaID";
+    public static final String EX_ELIX_RejSystemZewn = "ExElix.RejSystemZewn";
+    public static final String EX_ELIX_RejTIDZewn = "ExElix.RejTIDZewn";
+    public static final String EX_ELIX_DataWyslania = "ExElix.DataWyslania";
+    public static final String EX_ELIX_Kanal = "ExElix.Kanal";
+    public static final String EX_ELIX_StatusWyk = "ExElix.StatusWyk";
+    public static final String EX_ELIX_KodBledu = "ExElix.KodBledu";
+    public static final String EX_ELIX_OpisBledu = "ExElix.OpisBledu";
+    public static final String EX_ELIX_StatusTIS3C = "ExElix.StatusTIS3C";
+    public static final String EX_ELIX_RokKsiegowy = "ExElix.RokKsiegowy";
+    public static final String EX_ELIX_Rodzaj = "ExElix.Rodzaj";
+    public static final String EX_ELIX_KodDokumentu = "ExElix.KodDokumentu";
+    public static final String EX_ELIX_KwotaVAT = "ExElix.KwotaVAT";
+    public static final String EX_ELIX_IDC = "ExElix.IDC";
+    public static final String EX_ELIX_INV = "ExElix.INV";
+    public static final String EX_ELIX_TXT = "ExElix.TXT";
+    public static final String EX_ELIX_Data = "ExElix.Data";
+    public static final String EX_ELIX_Czas = "ExElix.Czas";
+    public static final String EX_ELIX_DaneDoPralni = "ExElix.DaneDoPralni";
+    public static final String EX_ELIX_DanePodm = "ExElix.DanePodm";
+    public static final int JB_A_POBRANIE = 1;
+    public static final String JB_NrJednostki = "JB.NrJednostki";
+    public static final String JB_Nazwa = "JB.Nazwa";
+    public static final String JB_NrOddzialu = "JB.NrOddzialu";
+    public static final String JB_AdresUlica = "JB.AdresUlica";
+    public static final String JB_AdresMiejscowosc = "JB.AdresMiejscowosc";
+    public static final String JB_Email = "JB.Email";
+    public static final String JB_Fax = "JB.Fax";
+    public static final String JB_Telefon = "JB.Telefon";
+    public static final String JB_Dyrektor = "JB.Dyrektor";
+    public static final String JB_Ksiegowy = "JB.Ksiegowy";
+    public static final String OKRES_TXT = "Okres";
+    public static final String OKRES_PREFIX = "Okres.";
+    public static final String OKRES_KOD = "Okres.Kod";
+    public static final String OKRES_WARIANT = "Okres.Wariant";
+    public static final String OKRES_TYP_KLIENTA = "Okres.TypKlienta";
+    public static final String OKRES_MODULO = "Okres.Modulo";
+    public static final String OKRES_DLUGOSC_OD = "Okres.DlugoscOd";
+    public static final String OKRES_DLUGOSC_DO = "Okres.DlugoscDo";
+    public static final String OKRES_JEDNOSTKA_OKRESU = "Okres.JednOkresu";
+    public static final String OKRES_OPROCENTOWANIE = "Okres.Oprocentowanie";
+    public static final String OKRES_WALUTA = "Okres.Waluta";
+    public static final String OKRES_KWOTA_MIN = "Okres.KwotaMin";
+    public static final String OKRES_TYP_OPROCENTOWANIA = "Okres.TypOprc";
+    public static final String ZLECST_TXT = "ZlecSt";
+    public static final String ZLECST_PREFIX = "ZlecSt.";
+    public static final String ZLECST_ID = "ZlecSt.ID";
+    public static final String ZLECST_TypZlecenia = "ZlecSt.TypZlecenia";
+    public static final String ZLECST_Powtarzalnosc = "ZlecSt.Powtarzalność";
+    public static final String ZLECST_IDR_ekWlasny = "ZlecSt.IDR-ekWłasny";
+    public static final String ZLECST_ModuloKlienta = "ZlecSt.ModuloKlienta";
+    public static final String ZLECST_Konto = "ZlecSt.Konto";
+    public static final String ZLECST_Uwaga = "ZlecSt.Uwaga";
+    public static final String ZLECST_NrKolejny = "ZlecSt.NrKolejny";
+    public static final String ZLECST_IDTransakcji = "ZlecSt.IDTransakcji";
+    public static final String ZLECST_RefTransakcji = "ZlecSt.RefTransakcji";
+    public static final String ZLECST_Jednostka = "ZlecSt.Jednostka";
+    public static final String ZLECST_RodzajZlecenia = "ZlecSt.RodzajZlecenia";
+    public static final String ZLECST_Status = "ZlecSt.Status";
+    public static final String ZLECST_Kwota = "ZlecSt.Kwota";
+    public static final String ZLECST_Waluta = "ZlecSt.Waluta";
+    public static final String ZLECST_BankZleceniodawcy = "ZlecSt.BankZleceniodawcy";
+    public static final String ZLECST_Zleceniodawca = "ZlecSt.Zleceniodawca";
+    public static final String ZLECST_R_ekZleceniodawcy = "ZlecSt.R-ekZleceniodawcy";
+    public static final String ZLECST_BankAdresat = "ZlecSt.BankAdresat";
+    public static final String ZLECST_R_ekAdresata = "ZlecSt.R-ekAdresata";
+    public static final String ZLECST_IDR_ekAdresata = "ZlecSt.IDR-ekAdresata";
+    public static final String ZLECST_Adresat = "ZlecSt.Adresat";
+    public static final String ZLECST_Tytul = "ZlecSt.Tytuł";
+    public static final String ZLECST_NIP = "ZlecSt.NIP";
+    public static final String ZLECST_IDP = "ZlecSt.IDP";
+    public static final String ZLECST_NazwaNadawcy = "ZlecSt.NazwaNadawcy";
+    public static final String ZLECST_TypSkladki = "ZlecSt.TypSkładki";
+    public static final String ZLECST_TypIdentyfik = "ZlecSt.TypIdentyfik.";
+    public static final String ZLECST_Identyfikator = "ZlecSt.Identyfikator";
+    public static final String ZLECST_TypWplaty = "ZlecSt.TypWpłaty";
+    public static final String ZLECST_Deklaracja = "ZlecSt.Deklaracja";
+    public static final String ZLECST_NrDeklaracji = "ZlecSt.NrDeklaracji";
+    public static final String ZLECST_DataRejestracji = "ZlecSt.DataRejestracji";
+    public static final String ZLECST_Priorytet = "ZlecSt.Priorytet";
+    public static final String ZLECST_DzienRealizacji = "ZlecSt.DzieńRealizacji";
+    public static final String ZLECST_TypDnia = "ZlecSt.TypDnia";
+    public static final String ZLECST_CoIlePowtarzac = "ZlecSt.CoIlePowtarzać";
+    public static final String ZLECST_MiesiacStartu = "ZlecSt.MiesiącStartu";
+    public static final String ZLECST_MiesiacKonca = "ZlecSt.MiesiącKońca";
+    public static final String ZLECST_DataRealizacji = "ZlecSt.DataRealizacji";
+    public static final String ZLECST_MiesiacRealizacji = "ZlecSt.MiesiącRealizacji";
+    public static final String ZLECST_MinionaRealizacja = "ZlecSt.MinionaRealizacja";
+    public static final String ZLECST_Wykonanie = "ZlecSt.Wykonanie";
+    public static final String ZLECST_WykonanieZalegle = "ZlecSt.WykonanieZaległe";
+    public static final String ZLECST_MusiZatwierdzic = "ZlecSt.MusiZatwierdzić";
+    public static final String ZLECST_KanalDystrybucji = "ZlecSt.KanałDystrybucji";
+    public static final String ZLECST_TypOplaty = "ZlecSt.TypOpłaty";
+    public static final String ZLECST_Oplata = "ZlecSt.Opłata";
+    public static final String ZLECST_TypOplatyZaleg = "ZlecSt.TypOpłatyZaleg.";
+    public static final String ZLECST_OplataZaleglosci = "ZlecSt.OpłataZaległości";
+    public static final String ZLECST_ObslugaZaleglych = "ZlecSt.ObsługaZaległych";
+    public static final String ZLECST_DataZaleglosci = "ZlecSt.DataZaległości";
+    public static final String ZLECST_KwotaZalegla = "ZlecSt.KwotaZaległa";
+    public static final String ZLECST_WalutaZaleglosci = "ZlecSt.WalutaZaległości";
+    public static final String ZLECST_IleProbZostalo = "ZlecSt.IlePróbZostało";
+    public static final String ZLECST_TypZawieszenia = "ZlecSt.TypZawieszenia";
+    public static final String ZLECST_ZawieszenieOd = "ZlecSt.ZawieszenieOd";
+    public static final String ZLECST_ZawieszenieDo = "ZlecSt.ZawieszenieDo";
+    public static final String ZLECST_OpisZawieszenia = "ZlecSt.OpisZawieszenia";
+    public static final String ZLECST_Anulowanie = "ZlecSt.Anulowanie";
+    public static final String ZLECST_OpisZmiany = "ZlecSt.OpisZmiany";
+    public static final String ZLECST_KtoZatwierdzil = "ZlecSt.KtoZatwierdził";
+    public static final String ZLECST_DataZatwierdzenia = "ZlecSt.DataZatwierdzenia";
+    public static final String ZLECST_CzasZatwierdzenia = "ZlecSt.CzasZatwierdzenia";
+    public static final String ZLECST_KtoZmienil = "ZlecSt.KtoZmienił";
+    public static final String ZLECST_DataZmiany = "ZlecSt.DataZmiany";
+    public static final String ZLECST_CzasZmiany = "ZlecSt.CzasZmiany";
+    public static final String ZLECST_NrFormularza = "ZlecSt.NrFormularza";
+    public static final String ZLECST_TytWyk = "ZlecSt.NrDecyzji_Umowy";
+    public static final String ZLECST_RodzajPodatku = "ZlecSt.RodzajPodatku";
+    public static final String ZLECST_BlokadaSr = "ZlecSt.BlokadaŚr";
+    public static final String ZLECST_KanalWgPro = "ZlecSt.KanałWgPro";
+    public static final String ZLECST_OpisBledu = "ZlecSt.OpisBłędu";
+    public static final String ZLECST_NrZewnetrzny = "ZlecSt.NrZewnetrzny";
+    public static final String ZLECST_DataRealZUwzglZaw = "ZlecSt.DataRealZUwzglZaw";
+    public static final String ZLECST_KwotaVAT = "ZlecSt.KwotaVAT";
+    public static final String ZLECST_IDC = "ZlecSt.IDC";
+    public static final String ZLECST_INV = "ZlecSt.INV";
+    public static final String ZLECST_MPP_TXT = "ZlecSt.TXT";
+    public static final int ZW_A_PRZYGOTOWANIE = 1;
+    public static final int ZW_A_REALIZACJA = 2;
+    public static final int ZW_A_ODCZYT_WYNIKOW = 3;
+    public static final int ZW_A_KONIEC = 4;
+    public static final int ZS_A_DODANIE = 1;
+    public static final int ZS_A_ZMIANA = 2;
+    public static final int ZS_A_USUNIECIE = 3;
+    public static final int ZS_A_HISTORIA = 4;
+    public static final int ZS_A_LISTA_KL = 5;
+    public static final int ZS_A_POBRANIE = 6;
+    public static final int ZS_A_ANULOWANIE = 7;
+    public static final int ZS_A_CZYNNE_KL = 8;
+    public static final int ZS_A_LISTA_RACH = 9;
+    public static final int ZS_A_CZYNNE_RACH = 10;
+    public static final int ZS_A_NIEZREALIZOWANE = 11;
+    public static final String DEKR_DATA_DOK = "DATA_DOKUMENTU";
+    public static final String DEKR_DATA_WAL = "DATA_WALUTY";
+    public static final String DEKR_RODZ_DEKR = "RODZAJ_DEKRETU";
+    public static final String DEKR_JEDNOSTKA = "JEDNOSTKA";
+    public static final String DEKR_BANK = "BANK";
+    public static final String DEKR_DATA = "DATA";
+    public static final String DEKR_CZAS = "CZAS";
+    public static final String DEKR_NR = "NR_DEKRETU";
+    public static final String DEKR_NR_DOK = "NR_DOKUMENTU";
+    public static final String DEKR_TRESC = "TRESC";
+    public static final String DEKR_WN = "WN";
+    public static final String DEKR_MA = "MA";
+    public static final String DEKR_OB_WN = "OB_WN";
+    public static final String DEKR_OB_MA = "OB_MA";
+    public static final String DEKR_OB_WN_BO = "OB_WN_BO";
+    public static final String DEKR_OB_MA_BO = "OB_MA_BO";
+    public static final String DEKR_OB_WN_BM = "OB_WN_BM";
+    public static final String DEKR_OB_MA_BM = "OB_MA_BM";
+    public static final String DEKR_KOD_S2 = "KOD_S2";
+    public static final String DEKR_KOD_OPERACJI = "KOD_OPERACJI";
+    public static final String DEKR_SALDO_PO_OPER = "SALDO_PO_OPERACJI";
+    public static final String DEKR_ID = "ID_DEKRETU";
+    public static final String DEKR_NR_FORMULARZA = "NR_FORMULARZA";
+    public static final String DEKR_NR_UP = "NR_UP";
+    public static final String DEKR_NAZWA_UP = "NAZWA_UP";
+    public static final String DEKR_TYP = "TYP";
+    public static final String DEKR_Storno = "STORNO";
+    public static final String DEKR_NrDokOd = "DEKR.NrDokOd";
+    public static final String DEKR_IleMaks = "DEKR.IleMaks";
+    public static final String DEKR_NRB = "NRB";
+    public static final String DEKR_CZY_STORNO = "CZY_STORNO";
+    public static final String DEKR_DATA_DOK_ZM = "DATA_DOK_ZM";
+    public static final String DEKR_NR_DOK_ZM = "NR_DOK_ZM";
+    public static final String DEKR_ID_STANU = "ID_STANU";
+    public static final String DEKR_WALUTA = "WALUTA";
+    public static final String DEKR_WIRTUALNY_NRB = "WIRTUALNY_NRB";
+    public static final String DEKR_UnikalnyIdentyfikator = "UnikalnyIdentyfikator";
+    public static final String DEKR_KursPrzewalutowania = "KursPrzewalutowania";
+    public static final String DEKR_ListaProwizji = "ListaProwizji";
+    public static final String SWFT_STATUS = "SWFT.Status";
+    public static final String SORBNET_STATUS = "SORBNET.Status";
+    public static final String DEKR_RACHUNEK = "DEKR.Rachunek";
+    public static final String OPER_PREFIX = "OPER_";
+    public static final String OPER_DATA_OPER = "OPER_DATA_OPERACJI";
+    public static final String OPER_DATA_WALUTY = "OPER_DATA_WALUTY";
+    public static final String OPER_ZLECENIODAWCA = "OPER_ZLECENIODAWCA";
+    public static final String OPER_BENEFICJENT = "OPER_BENEFICJENT";
+    public static final String OPER_SWIFT_ZLECE = "OPER_SWIFT_ZLECE";
+    public static final String OPER_SWIFT_BENEF = "OPER_SWIFT_BENEF";
+    public static final String OPER_NR_RACH_ZLEC = "OPER_NR_RACH_ZLEC";
+    public static final String OPER_NR_RACH_BENEF = "OPER_NR_RACH_BENEF";
+    public static final String OPER_TYTUL = "OPER_TYTUL";
+    public static final String OPER_INSTRUKCJE = "OPER_INSTRUKCJE";
+    public static final String OPER_WALUTA = "OPER_WALUTA";
+    public static final String OPER_KURS_1 = "OPER_KURS_1";
+    public static final String OPER_KURS_2 = "OPER_KURS_2";
+    public static final String OPER_KWOTA = "OPER_KWOTA";
+    public static final String OPER_NR_RACH_WN = "OPER_NR_RACH_WN";
+    public static final String OPER_NR_RACH_MA = "OPER_NR_RACH_MA";
+    public static final String OPER_TYP_OPERACJI = "OPER_TYP_OPERACJI";
+    public static final String OPER_STATUS = "OPER_STATUS";
+    public static final String OPER_DATA_WPISU = "OPER_DATA_WPISU";
+    public static final String OPER_CZAS_WPISU = "OPER_CZAS_WPISU";
+    public static final String OPER_KTO_WPISAL = "OPER_KTO_WPISAL";
+    public static final String OPER_DATA_ZATW = "OPER_DATA_ZATW";
+    public static final String OPER_CZAS_ZATW = "OPER_CZAS_ZATW";
+    public static final String OPER_KTO_ZATW = "OPER_KTO_ZATW";
+    public static final String OPER_KURS_RACH_WN = "OPER_KURS_RACH_WN";
+    public static final String OPER_KURS_RACH_MA = "OPER_KURS_RACH_MA";
+    public static final String OPER_PROWIZJA = "OPER_PROWIZJA";
+    public static final String OPER_KWOTA2 = "OPER_KWOTA2";
+    public static final String OPER_RACH_PROWIZJI = "OPER_RACH_PROWIZJI";
+    public static final String OPER_NUMER_KARTY = "OPER_NUMER_KARTY";
+    public static final String OPER_NR_RACH_VAT = "OPER_NR_RACH_VAT";
+    public static final String OPER_KWOTA_VAT = "OPER_KWOTA_VAT";
+    public static final String OPER_KWOTA_VAT2 = "OPER_KWOTA_VAT2";
+    public static final String OPER_IDC = "OPER_IDC";
+    public static final String OPER_INV = "OPER_INV";
+    public static final String OPER_IDP = "OPER_IDP";
+    public static final String OPER_MPP_TXT = "OPER_TXT";
+    public static final String OPER_FORMAT_TYTULU = "OPER_FORMAT_TYTULU";
+    public static final String KAL_WALUTA = "KAL.WALUTA";
+    public static final String KAL_NUMER = "KAL.NUMER";
+    public static final String KAL_DATA_OD = "KAL.DATA_OD";
+    public static final String KAL_DATA = "KAL.DATA";
+    public static final int KS_A_KSG_POJ_KONTROLA = 1;
+    public static final int KS_A_KSG_POJ = 2;
+    public static final int KS_A_DODAJ_DEKRET = 3;
+    public static final int KS_A_KSIEGOWANIE = 4;
+    public static final String KP_MODULO_WN = "KP.ModuloWn";
+    public static final String KP_KONTO_WN = "KP.KontoWn";
+    public static final String KP_UWAGA_WN = "KP.UwagaWn";
+    public static final String KP_KSIEGA_WN = "KP.KsiegaWn";
+    public static final String KP_MODULO_MA = "KP.ModuloMa";
+    public static final String KP_KONTO_MA = "KP.KontoMa";
+    public static final String KP_UWAGA_MA = "KP.UwagaMa";
+    public static final String KP_KSIEGA_MA = "KP.KsiegaMa";
+    public static final String KP_KWOTA = "KP.Kwota";
+    public static final String KP_STRONA = "KP.Strona";
+    public static final String KP_TRESC = "KP.Tresc";
+    public static final String KP_NR_DOKUMENTU = "KP.NrDokumentu";
+    public static final String KP_DATA_DOKUMENTU = "KP.DataDokumentu";
+    public static final String KP_KOD_BLEDU = "KP.KodBledu";
+    public static final String KP_KLIENT = "KP.Klient";
+    public static final String KP_JEDNOSTKA = "KP.Jednostka";
+    public static final String KP_TYP_AUTORYZACJI = "KP.TypAutoryzacji";
+    public static final String KP_SYMBOL_SYSTEMU = "KP.SymbolSystemu";
+    public static final String KP_NR_AUTORYZACJI_WN = "KP.NrAutoryzacjiWn";
+    public static final String KP_NR_AUTORYZACJI_MA = "KP.NrAutoryzacjiMa";
+    public static final String KP_DATA_WALUTY = "KP.DataWaluty";
+    public static final String KP_KOD1 = "KP.Kod1";
+    public static final String KP_KOD2 = "KP.Kod2";
+    public static final String KP_KOD3 = "KP.Kod3";
+    public static final String KP_KOD4 = "KP.Kod4";
+    public static final String KP_ID_ZEWNETRZNY = "KP.IdZewnetrzny";
+    public static final String KP_POLE_POMOCNICZE_WN = "KP.PolePomocniczeWn";
+    public static final String KP_POLE_POMOCNICZE_MA = "KP.PolePomocniczeMa";
+    public static final String KP_OPER_TYTUL = "KP.Oper.Tytul";
+    public static final String KS_RodzajDokumentu = "KS.RodzajDokumentu";
+    public static final String KS_NrDokumentu = "KS.NrDokumentu";
+    public static final String KS_DataDokumentu = "KS.DataDokumentu";
+    public static final String KS_Strona = "KS.Strona";
+    public static final String KS_Kwota = "KS.Kwota";
+    public static final String KS_Tresc = "KS.Tresc";
+    public static final String KS_Modulo = "KS.Modulo";
+    public static final String KS_Konto = "KS.Konto";
+    public static final String KS_Uwaga = "KS.Uwaga";
+    public static final String KS_Klient = "KS.Klient";
+    public static final String KS_Jednostka = "KS.Jednostka";
+    public static final String KS_Fundusz = "KS.Fundusz";
+    public static final String KS_TypAutoryzacji = "KS.TypAutoryzacji";
+    public static final String KS_SymbolSystemu = "KS.SymbolSystemu";
+    public static final String KS_NrAutoryzacji = "KS.NrAutoryzacji";
+    public static final String KS_DataWaluty = "KS.DataWaluty";
+    public static final String KS_Kod1 = "KS.Kod1";
+    public static final String KS_Kod2 = "KS.Kod2";
+    public static final String KS_Kod3 = "KS.Kod3";
+    public static final String KS_Kod4 = "KS.Kod4";
+    public static final String KS_IdZewnetrzny = "KS.IdZewnetrzny";
+    public static final String KS_PolePomocnicze = "KS.PolePomocnicze";
+    public static final String KS_Oper_Tytul = "KS.Oper.Tytul";
+    public static final String PO_ID = "PEMO_Id";
+    public static final String PO_NR_KLIENTA = "PEMO_NrKlienta";
+    public static final String PO_ID_PELNOMOCNIKA = "PEMO_IdPelnomocnika";
+    public static final String PO_RODZAJ = "PEMO_Rodzaj";
+    public static final String PO_POZIOM = "PEMO_Poziom";
+    public static final String PO_ELEMENT = "PEMO_Element";
+    public static final String PO_DATA_UDZIELENIA = "PEMO_DataUdzielenia";
+    public static final String PO_DATA_WAZNOSCI = "PEMO_DataWaznosci";
+    public static final String PO_DATA_ODWOLANIA = "PEMO_DataOdwolania";
+    public static final String PO_POKREWIENSTWO = "PEMO_Pokrewienstwo";
+    public static final String PO_OPIS = "PEMO_Opis";
+    public static final int PLT_A_POBRANIE = 1;
+    public static final int PLT_A_AUTORYZACJA = 2;
+    public static final int PLT_A_ANULOWANIE = 3;
+    public static final int WPLT_A_PELNOMOCNICTWA = 4;
+    public static final String PLT_TXT = "PLT";
+    public static final String PLT_TYP_AUTORYZACJI = "PLT.TypAutoryzacji";
+    public static final String PLT_KSIAZECZKA = "PLT.Książeczka";
+    public static final String PLT_NRB = "PLT.Nrb";
+    public static final String PLT_NUMER_AUTORYZACJI = "PLT.NumerAutoryzacji";
+    public static final String PLT_NUMER_UP = "PLT.NumerUP";
+    public static final String PLT_PRACOWNIK_UP = "PLT.PracownikUP";
+    public static final String PLT_ID_UMOWY = "PLT.IdUmowy";
+    public static final String PLT_ID_KLIENTA = "PLT.IdKlienta";
+    public static final String PLT_KAPITAL = "PLT.Kapitał";
+    public static final String PLT_ODSETKI = "PLT.Odsetki";
+    public static final String PLT_PODATEK = "PLT.Podatek";
+    public static final String PLT_CZASAUTORYZACJI = "PLT.CzasAutoryzacji";
+    public static final int PRALNIA_A_WPIS_DLA_DOK = 1;
+    public static final int PRALNIA_A_WPIS_BEZ_DOK = 2;
+    public static final int PRALNIA_A_KOREKTA = 3;
+    public static final int PRALNIA_A_POBIERZ = 4;
+    public static final String PRALN_TXT = "Praln";
+    public static final String PRALN_PREFIX = "Praln.";
+    public static final String PRALN_ID = "Praln.ID";
+    public static final String PRALN_IDZmienionego = "Praln.IDZmienionego";
+    public static final String PRALN_NrEwidencyjny = "Praln.NrEwidencyjny";
+    public static final String PRALN_NrDzienny = "Praln.NrDzienny";
+    public static final String PRALN_NrRoczny = "Praln.NrRoczny";
+    public static final String PRALN_DataRejestracji = "Praln.DataRejestracji";
+    public static final String PRALN_NumerJednostki = "Praln.NumerJednostki";
+    public static final String PRALN_TypZapisu = "Praln.TypZapisu";
+    public static final String PRALN_NrDokumentu = "Praln.NrDokumentu";
+    public static final String PRALN_DataDokumentu = "Praln.DataDokumentu";
+    public static final String PRALN_NrDekretu = "Praln.NrDekretu";
+    public static final String PRALN_DataEksportu = "Praln.DataEksportu";
+    public static final String PRALN_Status = "Praln.Status";
+    public static final String PRALN_ObcyZapis = "Praln.ObcyZapis";
+    public static final String PRALN_IDObcy = "Praln.IDObcy";
+    public static final String PRALN_DataEksportuGIIF = "Praln.DataEksportuGIIF";
+    public static final String PRALN_TypEksportuGIIF = "Praln.TypEksportuGIIF";
+    public static final String PRALN_BezEksportu = "Praln.BezEksportu";
+    public static final String PRALN_TypTransakcji = "Praln.TypTransakcji";
+    public static final String PRALN_TytulTransakcji = "Praln.TytuĺTransakcji";
+    public static final String PRALN_Powiazana = "Praln.Powićzana";
+    public static final String PRALN_Podejrzana = "Praln.Podejrzana";
+    public static final String PRALN_Dyspozycja = "Praln.Dyspozycja";
+    public static final String PRALN_DokTransakcji = "Praln.DokTransakcji";
+    public static final String PRALN_DataTransakcji = "Praln.DataTransakcji";
+    public static final String PRALN_Miejsce = "Praln.Miejsce";
+    public static final String PRALN_Kwota = "Praln.Kwota";
+    public static final String PRALN_Waluta = "Praln.Waluta";
+    public static final String PRALN_KwotaPoZamianie = "Praln.KwotaPoZamianie";
+    public static final String PRALN_WalutaPoZamianie = "Praln.WalutaPoZamianie";
+    public static final String PRALN_OpisDodatkowy = "Praln.OpisDodatkowy";
+    public static final String PRALN_WTyp = "Praln.WTyp";
+    public static final String PRALN_WNazwa = "Praln.WNazwa";
+    public static final String PRALN_WObywatelstwo = "Praln.WObywatelstwo";
+    public static final String PRALN_WPodwojne = "Praln.WPodwójne";
+    public static final String PRALN_WKraj = "Praln.WKraj";
+    public static final String PRALN_WKodPocztowy = "Praln.WKodPocztowy";
+    public static final String PRALN_WMiejscowosc = "Praln.WMiejscowo×Ź";
+    public static final String PRALN_WUlica = "Praln.WUlica";
+    public static final String PRALN_WPesel = "Praln.WPesel";
+    public static final String PRALN_WRegon = "Praln.WRegon";
+    public static final String PRALN_WNrRejSad = "Praln.WNrRejSćd";
+    public static final String PRALN_WSwift = "Praln.WSwift";
+    public static final String PRALN_WNip = "Praln.WNip";
+    public static final String PRALN_WTypDok = "Praln.WTypDok";
+    public static final String PRALN_WSeriaNumer = "Praln.WSeriaNumer";
+    public static final String PRALN_ZTyp = "Praln.ZTyp";
+    public static final String PRALN_ZNazwa = "Praln.ZNazwa";
+    public static final String PRALN_ZKraj = "Praln.ZKraj";
+    public static final String PRALN_ZKodPocztowy = "Praln.ZKodPocztowy";
+    public static final String PRALN_ZMiejscowosc = "Praln.ZMiejscowo×Ź";
+    public static final String PRALN_ZUlica = "Praln.ZUlica";
+    public static final String PRALN_BTyp = "Praln.BTyp";
+    public static final String PRALN_BNazwa = "Praln.BNazwa";
+    public static final String PRALN_BKraj = "Praln.BKraj";
+    public static final String PRALN_BKodPocztowy = "Praln.BKodPocztowy";
+    public static final String PRALN_BMiejscowosc = "Praln.BMiejscowo×Ź";
+    public static final String PRALN_BUlica = "Praln.BUlica";
+    public static final String PRALN_Rachzrodlowy = "Praln.Racháródĺowy";
+    public static final String PRALN_RachDocelowy = "Praln.RachDocelowy";
+    public static final String PRALN_Wpisal = "Praln.Wpisaĺ";
+    public static final String PRALN_DataWpisu = "Praln.DataWpisu";
+    public static final String PRALN_CzasWpisu = "Praln.CzasWpisu";
+    public static final String PRALN_Zatwierdzil = "Praln.Zatwierdziĺ";
+    public static final String PRALN_DataZatwierdzeni = "Praln.DataZatwierdzenia";
+    public static final String PRALN_CzasZatwierdzeni = "Praln.CzasZatwierdzenia";
+    public static final String PRALN_Uwagi = "Praln.Uwagi";
+    public static final String PRALN_Wynik = "Praln.Wynik";
+    public static final String PRALN_IDzrodlowy = "Praln.IDáródĺowy";
+    public static final String PRALN_IDDocelowy = "Praln.IDDocelowy";
+    public static final String PRALN_IDWykonawcy = "Praln.IDWykonawcy";
+    public static final String PRALN_IDZlecajacego = "Praln.IDZlecajćcego";
+    public static final String PRALN_IDBeneficjenta = "Praln.IDBeneficjenta";
+    public static final String PRALN_DataZlecenia = "Praln.DataZlecenia";
+    public static final String PRALN_BIC = "Praln.BIC";
+    public static final String PRALN_NazwaBanku = "Praln.NazwaBanku";
+    public static final String PRALN_TytulZlec = "Praln.TytulZlec";
+    public static final String PRALN_RodzajZlecenia = "Praln.RodzajZlecenia";
+    public static final String PRALN_KierunekZlecenia = "Praln.KierunekZlecenia";
+    public static final String PRALN_WKrajUrodzenia = "Praln.WKrajUrodzenia";
+    public static final String PRALN_Rodzaj = "Praln.Rodzaj";
+    public static final String PRALNIA_W_KSIEGOWANIU = "0";
+    public static final String PRALNIA_WG_STAREJ_ZMIENNEJ_EN = "1";
+    public static final String PRALNIA_WG_UST_2018_EN = "2";
+    public static final String PRALNIA_WG_UST_2018_BEZ_WYKLUCZEN_EN = "3";
+    public static final String BLOKUJ_PRALNIE_EN = "4";
+    public static final String Pral2_TXT = "Pral2";
+    public static final String Pral2_PREFIX = "Pral2.";
+    public static final String Pral2_ID = "Pral2.ID";
+    public static final String Pral2_Status = "Pral2.Status";
+    public static final String Pral2_Identyfikator = "Pral2.Identyfikator";
+    public static final String Pral2_NrKorekty = "Pral2.NrKorekty";
+    public static final String Pral2_Jednostka = "Pral2.Jednostka";
+    public static final String Pral2_Podejrzana = "Pral2.Podejrzana";
+    public static final String Pral2_DataDokumentu = "Pral2.DataDokumentu";
+    public static final String Pral2_NrDokumentu = "Pral2.NrDokumentu";
+    public static final String Pral2_NrDekretu = "Pral2.NrDekretu";
+    public static final String Pral2_ObcyZapis = "Pral2.ObcyZapis";
+    public static final String Pral2_IdObcego = "Pral2.IdObcego";
+    public static final String Pral2_DataTransakcji = "Pral2.DataTransakcji";
+    public static final String Pral2_Kwota = "Pral2.Kwota";
+    public static final String Pral2_Waluta = "Pral2.Waluta";
+    public static final String Pral2_KwotaPoZam = "Pral2.KwotaPoZam";
+    public static final String Pral2_WalutaPoZam = "Pral2.WalutaPoZam";
+    public static final String Pral2_Rodzaj = "Pral2.Rodzaj";
+    public static final String Pral2_Dyspozycja = "Pral2.Dyspozycja";
+    public static final String Pral2_RachunekZ = "Pral2.RachunekZ";
+    public static final String Pral2_KrajZ = "Pral2.KrajZ";
+    public static final String Pral2_RachunekNa = "Pral2.RachunekNa";
+    public static final String Pral2_KrajNa = "Pral2.KrajNa";
+    public static final String Pral2_Wpisal_Kto = "Pral2.Wpisal_Kto";
+    public static final String Pral2_Wpisal_Data = "Pral2.Wpisal_Data";
+    public static final String Pral2_Wpisal_Czas = "Pral2.Wpisal_Czas";
+    public static final String Pral2_Zmienil_Kto = "Pral2.Zmienil_Kto";
+    public static final String Pral2_Zienil_Data = "Pral2.Zmienil_Data";
+    public static final String Pral2_Zmienil_Czas = "Pral2.Zmienil_Czas";
+    public static final String Pral2_Zatw_Kto = "Pral2.Zatw_Kto";
+    public static final String Pral2_Zatw_Data = "Pral2.Zatw_Data";
+    public static final String Pral2_Zatw_Czas = "Pral2.Zatw_Czas";
+    public static final String Pral2_IDEksportuGIIF = "Pral2.IDEksportuGIIF";
+    public static final String Pral2_BezEksportu = "Pral2.BezEksportu";
+    public static final String Pral2_Tytul = "Pral2.Tytul";
+    public static final String Pral2_Uwagi = "Pral2.Uwagi";
+    public static final String Pral2_Wynik = "Pral2.Wynik";
+    public static final String Pral2_IDRachunkuZ = "Pral2.IDRachunkuZ";
+    public static final String Pral2_IDRachunkuNa = "Pral2.IDRachunkuNa";
+    public static final String Pral2_Dz_Data = "Pral2.Dz_Data";
+    public static final String Pral2_Dz_BIC = "Pral2.Dz_BIC";
+    public static final String Pral2_Dz_NazwaBanku = "Pral2.Dz_NazwaBanku";
+    public static final String Pral2_Dz_Rodzaj = "Pral2.Dz_Rodzaj";
+    public static final String Pral2_Dz_Kierunek = "Pral2.Dz_Kierunek";
+    public static final String Pral2_Dz_KrajBanku = "Pral2.Dz_KrajBanku";
+    public static final String Pral2_DaneDoPralni = "Pral2.DaneDoPralni";
+    public static final String PROD_TXT = "Prod";
+    public static final String PROD_PREFIX = "Prod.";
+    public static final String PROD_KOD = "Prod.Kod";
+    public static final String PROD_WARIANT = "Prod.Wariant";
+    public static final String PROD_NAZWA = "Prod.Nazwa";
+    public static final String PROD_MODULO = "Prod.Modulo";
+    public static final String PROD_JEDNOSTKA = "Prod.Jednostka";
+    public static final String PROD_DLUGOSC = "Prod.Dlugosc";
+    public static final String PROD_OKRES = "Prod.Okres";
+    public static final String PROD_KANAL = "Prod.KanalDystrybucji";
+    public static final String PROD_WALUTA = "Prod.Waluta";
+    public static final String PROD_UWZGLEDNIAC_DOST = "Prod.UwzglDostepnosc";
+    public static final String SS_Nazwa = "SS.Nazwa";
+    public static final String SS_Port = "SS.Port";
+    public static final String SS_InterwalKontroli = "SS.InterwalKontroli";
+    public static final String SS_DataSystemowa = "SS.DataSystemowa";
+    public static final String SS_DataKsiegowania = "SS.DataKsiegowania";
+    public static final String SS_DataStartu = "SS.DataStartu";
+    public static final String SS_CzasStartu = "SS.CzasStartu";
+    public static final String SS_Wersja = "SS.Wersja";
+    public static final String SS_WersjaPro = "SS.WersjaPro";
+    public static final String SS_Katalog = "SS.Katalog";
+    public static final String SS_Baza = "SS.Baza";
+    public static final String SS_JEDNOSTKA_BANKU = "SS.JEDNOSTKA_BANKU";
+    public static final String SS_LD_LIBRARY_PATH = "SS.LIBRARY_PATH";
+    public static final String SS_VVTERMCAP = "SS.VVTERMCAP";
+    public static final String SS_VVTERM = "SS.VVTERM";
+    public static final String SS_OMNIORB_CONFIG = "SS.OMNIORB_CONFIG";
+    public static final String SS_InitialPort = "SS.InitialPort";
+    public static final String SS_InitialHost = "SS.InitialHost";
+    public static final String SS_OMNIORB_USEHOSTNAME = "SS.OMNIORB_USEHOSTNAME";
+    public static final String SS_LOG_AWARYJNY = "SS.LOG_AWARYJNY";
+    public static final String SS_TrybPracy = "SS.TrybPracy";
+    public static final String SS_MinLiczbaProcesow = "SS.MinLiczbaProcesow";
+    public static final String SS_MaxLiczbaProcesow = "SS.MaxLiczbaProcesow";
+    public static final String SS_TabelaKursow = "SS.TabelaKursow";
+    public static final String SS_JednostkaZModulo = "SS.JednostkaZModulo";
+    public static final String SS_PetlaKsiegujacaStan = "SS.PetlaKsiegujacaStan";
+    public static final String SS_PetlaKsiegujacaBlad = "SS.PetlaKsiegujacaBlad";
+    public static final String SS_Przetwarzanie = "SS.Przetwarzanie";
+    public static final String TD_DEKR = "1";
+    public static final String TD_PZZS = "0";
+    public static final int US_A_POBRANIE = 1;
+    public static final String WYC_IdUmowy = "WYC_IdUmowy";
+    public static final String WYC_IdRachunku = "WYC_IdRachunku";
+    public static final String WYC_Rok = "WYC_Rok";
+    public static final String WYC_Miesiac = "WYC_Miesiac";
+    public static final String WYC_DataOd = "WYC_DataOd";
+    public static final String WYC_DataDo = "WYC_DataDo";
+    public static final String WYC_NrKlienta = "WYC_NrKlienta";
+    public static final String WYC_Imie1 = "WYC_Imie1";
+    public static final String WYC_Imie2 = "WYC_Imie2";
+    public static final String WYC_Nazwisko = "WYC_Nazwisko";
+    public static final String WYC_NazwaPelna = "WYC_NazwaPelna";
+    public static final String WYC_NIP = "WYC_NIP";
+    public static final String WYC_PESEL_REGON = "WYC_PESEL_REGON";
+    public static final String WYC_OpisKonta = "WYC_OpisKonta";
+    public static final String WYC_NRB = "WYC_NRB";
+    public static final String WYC_MKU = "WYC_MKU";
+    public static final String WYC_SaldoPoczatkowe = "WYC_SaldoPoczatkowe";
+    public static final String WYC_SaldoKoncowe = "WYC_SaldoKoncowe";
+    public static final String WYC_WolneSrodkiKMies = "WYC_WolneSrodkiKMies";
+    public static final String WYC_Waluta = "WYC_Waluta";
+    public static final String WYC_StopaWn = "WYC_StopaWn";
+    public static final String WYC_StopaMa = "WYC_StopaMa";
+    public static final String WYC_NiewykorzystLimit = "WYC_NiewykorzystLimit";
+    public static final String WYC_ObrotyWn = "WYC_ObrotyWn";
+    public static final String WYC_ObrotyMa = "WYC_ObrotyMa";
+    public static final String WYC_Informacja = "WYC_Informacja";
+    public static final String WYC_NazwaBanku = "WYC_NazwaBanku";
+    public static final String WYC_Adres1Banku = "WYC_Adres1Banku";
+    public static final String WYC_Adres2Banku = "WYC_Adres2Banku";
+    public static final String WYC_TelefonBanku = "WYC_TelefonBanku";
+    public static final String WYC_RodzajRachunku = "WYC_RodzajRachunku";
+    public static final String WYC_NrWyciagu = "WYC_NrWyciagu";
+    public static final String WYC_NrWyciagu2 = "WYC_NrWyciagu2";
+    public static final String WYC_PodTyp = "WYC_PodTyp";
+    public static final String WYC_NazwaUmowy = "WYC_NazwaUmowy";
+    public static final String WYC_DataPoczatku = "WYC_DataPoczatku";
+    public static final String WYC_DataKonca = "WYC_DataKonca";
+    public static final String WYC_KwotaPrzyznLimitu = "WYC_KwotaPrzyznLimitu";
+    public static final String WYC_DataObowLimitu = "WYC_DataObowLimitu";
+    public static final String WYC_WymagalneNaleznosci = "WYC_WymagalneNaleznosci";
+    public static final String WYC_NiedozwoloneSaldo = "WYC_NiedozwoloneSaldo";
+    public static final String WYC_Bankowy = "WYC_Bankowy";
+    public static final String WYC_Adr_Kraj = "WYC_Adr_Kraj";
+    public static final String WYC_Adr_NazwaKraju = "WYC_Adr_NazwaKraju";
+    public static final String WYC_Adr_Ulica = "WYC_Adr_Ulica";
+    public static final String WYC_Adr_KodPocztowy = "WYC_Adr_KodPocztowy";
+    public static final String WYC_Adr_Miejscowosc = "WYC_Adr_Miejscowosc";
+    public static final String WYC_Adr_Reszta = "WYC_Adr_Reszta";
+    public static final String WYC_Adr_Reszta2 = "WYC_Adr_Reszta2";
+    public static final String WYC_Adk_Kraj = "WYC_Adk_Kraj";
+    public static final String WYC_Adk_NazwaKraju = "WYC_Adk_NazwaKraju";
+    public static final String WYC_Adk_Ulica = "WYC_Adk_Ulica";
+    public static final String WYC_Adk_KodPocztowy = "WYC_Adk_KodPocztowy";
+    public static final String WYC_Adk_Miejscowosc = "WYC_Adk_Miejscowosc";
+    public static final String WYC_Adk_Reszta = "WYC_Adk_Reszta";
+    public static final String WYC_Adk_Reszta2 = "WYC_Adk_Reszta2";
+    public static final String WYC_DataDokumentu = "WYC_DataDokumentu";
+    public static final String WYC_DataWaluty = "WYC_DataWaluty";
+    public static final String WYC_KwotaWn = "WYC_KwotaWn";
+    public static final String WYC_KwotaMa = "WYC_KwotaMa";
+    public static final String WYC_TrescDekretu = "WYC_TrescDekretu";
+    public static final String WYC_TytulOperacji = "WYC_TytulOperacji";
+    public static final String WYC_Saldo = "WYC_Saldo";
+    public static final String WYC_Zleceniodawca = "WYC_Zleceniodawca";
+    public static final String WYC_Beneficjent = "WYC_Beneficjent";
+    public static final String WYC_BankZlec = "WYC_BankZlec";
+    public static final String WYC_BankBenef = "WYC_BankBenef";
+    public static final String WYC_RachZlec = "WYC_RachZlec";
+    public static final String WYC_RachBenef = "WYC_RachBenef";
+    public static final String WYC_RachWn = "WYC_RachWn";
+    public static final String WYC_RachMa = "WYC_RachMa";
+    public static final String WYC_DekretID = "WYC_DekretID";
+    public static final String WYC_ElixirDataKomunikatu = "WYC_ElixirDataKomunikatu";
+    public static final String WYC_UnikIdentyfikator = "WYC_UnikIdentyfikator";
+    public static final String WYC_KursPrzewalutowania = "WYC_KursPrzewalutowania";
+    public static final String WYC_ListaProwizji = "WYC_ListaProwizji";
+    public static final String WYC_KwotaOper = "WYC_KwotaOper";
+    public static final String WYC_WalutaOper = "WYC_WalutaOper";
+    public static final String WYC_ExElixDataKomunikatu = "WYC_ExElixDataKomunikatu";
+    public static final String WYC_NrDokumentu = "WYC_NrDokumentu";
+    public static final String WYC_NrDekretu = "WYC_NrDekretu";
+    public static final String WYC_Data = "WYC_Data";
+    public static final String WYC_NrDziennego = "WYC_NrDziennego";
+    public static final int WYC_A_MIESIECZNY_RB = 1;
+    public static final int WYC_A_NUMER_DZIENNEGO = 2;
+    public static final int WYC_A_MIESIECZNY_RB_WARUNKOWO = 3;
+    public static final int WYC_A_OKRESOWY_RB = 4;
+    public static final int WYC_A_OKRESOWY_RB_WARUNKOWO = 5;
+    public static final int WYC_A_OKRESOWY_DP = 6;
+    public static final int WYC_A_OKRESOWY_DP_WARUNKOWO = 7;
+    public static final int WYC_A_OKRESOWY = 8;
+    public static final int MIGDZ_A_KONTROLA = 1;
+    public static final String MigDz_TypDokumentu = "MigDz.TypDokumentu";
+    public static final String MigDz_BankWystawca = "MigDz.BankWystawca";
+    public static final String MigDz_BankNadzorujacy = "MigDz.BankNadzorujący";
+    public static final String MigDz_Status = "MigDz.Status";
+    public static final String MigDz_Seria = "MigDz.Seria";
+    public static final String MigDz_NumerOd = "MigDz.NumerOd";
+    public static final String MigDz_NumerDo = "MigDz.NumerDo";
+    public static final String MigDz_Nazwa_1 = "MigDz.Nazwa_1";
+    public static final String MigDz_Nazwa_2 = "MigDz.Nazwa_2";
+    public static final String MigDz_PESEL = "MigDz.PESEL";
+    public static final String MigDz_TypZastrzezenia = "MigDz.TypZastrzeżenia";
+    public static final String MigDz_Miejscowosc = "MigDz.Miejscowość";
+    public static final String MigDz_PelnyOpisStempla = "MigDz.PełnyOpisStempla";
+    public static final String MigDz_DataZaginiecia = "MigDz.DataZaginięcia";
+    public static final String MigDz_DataZnalezienia = "MigDz.DataZnalezienia";
+    public static final String MigDz_DataZastrzezenia = "MigDz.DataZastrzeżenia";
+    public static final String MigDz_GodzZastrzezenia = "MigDz.GodzZastrzeżenia";
+    public static final String MigDz_DataWpisu = "MigDz.DataWpisu";
+    public static final String MigDz_GodzWpisu = "MigDz.GodzWpisu";
+    public static final String MigDz_DataZmiany = "MigDz.DataZmiany";
+    public static final String MigDz_CzasZmiany = "MigDz.CzasZmiany";
+    public static final String MigDz_KtoZmienil = "MigDz.KtoZmienił";
+    public static final String MigDz_DataEksportu = "MigDz.DataEksportu";
+    public static final String MigDz_StatusEksportu = "MigDz.StatusEksportu";
+    public static final String MigDz_ID = "MigDz.ID";
+    public static final String MigDz_IDZapisGlowny = "MigDz.IDZapisGłówny";
+    public static final String US_RACHUNEK = "US.Rachunek";
+    public static final String US_MIEJSCOWOSC = "US.Miejscowosc";
+    public static final String US_NAZWA = "US.Nazwa";
+    public static final int WD_STATUS_DO_WERYFIKACJI = 0;
+    public static final int WD_STATUS_ZAKSIEGOWANE = 1;
+    public static final int WD_STATUS_ODRZUCONE = 2;
+    public static final int WD_STRONA_WN = 0;
+    public static final int WD_STRONA_MA = 1;
+    public static final int WD_STRONA_WN_MA = 2;
+    public static final int ATRYB_A_WPIS_DLA_KLIENTA = 1;
+    public static final int ATRYB_A_POBRANIE_DLA_KLIENTA = 2;
+    public static final int ATRYB_A_DODAJ = 3;
+    public static final int ATRYB_A_PRZYPISZ = 4;
+    public static final int ATRYB_A_ZMIEN = 5;
+    public static final int ATRYB_A_USUN = 6;
+    public static final int ATRYB_A_POBIERZ = 7;
+    public static final String ZM_ID_Intercomp = "ID_Intercomp";
+    public static final String ZM_ID_Uzytkownika = "ID_Uzytkownika";
+    public static final String ZM_ID_Rachunku = "ID_Rachunku";
+    public static final String ZM_SymbolKanalu = "SymbolKanalu";
+    public static final String ZM_Udostepnienie = "Udostepnienie";
+    public static final String ATTR_TypBazy = "ATTR_TypBazy";
+    public static final String ATTR_IdBazy = "ATTR_IdBazy";
+    public static final String ATTR_WyroznikBazy = "ATTR_WyróżnikBazy";
+    public static final String ATTR_Id = "ATTR_Id";
+    public static final String ATTR_IdGrupy = "ATTR_IdGrupy";
+    public static final String ATTR_Nazwa = "ATTR_Nazwa";
+    public static final String ATTR_NazwaGrupy = "ATTR_NazwaGrupy";
+    public static final String ATTR_Wartosc = "ATTR_Wartość";
+    public static final String ATTR_WartoscGrupy = "ATTR_WartośćGrupy";
+    public static final int RACH_A_ZE_ZM_SALDEM = 1;
+    public static final String ZM_DataOstDok = "DataOstDok";
+    public static final String ZM_NrOstDok = "NrOstDok";
+    public static final String ZM_RBZMS_Lista = "RBZMS.Lista";
+    public static final int OPROC_A_POBRANIE_TABELI = 1;
+    public static final int OPROC_A_DEPOZYTY_MF = 2;
+    public static final int OPROC_A_TABELA_DODANIE = 3;
+    public static final int OPROC_A_TABELA_ZMIANA_OPROC = 4;
+    public static final String OPROC_Tabela = "OPROC_Tabela";
+    public static final String OPROC_Jednostka = "OPROC_Jednostka";
+    public static final String OPROC_Waluta = "OPROC_Waluta";
+    public static final String OPROC_Data = "OPROC_Data";
+    public static final String OPROC_ProduktDMF = "OPROC_ProduktDMF";
+    public static final String OPROC_TypKlienta = "OPROC_TypKlienta";
+    public static final String OPROC_Okres = "OPROC_Okres";
+    public static final String OPROC_Stopa = "OPROC_Stopa";
+    public static final String OPROC_Dlugosc = "OPROC_Dlugosc";
+    public static final String OPROC_DataZalozenia = "OPROC_DataZalozenia";
+    public static final String OPROC_Nazwa = "OPROC_Nazwa";
+    public static final String OPROC_TypStawki = "OPROC_TypStawki";
+    public static final String OPROC_StopaWn = "OPROC_StopaWn";
+    public static final String OPROC_StopaMa = "OPROC_StopaMa";
+    public static final int RMA_A_LISTA_NRB_Z_MASKI = 1;
+    public static final int RMA_A_LISTA_MASEK = 2;
+    public static final int RMA_A_DODANIE_SDS = 3;
+    public static final int RMA_A_ZMIANA_SDS = 4;
+    public static final int RMA_A_LISTA_NRB_Z_MASKI_WG_ID = 5;
+    public static final int RMA_A_ZMIANA_TYPU_SDS = 6;
+    public static final int RMA_A_LISTA_NRB_Z_MASKI_SDS = 7;
+    public static final int RMA_A_LISTA_NRB_NA_DATE_SDS = 8;
+    public static final int RMA_A_POBRANIE_RACH_MASOWEGO = 9;
+    public static final int RMA_A_LISTA_RAPORTOW_SDS = 10;
+    public static final int RMA_A_LISTA_WG_DATY_ZMIAN = 11;
+    public static final int RMA_A_SALDO_SUMY_SDZK = 12;
+    public static final int RMA_A_WSTAW_RAPORT_SD = 13;
+    public static final String RMA_NRB = "RMA_NRB";
+    public static final String RMA_NumerOd = "RMA_NumerOd";
+    public static final String RMA_IDOd = "RMA_IDOd";
+    public static final String RMA_TypPodmiotu = "RMA_TypPodmiotu";
+    public static final String RMA_LP = "RMA_LP";
+    public static final String RMA_Sygnatura = "RMA_Sygnatura";
+    public static final String RMA_Numer = "RMA_Numer";
+    public static final String RMA_WirtualnyNRB = "RMA_WirtualnyNRB";
+    public static final String RMA_Nazwa = "RMA_Nazwa";
+    public static final String RMA_Tytul = "RMA_Tytul";
+    public static final String RMA_Maska = "RMA_Maska";
+    public static final String RMA_ID = "RMA_ID";
+    public static final String RMA_DataWycofania = "RMA_DataWycofania";
+    public static final String RMA_DaneDodatkowe = "RMA_DaneDodatkowe";
+    public static final String RMA_PierwszyTytul = "RMA_PierwszyTytul";
+    public static final String RMA_Kapital = "RMA_Kapital";
+    public static final String RMA_Odsetki_BO = "RMA_Odsetki_BO";
+    public static final String RMA_IDKlient = "RMA_IDKlient";
+    public static final String RMA_Status = "RMA_Status";
+    public static final String RMA_Waluta = "RMA_Waluta";
+    public static final String RMA_Data = "RMA_Data";
+    public static final String RMA_OdsetkiKap = "RMA_OdsetkiKap";
+    public static final String RMA_Obciazenia = "RMA_Obciazenia";
+    public static final String RMA_OdsOstKap = "RMA_OdsOstKap";
+    public static final String RMA_OdsBiez = "RMA_OdsBiez";
+    public static final String RMA_DataZalozenia = "RMA_DataZalozenia";
+    public static final String RMA_Pochodzenie = "RMA_Pochodzenie";
+    public static final String RMA_ObciazeniaOds_BO = "RMA_ObciazeniaOds_BO";
+    public static final String RMA_ObciazeniaOdsKap = "RMA_ObciazeniaOdsKap";
+    public static final String RMA_ObciazeniaKap = "RMA_ObciazeniaKap";
+    public static final String RMA_OdsNalKap = "RMA_OdsNalKap";
+    public static final String RMA_IDRachunku = "RMA_IDRachunku";
+    public static final String RMA_Typ = "RMA_Typ";
+    public static final String RMA_NumerMasowy = "RMA_NumerMasowy";
+    public static final String RMA_MKU = "RMA_MKU";
+    public static final String RMA_PoprzednieNRB = "RMA_PoprzednieNRB";
+    public static final String RMA_IDSektora = "RMA_IDSektora";
+    public static final String RMA_Plik = "RMA_Plik";
+    public static final String RMA_Katalog = "RMA_Katalog";
+    public static final String RMA_DataZmiany = "RMA_DataZmiany";
+    public static final String RMA_CzasZmiany = "RMA_CzasZmiany";
+    public static final String RMA_IDO = "RMA_IDO";
+    public static final String RMA_DataSkreslenia = "RMA_DataSkreslenia";
+    public static final String RMA_DataReaktywacji = "RMA_DataReaktywacji";
+    public static final String RMA_TrybKsiegowania = "RMA_TrybKsiegowania";
+    public static final int WALU_A_KURS_DO_TABELI_OGOLNEJ = 1;
+    public static final int WALU_A_KURS_DO_TABELI_OGOLNEJ_IGN = 2;
+    public static final String WALU_Tabela = "WALU_Tabela";
+    public static final String WALU_Symbol = "WALU_Symbol";
+    public static final String WALU_Data = "WALU_Data";
+    public static final String WALU_Czas = "WALU_Czas";
+    public static final String WALU_SprzedazPieniedzy = "WALU_SprzedazPieniedzy";
+    public static final String WALU_KupnoPieniedzy = "WALU_KupnoPieniedzy";
+    public static final String WALU_SprzedazDewiz = "WALU_SprzedazDewiz";
+    public static final String WALU_KupnoDewiz = "WALU_KupnoDewiz";
+    public static final String WALU_KursSredni = "WALU_KursSredni";
+    public static final int ZW_A_ZALOZENIE = 1;
+    public static final int ZW_A_MODYFIKACJA = 2;
+    public static final int ZW_A_ANULOWANIE = 3;
+    public static final int ZW_A_LISTA = 4;
+    public static final String ZW_NRB = "ZW_NRB";
+    public static final String ZW_KlientID = "ZW_KlientID";
+    public static final String ZW_UP_OB_ID = "ZW_UP_OB_ID";
+    public static final String ZW_UP_OB_NR = "ZW_UP_OB_NR";
+    public static final String ZW_Kwota = "ZW_Kwota";
+    public static final String ZW_DoWysokosciSrodkow = "ZW_DoWysokosciSrodkow";
+    public static final String ZW_DataWaznosciOd = "ZW_DataWaznosciOd";
+    public static final String ZW_DataWaznosciDo = "ZW_DataWaznosciDo";
+    public static final String ZW_DzienRealizacji = "ZW_DzienRealizacji";
+    public static final String ZW_MiejsceOdbioru = "ZW_MiejsceOdbioru";
+    public static final String ZW_Miejscowosc = "ZW_Miejscowosc";
+    public static final String ZW_Ulica = "ZW_Ulica";
+    public static final String ZW_KodPocztowy = "ZW_KodPocztowy";
+    public static final String ZW_Poczta = "ZW_Poczta";
+    public static final String ZW_ZlecenieID = "ZW_ZlecenieID";
+    public static final String ZW_IloscZlecen = "ZW_IloscZlecen";
+    public static final String ZW_ListaZlecen = "ZW_ListaZlecen";
+    public static final int LOKR_A_POBRANIE = 1;
+    public static final String ZM_NR_REFERENCYJNY = "NR_REFERENCYJNY";
+    public static final String ZM_DATA_DOKUMENTU_OD = "DATA_DOKUMENTU_OD";
+    public static final String ZM_NR_DOKUMENTU_OD = "NR_DOKUMENTU_OD";
+    public static final String ZM_DATA_DOKUMENTU_DO = "DATA_DOKUMENTU_DO";
+    public static final String ZM_NR_DOKUMENTU = "NR_DOKUMENTU";
+    public static final String ZM_DATA_DOKUMENTU = "DATA_DOKUMENTU";
+    public static final String ZM_DATA_WALUTY = "DATA_WALUTY";
+    public static final String ZM_TYP_OPERACJI = "TYP_OPERACJI";
+    public static final String ZM_NR_RACHUNKU = "NR_RACHUNKU";
+    public static final String ZM_KWOTA_OPERACJI = "KWOTA_OPERACJI";
+    public static final String ZM_WALUTA_OPERACJI = "WALUTA_OPERACJI";
+    public static final String ZM_KWOTA_KAPITALU = "KWOTA_KAPITALU";
+    public static final String ZM_KWOTA_ODSETEK = "KWOTA_ODSETEK";
+    public static final String ZM_KWOTA_NADPLATY = "KWOTA_NADPLATY";
+    public static final String ZM_KWOTA_ZWR_FG = "KWOTA_ZWR_FG";
+    public static final String ZM_WALUTA_KREDYTU = "WALUTA_KREDYTU";
+    public static final String ZM_TYTUL_OPERACJI = "TYTUL_OPERACJI";
+    public static final String ZM_ODBIORCA_NADAWCA = "ODBIORCA_NADAWCA";
+    public static final String ZM_SALDO_PO_OPERACJI = "SALDO_PO_OPERACJI";
+    public static final String ZM_ELIXIR_DATA_KOMUNIKATU = "ELIXIR_DATA_KOMUNIKATU";
+    public static final int DEP_A_LISTA = 1;
+    public static final int DEP_A_POBRANIE = 2;
+    public static final String DEP_IDKlienta = "DEP.IDKlienta";
+    public static final String DEP_NumerKlienta = "DEP.NumerKlienta";
+    public static final String DEP_NazwaPelnaKlienta = "DEP.NazwaPelnaKlienta";
+    public static final String DEP_TypKlienta = "DEP.TypKlienta";
+    public static final String DEP_KrajKlienta = "DEP.KrajKlienta";
+    public static final String DEP_GalazGospodarki = "DEP.GalazGospodarki";
+    public static final String DEP_RodzajKlienta = "DEP.RodzajKlienta";
+    public static final String DEP_Ulica = "DEP.Ulica";
+    public static final String DEP_KodPocztowy = "DEP.KodPocztowy";
+    public static final String DEP_Miejscowosc = "DEP.Miejscowosc";
+    public static final String DEP_Kraj = "DEP.Kraj";
+    public static final String DEP_ID = "DEP.ID";
+    public static final String DEP_NrReferencyjny = "DEP.NrReferencyjny";
+    public static final String DEP_Status = "DEP.Status";
+    public static final String DEP_Typ = "DEP.Typ";
+    public static final String DEP_PodTyp = "DEP.PodTyp";
+    public static final String DEP_DataRejestracji = "DEP.DataRejestracji";
+    public static final String DEP_DataWaluty = "DEP.DataWaluty";
+    public static final String DEP_DataKonca = "DEP.DataKonca";
+    public static final String DEP_Waluta = "DEP.Waluta";
+    public static final String DEP_Kwota = "DEP.Kwota";
+    public static final String DEP_NrTabeli = "DEP.NrTabeli";
+    public static final String DEP_SystemNaliczania = "DEP.SystemNaliczania";
+    public static final String DEP_RegulaDaty = "DEP.RegulaDaty";
+    public static final String DEP_OkresOdsetkowy = "DEP.OkresOdsetkowy";
+    public static final String DEP_DataOdsetek = "DEP.DataOdsetek";
+    public static final String DEP_StopaProcentowa = "DEP.StopaProcentowa";
+    public static final String DEP_NazwaReprezentanta = "DEP.NazwaReprezentanta";
+    public static final String DEP_DowodReprezentanta = "DEP.DowodReprezentanta";
+    public static final String DEP_PESELReprezentanta = "DEP.PESELReprezentanta";
+    public static final String DEP_NrUmowyRamowej = "DEP.NrUmowyRamowej";
+    public static final String DEP_Wpisal = "DEP.Wpisal";
+    public static final String DEP_Odsetki = "DEP.Odsetki";
+    public static final int UPPZ_AKCJA_DODANIE = 0;
+    public static final int UPPZ_AKCJA_MODYFIKACJA = 1;
+    public static final int UPPZ_AKCJA_USUNIECIE = 2;
+    public static final int UPPZ_AKCJA_POBRANIE_LISTY = 3;
+    public static final String UPPZ_ID = "UPPZ_ID";
+    public static final String UPPZ_IDKlienta = "UPPZ_IDKlienta";
+    public static final String UPPZ_Data = "UPPZ_Data";
+    public static final String UPPZ_RachDluznika = "UPPZ_RachDluznika";
+    public static final String UPPZ_NRBDluznika = "UPPZ_NRBDluznika";
+    public static final String UPPZ_OkresOd = "UPPZ_OkresOd";
+    public static final String UPPZ_OkresDo = "UPPZ_OkresDo";
+    public static final String UPPZ_NazwaDluznika = "UPPZ_NazwaDluznika";
+    public static final String UPPZ_NazwaWierzyciela = "UPPZ_NazwaWierzyciela";
+    public static final String UPPZ_RachDluznikaZUpo = "UPPZ_RachDluznikaZUpo";
+    public static final String UPPZ_NIP = "UPPZ_NIP";
+    public static final String UPPZ_IDP = "UPPZ_IDP";
+    public static final String UPPZ_Wstrzymanie = "UPPZ_Wstrzymanie";
+    public static final String UPPZ_Baza = "UPPZ_Baza";
+    public static final String UPPZ_DaneDoPralni = "UPPZ_DaneDoPralni";
+    public static final String UPPZ_DanePodm = "UPPZ_DanePodm";
+    public static final int RK_A_LISTA_K = 1;
+    public static final int RK_A_LISTA_MK = 2;
+    public static final int RK_A_LISTA_MKU = 3;
+    public static final int RK_A_LISTA_ID = 4;
+    public static final int RK_A_LISTA_NRB = 5;
+    public static final int RK_A_LISTA_M = 6;
+    public static final String Rk_Modulo = "Rk.Modulo";
+    public static final String Rk_Konto = "Rk.Konto";
+    public static final String Rk_Uwaga = "Rk.Uwaga";
+    public static final String Rk_ID = "Rk.ID";
+    public static final String Rk_NRB = "Rk.NRB";
+    public static final String Rk_Saldo = "Rk.Saldo";
+    public static final String Rk_Waluta = "Rk.Waluta";
+    public static final String Rk_Zamkniety = "Rk.Zamkniety";
+    public static final String Rk_Jednostka = "Rk.Jednostka";
+    public static final String Rk_Masowy = "Rk.Masowy";
+    public static final String Rk_TranID = "Rk.TranID";
+    public static final int ZD_A_LISTA = 1;
+    public static final String Zd_Grupa = "Zd.Grupa";
+    public static final String Zd_Limit = "Zd.Limit";
+    public static final String Zd_Numer = "Zd.Numer";
+    public static final String Zd_Kod = "Zd.Kod";
+    public static final String Zd_Typ = "Zd.Typ";
+    public static final String Zd_ID = "Zd.ID";
+    public static final String Zd_Nazwa = "Zd.Nazwa";
+    public static final String Zd_Data = "Zd.Data";
+    public static final String Zd_Czas = "Zd.Czas";
+    public static final String Zd_Kto = "Zd.Kto";
+    public static final int UL_A_ZALOZENIE = 1;
+    public static final int UL_A_ZATWIERDZENIE = 2;
+    public static final int UL_A_POBRANIE_DANYCH = 3;
+    public static final int UL_A_ZAMKNIECIE = 4;
+    public static final int UL_A_DODANIE_WSPOLWLASCICIELA = 5;
+    public static final String UL_IDKlienta = "UL.IDKlienta";
+    public static final String UL_IDUmowy = "UL.ID";
+    public static final String UL_NumerKlienta = "UL.NumerKlienta";
+    public static final String UL_NazwaPelnaKlienta = "UL.NazwaPełnaKlienta";
+    public static final String UL_Referencja = "UL.Referencja";
+    public static final String UL_Data = "UL.Data";
+    public static final String UL_Jednostka = "UL.Jednostka";
+    public static final String UL_Status = "UL.Status";
+    public static final String UL_WkladyLokaty = "UL.WkładyLokaty";
+    public static final String UL_Produkt = "UL.Produkt";
+    public static final String UL_DataKonca = "UL.DataKońca";
+    public static final String UL_TypKlienta = "UL.TypKlienta";
+    public static final String UL_KanalDystrybucji = "UL.KanałDystrybucji";
+    public static final String UL_Wpisal = "UL.Wpisał";
+    public static final String UL_Zatwierdzil = "UL.Zatwierdził";
+    public static final int ER_A_WPISANIE = 1;
+    public static final int ER_A_POBRANIE = 2;
+    public static final int UMO_A_LISTA = 1;
+    public static final int UMO_A_LISTA2 = 2;
+    public static final int UMO_A_TRAN = 3;
+    public static final String UMO_IDKlienta = "UMO.IDKlienta";
+    public static final String UMO_NazwaKlienta = "UMO.NazwaKlienta";
+    public static final String UMO_NazwaPelnaKlienta = "UMO.NazwaPelnaKlienta";
+    public static final String UMO_ID = "UMO.ID";
+    public static final String UMO_Typ = "UMO.Typ";
+    public static final String UMO_TypBazowy = "UMO.TypBazowy";
+    public static final String UMO_NrReferencyjny = "UMO.NrReferencyjny";
+    public static final String UMO_Produkt = "UMO.Produkt";
+    public static final String UMO_Status = "UMO.Status";
+    public static final String UMO_Data = "UMO.Data";
+    public static final String UMO_DataWaluty = "UMO.DataWaluty";
+    public static final String UMO_DataKonca = "UMO.DataKonca";
+    public static final String UMO_NrKlienta = "UMO.NrKlienta";
+    public static final String UMO_Jednostka = "UMO.Jednostka";
+    public static final String UMO_Rachunek = "UMO.Rachunek";
+    public static final String UMO_NRB = "UMO.NRB";
+    public static final String UMO_IDStan = "UMO.IDStan";
+    public static final String UMO_Ksiega = "UMO.Ksiega";
+    public static final int PEMO_A_ZAPIS = 1;
+    public static final int PEMO_A_LISTA = 2;
+    public static final String Pemo_ID = "Pemo.ID";
+    public static final String Pemo_IDKlienta = "Pemo.IDKlienta";
+    public static final String Pemo_NrKlienta = "Pemo.NrKlienta";
+    public static final String Pemo_IDPelnomocnik = "Pemo.IDPełnomocnik";
+    public static final String Pemo_Pelnomocnik = "Pemo.Pełnomocnik";
+    public static final String Pemo_Rodzaj = "Pemo.Rodzaj";
+    public static final String Pemo_Poziom = "Pemo.Poziom";
+    public static final String Pemo_IDTransakcji = "Pemo.IDTransakcji";
+    public static final String Pemo_DataUdzielenia = "Pemo.DataUdzielenia";
+    public static final String Pemo_DataWaznosci = "Pemo.DataWażności";
+    public static final String Pemo_DataOdwolaniaDysp = "Pemo.DataOdwołaniaDysp";
+    public static final String Pemo_Opis = "Pemo.Opis";
+    public static final String Pemo_Pokrewienstwo = "Pemo.Pokrewieństwo";
+    public static final String Pemo_KwotaDyspozycji = "Pemo.KwotaDyspozycji";
+    public static final String Pemo_TypKwoty = "Pemo.TypKwoty";
+    public static final String Pemo_DataDyspozycji = "Pemo.DataDyspozycji";
+    public static final String Pemo_CzasDyspozycji = "Pemo.CzasDyspozycji";
+    public static final String Pemo_Zakres = "Pemo.Zakres";
+    public static final String Pemo_NRB = "Pemo.NRB";
+    public static final String Pemo_PESELPelnomocnika = "Pemo.PESELPełnomocnika";
+    public static final String PZHIST_IDUP = "PZHIST.IDUp";
+    public static final String PZHIST_DATAOD = "PZHIST.DataOd";
+    public static final String PZHIST_CZASOD = "PZHIST.CzasOd";
+    public static final String PZHIST_DATADO = "PZHIST.DataDo";
+    public static final String PZHIST_CZASDO = "PZHIST.CzasDo";
+    public static final String PZHIST_IDAKCJI = "PZHIST.IDAkcji";
+    public static final String PZHIST_IDOPERACJI = "PZHIST.IDOperacji";
+    public static final String PZHIST_ID_KOM = "PZHIST.IDKom";
+    public static final String PZHIST_DATAOPERACJI = "PZHIST.DataOperacji";
+    public static final String PZHIST_STATUS = "PZHIST.Status";
+    public static final String PZHIST_KWOTA = "PZHIST.Kwota";
+    public static final String PZHIST_DATADOK = "PZHIST.DataDok";
+    public static final String PZHIST_NRDOK = "PZHIST.NrDok";
+    public static final String PZHIST_NIP = "PZHIST.NIP";
+    public static final String PZHIST_IDP = "PZHIST.IDP";
+    public static final String PZHIST_NRBW = "PZHIST.NRBW";
+    public static final String PZHIST_NRBD = "PZHIST.NRBD";
+    public static final String PZHIST_WIERZYCIEL = "PZHIST.Wierzyciel";
+    public static final String PZHIST_DLUZNIK = "PZHIST.Dluznik";
+    public static final String PZHIST_TYTUL = "PZHIST.Tytul";
+    public static final String PZHIST_KODODRZUCENIA = "PZHIST.KodOdrzucenia";
+    public static final String PZHIST_OPISODRZUCENIA = "PZHIST.OpisOdrzucenia";
+    public static final String PZHIST_DATAAKCJI = "PZHIST.DataAkcji";
+    public static final String PZHIST_CZASAKCJI = "PZHIST.CzasAkcji";
+    public static final int OPPZ_A_ODWOLANIE = 0;
+    public static final String PZHIST_NRBLEDU = "PZHIST.NrBledu";
+    public static final int RELACJE_A_POBRANIE = 1;
+    public static final String Relacja_ID = "Relacja.ID";
+    public static final String Relacja_Typ = "Relacja.Typ";
+    public static final String Relacja_Strona = "Relacja.Strona";
+    public static final String Relacja_KlientID = "Relacja.KlientID";
+    public static final String Relacja_Rodzaj = "Relacja.Rodzaj";
+    public static final String Relacja_Wartosc = "Relacja.Wartosc";
+    public static final String Relacja_Dane = "Relacja.Dane";
+    public static final String Relacja_Haslo = "Relacja.Haslo";
+    public static final String Relacja_Opis = "Relacja.Opis";
+    public static final String Relacja_Wyplata = "Relacja.Wyplata";
+    public static final String Relacja_Karta = "Relacja.Karta";
+    public static final String Relacja_OdbiorKart = "Relacja.OdbiorKart";
+    public static final String Relacja_SkladaniePrzelew = "Relacja.SkladaniePrzelew";
+    public static final String Relacja_OdbiorWyciagu = "Relacja.OdbiorWyciagu";
+    public static final String Relacja_WykonawcaDlaPral = "Relacja.WykonawcaDlaPral";
+    public static final String Relacja_DataOd = "Relacja.DataOd";
+    public static final String Relacja_DataDo = "Relacja.DataDo";
+    public static final String Klient_ID = "Klient.ID";
+    public static final String Klient_TypFormatki = "Klient.TypFormatki";
+    public static final String Klient_Nazwa = "Klient.Nazwa";
+    public static final String Klient_Imie_1 = "Klient.Imie_1";
+    public static final String Klient_Imie_2 = "Klient.Imie_2";
+    public static final String Klient_Nazwisko = "Klient.Nazwisko";
+    public static final String Klient_NazwaKrotka = "Klient.NazwaKrotka";
+    public static final String Klient_NazwaPelna = "Klient.NazwaPelna";
+    public static final String Klient_PESEL_REGON = "Klient.PESEL_REGON";
+    public static final String Klient_NIP = "Klient.NIP";
+    public static final String Klient_Adr_Kraj = "Klient.Adr_Kraj";
+    public static final String Klient_Adr_Ulica = "Klient.Adr_Ulica";
+    public static final String Klient_Adr_KodPocztowy = "Klient.Adr_KodPocztowy";
+    public static final String Klient_Adr_Miejscowosc = "Klient.Adr_Miejscowosc";
+    public static final String Klient_Adr_Reszta = "Klient.Adr_Reszta";
+    public static final String Klient_Adr_Reszta2 = "Klient.Adr_Reszta2";
+    public static final String Klient_Wojewodztwo = "Klient.Wojewodztwo";
+    public static final String Klient_Powiat = "Klient.Powiat";
+    public static final String Klient_Gmina = "Klient.Gmina";
+    public static final String Klient_FormaOrg = "Klient.FormaOrg";
+    public static final int NBP_A_KS_SORBNET2 = 0;
+    public static final int NBP_A_KS_SORBNET2_DO_WYJASNIENIA = 1;
+    public static final int NBP_A_KS_SORBNET2_PRZEKSIEGOWANIE = 2;
+    public static final int NBP_A_KS_SORBNET2_ZWROT = 3;
+    public static final String NBP_TYP_ZLECENIA = "NBP.TYP_ZLECENIA";
+    public static final String NBP_DATA_REALIZACJI = "NBP.DATA_REALIZACJI";
+    public static final String NBP_STORNO = "NBP.STORNO";
+    public static final String NBP_TYTUL = "NBP.TYTUŁ";
+    public static final String NBP_KWOTA = "NBP.KWOTA";
+    public static final String NBP_NR_BANKU_WN = "NBP.NR_BANKU_WN";
+    public static final String NBP_NR_BANKU_MA = "NBP.NR_BANKU_MA";
+    public static final String NBP_OPIS_DODATKOWY = "NBP.OPIS_DODATKOWY";
+    public static final String NBP_STATUS_ZLECENIA = "NBP.STATUS_ZLECENIA";
+    public static final String NBP_ID_PACZKI = "NBP.ID_PACZKI";
+    public static final String NBP_NR_ZLECENIA = "NBP.NR_ZLECENIA";
+    public static final String NBP_NR_DOKUMENTU = "NBP.NR_DOKUMENTU";
+    public static final String NBP_NR_DEKRETU = "NBP.NR_DEKRETU";
+    public static final String NBP_DATA_DOKUMENTU = "NBP.DATA_DOKUMENTU";
+    public static final String NBP_JEDNOSTKA = "NBP.JEDNOSTKA";
+    public static final String NBP_ID_TRANSAKCJI = "NBP.ID_TRANSAKCJI";
+    public static final String NBP_R_ekNadawcy = "NBP.R-ekNadawcy";
+    public static final String NBP_NazwaNadawcy = "NBP.NazwaNadawcy";
+    public static final String NBP_R_ekAdresata = "NBP.R-ekAdresata";
+    public static final String NBP_NazwaAdresata = "NBP.NazwaAdresata";
+    public static final String NBP_OpisDodatkowy = "NBP.OpisDodatkowy";
+    public static final String NBP_AdresatFinalny = "NBP.AdresatFinalny";
+    public static final String NBP_Nadawca = "NBP.Nadawca";
+    public static final String NBP_ID = "NBP.ID";
+    public static final String NBP_R_ekDoWyjasnienia = "NBP.R-ekDoWyjasnienia";
+    public static final String NBP_NrBledu = "NBP.NrBledu";
+    public static final String NBP_OpisBledu = "NBP.OpisBledu";
+    public static final String NBP_KwotaVat = "NBP.KwotaVAT";
+    public static final String NBP_IDC = "NBP.IDC";
+    public static final String NBP_INV = "NBP.INV";
+    public static final String NBP_MPP_TXT = "NBP.TXT";
+    public static final int REJ_OPLAT_A_DODANIE = 0;
+    public static final int REJ_OPLAT_A_POBRANIE = 1;
+    public static final int REJ_OPLAT_A_ALGORYTMY = 2;
+    public static final int REJ_OPLAT_A_DODANIE_ODSETEK = 3;
+    public static final int REJ_OPLAT_A_ANULOWANIE = 4;
+    public static final String REJPRO_OPLATY = "RejPro.Oplaty";
+    public static final String REJPRO_ILE_DODANO = "RejPro.IleDodano";
+    public static final String REJPRO_OPIS_BLEDU = "RejPro.OpisBledu";
+    public static final String REJPRO_KOD_BLEDU = "RejPro.KodBledu";
+    public static final String REJPRO_DATA_DOK_POW = "RejPro.DataDokPow";
+    public static final String REJPRO_NR_DOK_POW = "RejPro.NrDokPow";
+    public static final String REJPRO_NR_DEKR_POW = "RejPro.NrDekrPow";
+    public static final String REJPRO_ID = "RejPro.ID";
+    public static final String REJPRO_TYP = "RejPro.Typ";
+    public static final String REJPRO_KOD = "RejPro.Kod";
+    public static final String REJPRO_STATUS = "RejPro.Status";
+    public static final String REJPRO_DATA_DOK = "RejPro.DataDokumentu";
+    public static final String REJPRO_NR_DOK = "RejPro.NrDokumentu";
+    public static final String REJPRO_NR_DEKR = "RejPro.NrDekretu";
+    public static final String REJPRO_ID_UMOWY = "RejPro.IDUmowy";
+    public static final String REJPRO_REF_UMOWY = "RejPro.RefUmowy";
+    public static final String REJPRO_DATA = "RejPro.DataOplaty";
+    public static final String REJPRO_OPLATA_JEDN = "RejPro.OplataJedn";
+    public static final String REJPRO_USLUGI = "RejPro.Uslugi";
+    public static final String REJPRO_NALICZENIA = "RejPro.Naliczenia";
+    public static final String REJPRO_KANAL = "RejPro.Kanal";
+    public static final String REJPRO_POWIAZANA = "RejPro.Powiazana";
+    public static final String REJPRO_ALG_KOD = "RejPro.Alg_Kod";
+    public static final String REJPRO_ALG_TYP_OPLATY = "RejPro.Alg_TypOplaty";
+    public static final String REJPRO_ALG_CENA_OPIS = "RejPro.Alg_CenaOpis";
+    public static final String REJPRO_ALG_MIN = "RejPro.Alg_Min";
+    public static final String REJPRO_ALG_MAX = "RejPro.Alg_Max";
+    public static final String REJPRO_ALG_PROCENT = "RejPro.Alg_Procent";
+    public static final String REJPRO_ALG_OPIS = "RejPro.Alg_Opis";
+    public static final String REJPRO_ZWOLN_OKRES = "RejPro.Zwoln_Okres";
+    public static final String REJPRO_ZWOLN_LICZBA = "RejPro.Zwoln_Liczba";
+    public static final String REJPRO_ZWOLN_PROMOCJA = "RejPro.Promocja";
+    public static final int ZES_OPLAT_A_LISTA_ZESTAWIEN = 0;
+    public static final int ZES_OPLAT_A_POBIERZ_ZESTAWIENIE = 1;
+    public static final int ZES_OPLAT_A_POBIERZ_PDF = 2;
+    public static final String ZESPAD_ID = "ZesPAD.ID";
+    public static final String ZESPAD_DATA = "ZesPAD.Data";
+    public static final String ZESPAD_DATA_OD = "ZesPAD.DataOd";
+    public static final String ZESPAD_DATA_DO = "ZesPAD.DataDo";
+    public static final String ZESPAD_NR_KOLEJNY = "ZesPAD.NrKolejny";
+    public static final String ZESPAD_WPISAL_DATA = "ZesPAD.Wpisal_Data";
+    public static final String ZESPAD_WPISAL_CZAS = "ZesPAD.Wpisal_Czas";
+    public static final String ZESPAD_WPISAL_KTO = "ZesPAD.Wpisal_Kto";
+    public static final String ZESPAD_ID_UMOWY = "ZesPAD.IDUmowy";
+    public static final String ZESPAD_REF_UMOWY = "ZesPAD.RefUmowy";
+    public static final String ZESPAD_DATA_GENERACJI_OD = "ZesPAD.DataGeneracjiOd";
+    public static final String ZESPAD_DATA_GENERACJI_DO = "ZesPAD.DataGeneracjiDo";
+    public static final String ZESPAD_CZY_ZAMKNIETE = "ZesPAD.CzyZamkniete";
+    public static final String ZESPAD_OPIS_DODATKOWY = "ZesPAD.OpisDodatkowy";
+    public static final String ZESPAD_TYLKO_REPREZ = "ZesPAD.TylkoReprez";
+    public static final String ZESPAD_CZY_BEZ_PUSTYCH = "ZesPAD.CzyBezPustych";
+    public static final String ZESPAD_ZAKRES = "ZesPAD.Zakres";
+    public static final String ZESPAD_DATA_ZAMK_OD = "ZesPAD.DataZamkOd";
+    public static final String ZESPAD_DATA_ZAMK_DO = "ZesPAD.DataZamkDo";
+    public static final String ZESPAD_NAZWA_PDF = "ZesPAD.NazwaPDF";
+    public static final String ZESPAD_STATUS_PDF = "ZesPAD.StatusPDF";
+    public static final String ZESPAD_INFO_DODATKOWE = "ZesPAD.InfoDodatkowe";
+    public static final String ZESPAD_POD_NAZWA = "ZesPAD.PodNazwa";
+    public static final String ZESPAD_POD_ADRES = "ZesPAD.PodAdres";
+    public static final String ZESPAD_POD_TELEFON = "ZesPAD.PodTelefon";
+    public static final String ZESPAD_POD_EMAIL = "ZesPAD.PodEmail";
+    public static final String ZESPAD_POD_FAX = "ZesPAD.PodFax";
+    public static final String ZESPAD_POD_WWW = "ZesPAD.PodWWW";
+    public static final String ZESPAD_KONTAKT = "ZesPAD.Kontakt";
+    public static final String ZESPAD_NAZWA_RKU = "ZesPAD.NazwaR-ku";
+    public static final String ZESPAD_IBAN = "ZesPAD.IBAN";
+    public static final String ZESPAD_NRB = "ZesPAD.NRB";
+    public static final String ZESPAD_KNR = "ZesPAD.KNR";
+    public static final String ZESPAD_BIC = "ZesPAD.BIC";
+    public static final String ZESPAD_WALUTA = "ZesPAD.Waluta";
+    public static final String ZESPAD_IMIE_NAZWISKO1 = "ZesPAD.ImieNazwisko1";
+    public static final String ZESPAD_IMIE_NAZWISKO2 = "ZesPAD.ImieNazwisko2";
+    public static final String ZESPAD_ADRES = "ZesPAD.Adres";
+    public static final String ZESPAD_EMAIL1 = "ZesPAD.Email1";
+    public static final String ZESPAD_EMAIL2 = "ZesPAD.Email2";
+    public static final String ZESPAD_OPLATY_RAZEM = "ZesPAD.OplatyRazem";
+    public static final String ZESPAD_ODS_ZAPL_RAZEM = "ZesPAD.OdsZaplRazem";
+    public static final String ZESPAD_ODS_UZ_RAZEM = "ZesPAD.OdsUzRazem";
+    public static final String ZESPAD_WSK_KOSZTOWY = "ZesPAD.WskKosztowy";
+    public static final String ZESPAD_PONIES_OPLATY = "ZesPAD.PoniesOplaty";
+    public static final String ZESPAD_ODS_ZAPLACONE = "ZesPAD.OdsZaplacone";
+    public static final String ZESPAD_ODS_UZYSKANE = "ZesPAD.OdsUzyskane";
+    public static final String ZESPAD_ZALEGLE_OPLATY = "ZesPAD.ZalegleOplaty";
+    public static final String ZESPAD_TABELA = "ZesPAD.Tabela";
+    public static final String ZESPAD_KOD_SEKCJI = "ZesPAD.KodSekcji";
+    public static final String ZESPAD_SEKCJA = "ZesPAD.Sekcja";
+    public static final String ZESPAD_USLUGA = "ZesPAD.Usluga";
+    public static final String ZESPAD_KANAL = "ZesPAD.Kanal";
+    public static final String ZESPAD_ALGORYTM = "ZesPAD.Algorytm";
+    public static final String ZESPAD_OKRES = "ZesPAD.Okres";
+    public static final String ZESPAD_KOSZT_ROCZNY = "ZesPAD.KosztRoczny";
+    public static final String ZESPAD_PAKIET = "ZesPAD.Pakiet";
+    public static final String ZESPAD_PRZEKROCZENIE = "ZesPAD.Przekroczenie";
+    public static final String ZESPAD_LICZBA_USLUG = "ZesPAD.LiczbaUslug";
+    public static final String ZESPAD_OPLATA = "ZesPAD.Oplata";
+    public static final String ZESPAD_LICZBA_NALICZ = "ZesPAD.LiczbaNalicz";
+    public static final String ZESPAD_RAZEM = "ZesPAD.Razem";
+    public static final String ZESPAD_STOPA = "ZesPAD.Stopa";
+    public static final String ZESPAD_ODSETKI = "ZesPAD.Odsetki";
+    public static final String ZESPAD_ODS_NAZWA_RKU = "ZesPAD.OdsNazwaRku";
+    public static final String ZESPAD_PDF = "ZesPAD.PDF";
+    public static final int ZAANG_A_POBRANIE = 1;
+    public static final String Zaang_NrKlienta = "Zaang_NrKlienta";
+    public static final String Zaang_Lista = "Zaang_Lista";
+    public static final int STORNO_A_WYKONAJ = 1;
+    public static final int STIR_A_POBRANIE_BLOKAD_UMOWY = 1;
+    public static String STIR_Numer = "STIR.Numer";
+    public static String STIR_Blokada = "STIR.Blokada";
+    public static String STIR_NIP = "STIR.NIP";
+    public static String STIR_RefBanku = "STIR.RefBanku";
+    public static String STIR_Rodzaj = "STIR.Rodzaj";
+    public static String STIR_Kwota = "STIR.Kwota";
+    public static String STIR_Waluta = "STIR.Waluta";
+    public static String STIR_DatRej = "STIR.DatRej";
+    public static String STIR_DatObow = "STIR.DatObow";
+    public static String STIR_DatZamk = "STIR.DatZamk";
+    public static String STIR_Organ = "STIR.Organ";
+    public static final int PIK_GZ_KL = 1;
+    public static final int PIK_GZ_MAX = 2;
+    public static final int KL_ID = 1;
+    public static final int KL_Nazwa = 2;
+    public static final int KL_TypFormatki = 3;
+    public static final int KL_TypKlienta = 4;
+    public static final int KL_Status = 5;
+    public static final int KL_CzyPracowal = 6;
+    public static final int KL_PESEL_REGON = 7;
+    public static final int KL_Adr_Wojewodztwo = 8;
+    public static final int KL_Adr_KodPocztowy = 9;
+    public static final int KL_Adr_Miejscowosc = 10;
+    public static final int KL_Adr_Ulica = 11;
+    public static final int KL_Adr_Reszta = 12;
+    public static final int KL_Adk_KodPocztowy = 13;
+    public static final int KL_Adk_Miejscowosc = 14;
+    public static final int KL_Adk_Ulica = 15;
+    public static final int KL_Adk_Reszta = 16;
+    public static final int KL_DataAdrKor_Od = 17;
+    public static final int KL_DataAdrKor_Do = 18;
+    public static final int KL_Telefon_1 = 19;
+    public static final int KL_Telefon_2 = 20;
+    public static final int KL_Fax = 21;
+    public static final int KL_Email = 22;
+    public static final int KL_Telefon_SMS = 23;
+    public static final int KL_TypKontaktu = 24;
+    public static final int KL_MiejsceKontaktu = 25;
+    public static final int KL_StatusObywatel = 26;
+    public static final int KL_Obywatelstwo = 27;
+    public static final int KL_Kraj = 28;
+    public static final int KL_VIP = 29;
+    public static final int KL_PowKapitalowe = 30;
+    public static final int KL_PowPersonalne = 31;
+    public static final int KL_NIP = 32;
+    public static final int KL_HasloJawne = 33;
+    public static final int KL_ZgodaNaReklame = 34;
+    public static final int KL_InfoDodatkowe = 35;
+    public static final int KL_Wpis_Kto = 36;
+    public static final int KL_Wpis_Data = 37;
+    public static final int KL_Zmiana_Kto = 38;
+    public static final int KL_Zmiana_Data = 39;
+    public static final int KL_Skreslenie_Kto = 40;
+    public static final int KL_Skreslenie_Data = 41;
+    public static final int KL_OsobaProwadzaca = 42;
+    public static final int KL_DataKontaktu = 43;
+    public static final int KL_ZwrotGrzeczn = 44;
+    public static final int KL_GrupaRyzyka = 45;
+    public static final int KL_PoziomRyzyka = 46;
+    public static final int KL_Nazwisko = 47;
+    public static final int KL_Imie_1 = 48;
+    public static final int KL_Imie_2 = 49;
+    public static final int KL_NazwiskoRodowe = 50;
+    public static final int KL_NazwiskoMatki = 51;
+    public static final int KL_ImieOjca = 52;
+    public static final int KL_ImieMatki = 53;
+    public static final int KL_Plec = 54;
+    public static final int KL_DataUrodzenia = 55;
+    public static final int KL_MiejsceUrodz = 56;
+    public static final int KL_DowodOsobisty = 57;
+    public static final int KL_WystawcaDWO = 58;
+    public static final int KL_DataDWO = 59;
+    public static final int KL_TypInnegoDok = 60;
+    public static final int KL_InnyDokument = 61;
+    public static final int KL_WystawcaInnego = 62;
+    public static final int KL_DataWydaniaInnego = 63;
+    public static final int KL_StanCywilny = 64;
+    public static final int KL_Wyksztalcenie = 65;
+    public static final int KL_Zawod = 66;
+    public static final int KL_ZakladPracy = 67;
+    public static final int KL_ZrodloPrzychodu = 68;
+    public static final int KL_Praca_KodPocztowy = 69;
+    public static final int KL_Praca_Miejscowosc = 70;
+    public static final int KL_Praca_Ulica = 71;
+    public static final int KL_Praca_Telefon = 72;
+    public static final int KL_Stanowisko = 73;
+    public static final int KL_RokRozpoczecia = 74;
+    public static final int KL_NazwaPelna = 75;
+    public static final int KL_NazwaKrotka = 76;
+    public static final int KL_SzczebelAdmin = 77;
+    public static final int KL_StatusKlienta = 78;
+    public static final int KL_GalazGospodarki = 79;
+    public static final int KL_ObrotyRoczne = 80;
+    public static final int KL_EKD = 81;
+    public static final int KL_FormaOrg = 82;
+    public static final int KL_StrukturaOrg = 83;
+    public static final int KL_Podpisy = 84;
+    public static final int KL_DataPowstania = 85;
+    public static final int KL_WielkoscFirmy = 86;
+    public static final int KL_IloscZatrud = 87;
+    public static final int KL_Internet = 88;
+    public static final int KL_ElektronicznyID = 89;
+    public static final int KL_NrUrzadzenia = 89;
+    public static final int KL_HasloUrzadzenia = 91;
+    public static final int KL_PelneDaneDoWyc = 92;
+    public static final int KL_DanePotwierdzone = 93;
+    public static final int KL_Jednostka = 94;
+    public static final int KL_Modulo = 95;
+    public static final int KL_TypKlientaOpis = 96;
+    public static final int KL_TypInnegoDokOpis = 97;
+    public static final int KL_DataOd = 98;
+    public static final int KL_TypZmiany = 99;
+    public static final int KL_ID_Intercomp = 100;
+    public static final int KL_Token_nr = 101;
+    public static final int KL_Haslo = 102;
+    public static final int KL_TYP_LOG = 103;
+    public static final int KL_Nr_Koperty = 104;
+    public static final int KL_NrOddzialu = 105;
+    public static final int KL_Adr_Kraj = 106;
+    public static final int KL_Adr_Reszta2 = 107;
+    public static final int KL_Adk_Kraj = 108;
+    public static final int KL_Adk_Reszta2 = 109;
+    public static final int KL_Powiat = 110;
+    public static final int KL_KrajKlienta = 111;
+    public static final int KL_EKZ = 112;
+    public static final int KL_Segment = 113;
+    public static final int KL_CzlonekZarzadu = 114;
+    public static final int KL_Kierownik = 115;
+    public static final int KL_ZgodaKlienta = 116;
+    public static final int KL_DataZgodyKlienta = 117;
+    public static final int KL_OkresZgodyKlienta = 118;
+    public static final int KL_DataWycofZgody = 119;
+    public static final int KL_Klient_iF1 = 120;
+    public static final int KL_Ubezwlasnowol = 121;
+    public static final int KL_ZgodaPrzedstawUstaw = 122;
+    public static final int KL_KRS_RHB = 123;
+    public static final int KL_PKDDodatkowy = 124;
+    public static final int KL_Adr_PrefiksUlicy = 125;
+    public static final int KL_Adr_NazwaUlicy = 126;
+    public static final int KL_Adr_NrDomu = 127;
+    public static final int KL_Adr_NrLokalu = 128;
+    public static final int KL_Adk_PrefiksUlicy = 129;
+    public static final int KL_Adk_NazwaUlicy = 130;
+    public static final int KL_Adk_NrDomu = 131;
+    public static final int KL_Adk_NrLokalu = 132;
+    public static final int KL_EKD07 = 133;
+    public static final int KL_PoziomDostepu = 134;
+    public static final int KL_Adr_Poczta = 135;
+    public static final int KL_Adk_Poczta = 136;
+    public static final int KL_CzyGlownyRB = 137;
+    public static final int KL_CzyWspolRB = 138;
+    public static final int KL_CzyPelnomocnikRB = 139;
+    public static final int KL_CzyGlownyKR = 140;
+    public static final int KL_CzyWspolKR = 141;
+    public static final int KL_CzyKarta = 142;
+    public static final int KL_Zleceniodawca = 143;
+    public static final int KL_StatusNrKlienta = 144;
+    public static final int KL_PowKapZNieRezyd = 145;
+    public static final int KL_PEP = 146;
+    public static final int KL_DataObowiazywaniaPEP = 147;
+    public static final int KL_RyzykoPrania = 148;
+    public static final int KL_PepBaza = 149;
+    public static final int KL_DataNieakcept = 150;
+    public static final int KL_PowodOdmowy = 151;
+    public static final int KL_PochodzMajatku1 = 152;
+    public static final int KL_PochodzMajatku2 = 153;
+    public static final int KL_PochodzMajatku3 = 154;
+    public static final int KL_CelStosunkowGosp = 155;
+    public static final int KL_KrajPapierow = 156;
+    public static final int KL_KrajUrodzenia = 157;
+    public static final int KL_KrajNadaniaNIP = 158;
+    public static final int KL_NierezydentNIP = 159;
+    public static final int KL_KrajDokTozsam = 160;
+    public static final int KL_KlasyfikacjaMF = 161;
+    public static final int KL_TypKlientaBFG = 162;
+    public static final int KL_TypPodmiotuBFG = 163;
+    public static final int KL_TypSzczegBFG = 164;
+    public static final int KL_PKD07Dodatkowy = 165;
+    public static final int KL_GalazGospodarki07 = 166;
+    public static final int KL_KlasaRattingowa = 167;
+    public static final int KL_NRB = 168;
+    public static final int KL_SegmentRynku = 169;
+    public static final int KL_KategoriaKlienta = 170;
+    public static final int KL_TypSzczegolowy = 171;
+    public static final int KL_TypNBP = 172;
+    public static final int KL_Gmina = 173;
+    public static final int KL_WG_LISTY_EGZ = 175;
+    public static final int KL_PakietKlienta = 176;
+    public static final int KL_WG_FORMA_ORG = 177;
+    public static final int KL_ZrodloDanych = 178;
+    public static final int KL_SumaBilansowa = 179;
+    public static final int KL_BrakAdresuWDok = 180;
+    public static final int KL_DataZgonu = 181;
+    public static final int KL_DataZglZgonu = 182;
+    public static final int KL_DataUpadlosci = 183;
+    public static final int KL_PJB = 184;
+    public static final int KL_RejHandlowyNr = 185;
+    public static final int KL_RejHandlowyKraj = 186;
+    public static final int KL_RejHandlowyData = 187;
+    public static final int KL_RejHandlowyNazwa = 188;
+    public static final int KL_RyzykoDataOceny = 189;
+    public static final int KL_RyzykoPunkty = 190;
+    public static final int KL_RyzykoKategoria = 191;
+    public static final int KL_RyzykoCzynniki = 192;
+    public static final int KL_ZarzadSukcesyjny = 193;
+    public static final int KL_MAX = 194;
+    public static final int AO_MAKE_AUTH = 1;
+    public static final int AO_CORECT_AUTH = 2;
+    public static final int AO_ROLLBACK_AUTH = 3;
+    public static final int KALENDARZ_A_DAJ_DNI_WOLNE = 1;
+    public static final int ELIXIR_A_ODRZUC_KOMUNIKAT = 1;
+    public static final int ELIXIR_A_ZM_STATUS_KOMUNIKAT = 2;
+    public static final int ELIXIR_A_ODRZUC_PACZKE = 3;
+    public static final int ELIXIR_A_POBRANIE_OCZEKUJACYCH = 4;
+    public static final String ELIXIR_stat_wyk = "ELIXIR_stat_wyk";
+    public static final String ELIXIR_stat_wyk_opis = "ELIXIR_stat_wyk_opis";
+    public static final int SEPA_A_WPIS = 1;
+    public static final int SEPA_A_DO_KSIEGOWANIA = 2;
+    public static final int SEPA_A_DAJ_STATUS = 3;
+    public static final String SEPA_ID = "SEPA.ID";
+    public static final String SEPA_InstrID = "SEPA.InstrID";
+    public static final String SEPA_TxID = "SEPA.TxID";
+    public static final String SEPA_Status = "SEPA.Status";
+    public static final String SEPA_NrDokumentu = "SEPA.NrDokumentu";
+    public static final String SEPA_DataDokumentu = "SEPA.DataDokumentu";
+    public static final String SEPA_NrDekretu = "SEPA.NrDekretu";
+    public static final String SEPA_Jednostka = "SEPA.Jednostka";
+    public static final String SEPA_TypDrogi = "SEPA.TypDrogi";
+    public static final String SEPA_RodzajRozrachunku = "SEPA.RodzajRozrachunku";
+    public static final String SEPA_TypTransakcji = "SEPA.TypTransakcji";
+    public static final String SEPA_AutoryzacjaID = "SEPA.AutoryzacjaID";
+    public static final String SEPA_AutoryzacjaZakres = "SEPA.AutoryzacjaZakres";
+    public static final String SEPA_RejSystemZewn = "SEPA.RejSystemZewn";
+    public static final String SEPA_RejTIDZewn = "SEPA.RejTIDZewn";
+    public static final String SEPA_TypPlatID = "SEPA.TypPłatID";
+    public static final String SEPA_TypPlatNazwa = "SEPA.TypPłatNazwa";
+    public static final String SEPA_TypPlatKod = "SEPA.TypPłatKod";
+    public static final String SEPA_KanalRozlicz = "SEPA.KanalRozlicz";
+    public static final String SEPA_EndToEnd = "SEPA.EndToEnd";
+    public static final String SEPA_Kwota = "SEPA.Kwota";
+    public static final String SEPA_Waluta = "SEPA.Waluta";
+    public static final String SEPA_DataTransakcji = "SEPA.DataTransakcji";
+    public static final String SEPA_DataWaluty = "SEPA.DataWaluty";
+    public static final String SEPA_RachunekZlec = "SEPA.RachunekZlec";
+    public static final String SEPA_ZlecDane = "SEPA.ZlecDane";
+    public static final String SEPA_ZlecAdres1 = "SEPA.ZlecAdres1";
+    public static final String SEPA_ZlecAdres2 = "SEPA.ZlecAdres2";
+    public static final String SEPA_ZlecKraj = "SEPA.ZlecKraj";
+    public static final String SEPA_ZlecIdentyfik = "SEPA.ZlecIdentyfik";
+    public static final String SEPA_ZlecRodzaj = "SEPA.ZlecRodzaj";
+    public static final String SEPA_BankZlecBIC = "SEPA.BankZlecBIC";
+    public static final String SEPA_BankZlecOddzial = "SEPA.BankZlecOddzial";
+    public static final String SEPA_KZlecDane = "SEPA.KZlecDane";
+    public static final String SEPA_KZlecAdres1 = "SEPA.KZlecAdres1";
+    public static final String SEPA_KZlecAdres2 = "SEPA.KZlecAdres2";
+    public static final String SEPA_KZlecKraj = "SEPA.KZlecKraj";
+    public static final String SEPA_KZlecIdentyfik = "SEPA.KZlecIdentyfik";
+    public static final String SEPA_KZlecRodzaj = "SEPA.KZlecRodzaj";
+    public static final String SEPA_RachunekBenef = "SEPA.RachunekBenef";
+    public static final String SEPA_BankBenefBIC = "SEPA.BankBenefBIC";
+    public static final String SEPA_BankBenefOddzial = "SEPA.BankBenefOddzial";
+    public static final String SEPA_BenefDane = "SEPA.BenefDane";
+    public static final String SEPA_BenefAdres1 = "SEPA.BenefAdres1";
+    public static final String SEPA_BenefAdres2 = "SEPA.BenefAdres2";
+    public static final String SEPA_BenefKraj = "SEPA.BenefKraj";
+    public static final String SEPA_BenefIdentyfik = "SEPA.BenefIdentyfik";
+    public static final String SEPA_BenefRodzaj = "SEPA.BenefRodzaj";
+    public static final String SEPA_KBenefDane = "SEPA.KBenefDane";
+    public static final String SEPA_KBenefAdres1 = "SEPA.KBenefAdres1";
+    public static final String SEPA_KBenefAdres2 = "SEPA.KBenefAdres2";
+    public static final String SEPA_KBenefKraj = "SEPA.KBenefKraj";
+    public static final String SEPA_KBenefIdentyfik = "SEPA.KBenefIdentyfik";
+    public static final String SEPA_KBenefRodzaj = "SEPA.KBenefRodzaj";
+    public static final String SEPA_SzczegPlatnosci = "SEPA.SzczegPłatności";
+    public static final String SEPA_Zwrot = "SEPA.Zwrot";
+    public static final String SEPA_SzczegZwrotu = "SEPA.SzczegZwrotu";
+    public static final String SEPA_SzczegOplat = "SEPA.SzczegOpłat";
+    public static final String SEPA_Nostro = "SEPA.Nostro";
+    public static final String SEPA_IDRachProwizji = "SEPA.IDRachProwizji";
+    public static final String SEPA_KursWn = "SEPA.KursWn";
+    public static final String SEPA_KursMa = "SEPA.KursMa";
+    public static final String SEPA_NegocjowanieKursu = "SEPA.NegocjowanieKursu";
+    public static final String SEPA_KodWycofaniaID = "SEPA.KodWycofaniaID";
+    public static final String SEPA_KodWycofNazwa = "SEPA.KodWycofNazwa";
+    public static final String SEPA_KodWycofKod = "SEPA.KodWycofKod";
+    public static final String SEPA_Niekompletny = "SEPA.Niekompletny";
+    public static final String SEPA_TrybZmianyStatusu = "SEPA.TrybZmianyStatusu";
+    public static final String SEPA_OpisBledu = "SEPA.OpisBłędu";
+    public static final String SEPA_Wpisal = "SEPA.Wpisał";
+    public static final String SEPA_DataWpisu = "SEPA.DataWpisu";
+    public static final String SEPA_CzasWpisu = "SEPA.CzasWpisu";
+    public static final String SEPA_Zmienil = "SEPA.Zmienił";
+    public static final String SEPA_DataZmiany = "SEPA.DataZmiany";
+    public static final String SEPA_CzasZmiany = "SEPA.CzasZmiany";
+    public static final String SEPA_StatusRealizacji = "SEPA.StatusRealizacji";
+    public static final String SEPA_RodzajKomunikatu = "SEPA.RodzajKomunikat";
+    public static final String SEPA_SkadJednostka = "SEPA.SkadJednostka";
+    public static final String SEPAKS_TRANSACTION_KIND = "SEPAKS.TRANSACTION_KIND";
+    public static final String SEPAKS_CHANNEL = "SEPAKS.CHANNEL";
+    public static final String SEPAKS_CFEE_TYPEN = "SEPAKS.CFEE_TYPE";
+    public static final String SEPAKS_CFEE_AMOUNTHN = "SEPAKS.CFEE_AMOUNT";
+    public static final String SEPAKS_DIRECTION = "SEPAKS.DIRECTION";
+    public static final String SEPAKS_IDCL = "SEPAKS.ID_CL";
+    public static final String SEPAKS_REQ_EXCH_STOP = "SEPAKS.REQ_EXCH_STOP";
+    public static final String SEPAKS_TRANSFER_TYPE = "SEPAKS.TRANSFER_TYPE";
+    public static final String SEPAKS_CTGY_PURP = "SEPAKS.CTGY_PURP";
+    public static final String SEPAKS_END_TO_END = "SEPAKS.END_TO_END";
+    public static final String SEPAKS_AMOUNT = "SEPAKS.AMOUNT";
+    public static final String SEPAKS_CURRENCY_SYMBOL = "SEPAKS.CURRENCY_SYMBOL";
+    public static final String SEPAKS_VALUE_DATE = "SEPAKS.VALUE_DATE";
+    public static final String SEPAKS_CONTRACT_NO_REM = "SEPAKS.CONTRACT_NO_REM";
+    public static final String SEPAKS_BENEFICIARY_NAME = "SEPAKS.BENEFICIARY_NAME";
+    public static final String SEPAKS_ULTIM_DEBTOR_NAME = "SEPAKS.ULT_DEBTOR_NAME";
+    public static final String SEPAKS_CONTRACT_NO_BEN = "SEPAKS.CONTRACT_NO_BEN";
+    public static final String SEPAKS_ULTIM_CREDITOR_NAME = "SEPAKS.ULT_CREDITOR_NAME";
+    public static final String SEPAKS_DESCRIPTION = "SEPAKS.DESCRIPTION";
+    public static final String SEPAKS_TYPE = "SEPAKS.TYPE";
+    public static final String SEPAKS_R_DESC = "SEPAKS.R_DESC";
+    public static final String SEPAKS_EXCHANGE_WN = "SEPAKS.EXCHANGE_WN";
+    public static final String SEPAKS_EXCHANGE_MA = "SEPAKS.EXCHANGE_MA";
+    public static final String SEPAKS_PS_SYSTEM_SYMBOL = "SEPAKS.PS_SYSTEM_SYMBOL";
+    public static final String SEPAKS_OTHER_CHARGES = "SEPAKS.OTHER_CHARGES";
+    public static final String SEPAKS_REMITTER_NAME = "SEPAKS.REMITTER_NAME";
+    public static final String SEPAKS_CURRENT_EXCHANGE = "SEPAKS.CURRENT_EXCHANGE";
+    public static final String SEPAKS_BIC = "SEPAKS.BIC";
+    public static final String EuroRo_TXT = "EuroRo";
+    public static final String EuroRo_PREFIX = "EuroRo.";
+    public static final String EuroRo_ID = "EuroRo.ID";
+    public static final String EuroRo_Strumien = "EuroRo.Strumień";
+    public static final String EuroRo_RodzajRozliczenia = "EuroRo.RodzajRozliczenia";
+    public static final String EuroRo_TypKomunikatu = "EuroRo.TypKomunikatu";
+    public static final String EuroRo_Paczka = "EuroRo.Paczka";
+    public static final String EuroRo_Indeks = "EuroRo.Indeks";
+    public static final String EuroRo_Status = "EuroRo.Status";
+    public static final String EuroRo_IDOryginalnego = "EuroRo.IDOryginalnego";
+    public static final String EuroRo_TrybZmianyStatusu = "EuroRo.TrybZmianyStatusu";
+    public static final String EuroRo_Jednostka = "EuroRo.Jednostka";
+    public static final String EuroRo_DataDokumentu = "EuroRo.DataDokumentu";
+    public static final String EuroRo_NumerDokumentu = "EuroRo.NumerDokumentu";
+    public static final String EuroRo_NumerDekretu = "EuroRo.NumerDekretu";
+    public static final String EuroRo_IDPrzekierowanego = "EuroRo.IDPrzekierowanego";
+    public static final String EuroRo_IDZaleznego = "EuroRo.IDZależnego";
+    public static final String EuroRo_IDSprzezonego = "EuroRo.IDSprzężonego";
+    public static final String EuroRo_IDTransakcji = "EuroRo.IDTransakcji";
+    public static final String EuroRo_NumerBledu = "EuroRo.NumerBłędu";
+    public static final String EuroRo_OpisBledu = "EuroRo.OpisBłędu";
+    public static final String EuroRo_DataRealizacji = "EuroRo.DataRealizacji";
+    public static final String EuroRo_Wstrzymany = "EuroRo.Wstrzymany";
+    public static final String EuroRo_Kanal = "EuroRo.Kanał";
+    public static final String EuroRo_B1AdresSwift = "EuroRo.B1AdresSwift";
+    public static final String EuroRo_B2AdresSwift = "EuroRo.B2AdresSwift";
+    public static final String EuroRo_B2Priorytet = "EuroRo.B2Priorytet";
+    public static final String EuroRo_B2CzasNadania = "EuroRo.B2CzasNadania";
+    public static final String EuroRo_B2DataOtrzymania = "EuroRo.B2DataOtrzymania";
+    public static final String EuroRo_B2Data = "EuroRo.B2Data";
+    public static final String EuroRo_B2Czas = "EuroRo.B2Czas";
+    public static final String EuroRo_NrReferencyjny_20 = "EuroRo.NrReferencyjny_20";
+    public static final String EuroRo_NrRefOryginalny = "EuroRo.NrRefOryginalny";
+    public static final String EuroRo_NrRefKom_21 = "EuroRo.NrRefKom_21";
+    public static final String EuroRo_KodOperacji_23B = "EuroRo.KodOperacji_23B";
+    public static final String EuroRo_KodInstr1_23E = "EuroRo.KodInstr1_23E";
+    public static final String EuroRo_KodInstr2_23E = "EuroRo.KodInstr2_23E";
+    public static final String EuroRo_KodInstr3_23E = "EuroRo.KodInstr3_23E";
+    public static final String EuroRo_KodInstr4_23E = "EuroRo.KodInstr4_23E";
+    public static final String EuroRo_KodInstr5_23E = "EuroRo.KodInstr5_23E";
+    public static final String EuroRo_KodInstr6_23E = "EuroRo.KodInstr6_23E";
+    public static final String EuroRo_KodTypuKom_26T = "EuroRo.KodTypuKom_26T";
+    public static final String EuroRo_DataWaluty_32A = "EuroRo.DataWaluty_32A";
+    public static final String EuroRo_Waluta_32A = "EuroRo.Waluta_32A";
+    public static final String EuroRo_Kwota_32A = "EuroRo.Kwota_32A";
+    public static final String EuroRo_Waluta_33B = "EuroRo.Waluta_33B";
+    public static final String EuroRo_Kwota_33B = "EuroRo.Kwota_33B";
+    public static final String EuroRo_KursWymiany_36 = "EuroRo.KursWymiany_36";
+    public static final String EuroRo_TrybPola50 = "EuroRo.TrybPola50";
+    public static final String EuroRo_ZlecRachunek_50a = "EuroRo.ZlecRachunek_50a";
+    public static final String EuroRo_ZlecBIC_50A = "EuroRo.ZlecBIC_50A";
+    public static final String EuroRo_ZlecNazwa_50K = "EuroRo.ZlecNazwa_50K";
+    public static final String EuroRo_TrybPola52 = "EuroRo.TrybPola52";
+    public static final String EuroRo_InstZlecIdS_52a = "EuroRo.InstZlecIdS_52a";
+    public static final String EuroRo_InstZlecBIC_52A = "EuroRo.InstZlecBIC_52A";
+    public static final String EuroRo_InstZlecNazwa_52D = "EuroRo.InstZlecNazwa_52D";
+    public static final String EuroRo_KorespondentNad = "EuroRo.KorespondentNad";
+    public static final String EuroRo_ReprezentantNad = "EuroRo.ReprezentantNad";
+    public static final String EuroRo_ReprezentantAdr = "EuroRo.ReprezentantAdr";
+    public static final String EuroRo_AdresatFinIdS_56A = "EuroRo.AdresatFinIdS_56A";
+    public static final String EuroRo_AdresatFinBIC_56A = "EuroRo.AdresatFinBIC_56A";
+    public static final String EuroRo_AdresatFinalny = "EuroRo.AdresatFinalny";
+    public static final String EuroRo_InstBenefIdS_57A = "EuroRo.InstBenefIdS_57A";
+    public static final String EuroRo_InstBenefBIC_57A = "EuroRo.InstBenefBIC_57A";
+    public static final String EuroRo_InstBenefOddzial = "EuroRo.InstBenefOddziaĺ";
+    public static final String EuroRo_BenefIdS_58A = "EuroRo.BenefIdS_58A";
+    public static final String EuroRo_TrybPola59 = "EuroRo.TrybPola59";
+    public static final String EuroRo_BenefRach_59a = "EuroRo.BenefRach_59a";
+    public static final String EuroRo_BenefBIC_59A_58A = "EuroRo.BenefBIC_59A_58A";
+    public static final String EuroRo_BenefNazwa_59 = "EuroRo.BenefNazwa_59";
+    public static final String EuroRo_Tytul_70 = "EuroRo.Tytuł_70";
+    public static final String EuroRo_SzczegOplat_71A = "EuroRo.SzczegOpłat_71A";
+    public static final String EuroRo_OplNad1Waluta_71F = "EuroRo.OpłNad1Waluta_71F";
+    public static final String EuroRo_OplNad1Kwota_71F = "EuroRo.OpłNad1Kwota_71F";
+    public static final String EuroRo_OplNad2Waluta_71F = "EuroRo.OpłNad2Waluta_71F";
+    public static final String EuroRo_OplNad2Kwota_71F = "EuroRo.OpłNad2Kwota_71F";
+    public static final String EuroRo_OplNad3Waluta_71F = "EuroRo.OpłNad3Waluta_71F";
+    public static final String EuroRo_OplNad3Kwota_71F = "EuroRo.OpłNad3Kwota_71F";
+    public static final String EuroRo_OplNad4Waluta_71F = "EuroRo.OpłNad4Waluta_71F";
+    public static final String EuroRo_OplNad4Kwota_71F = "EuroRo.OpłNad4Kwota_71F";
+    public static final String EuroRo_OplNad5Waluta_71F = "EuroRo.OpłNad5Waluta_71F";
+    public static final String EuroRo_OplNad5Kwota_71F = "EuroRo.OpłNad5Kwota_71F";
+    public static final String EuroRo_OplAdrWaluta_71G = "EuroRo.OpłAdrWaluta_71G";
+    public static final String EuroRo_OplAdrKwota_71G = "EuroRo.OpłAdrKwota_71G";
+    public static final String EuroRo_InfMiedzybank_72 = "EuroRo.InfMiędzybank_72";
+    public static final String EuroRo_ZlecenieSE = "EuroRo.ZlecenieSE";
+    public static final String EuroRo_InfoStatTypR_ku = "EuroRo.InfoStatTypR-ku";
+    public static final String EuroRo_InfoStatKraj = "EuroRo.InfoStatKraj";
+    public static final String EuroRo_InfoStatTytul = "EuroRo.InfoStatTytuł";
+    public static final String EuroRo_InfoStatREGON = "EuroRo.InfoStatREGON";
+    public static final String EuroRo_Wpisal = "EuroRo.Wpisał";
+    public static final String EuroRo_DataWpisu = "EuroRo.DataWpisu";
+    public static final String EuroRo_CzasWpisu = "EuroRo.CzasWpisu";
+    public static final String EuroRo_ZmienilStatus = "EuroRo.ZmieniłStatus";
+    public static final String EuroRo_DataZmianyStatusu = "EuroRo.DataZmianyStatusu";
+    public static final String EuroRo_CzasZmianyStatusu = "EuroRo.CzasZmianyStatusu";
+    public static final String AML_DataAktKlienta = "AML.DataAktKlienta";
+    public static final int WGOT_A_LISTA_TYPOW_WYPLAT = 1;
+    public static final String WGOT_TYP = "WGOT.Typ";
+    public static final String WGOT_OPIS = "WGOT.Opis";
+    public static final String WGOT_ID = "WGOT.ID";
+    public static final int UMP_A_ZMIANA = 1;
+    public static final String UMP_NRB = "UMP_NRB";
+    public static final String UMP_Parametr = "UMP_Parametr";
+    public static final String UMP_Typ = "UMP_Typ";
+    public static final String UMP_Kwota = "UMP_Kwota";
+    public static final String UMP_Czest = "UMP_Częst";
+    public static final String UMP_Data = "UMP_Data";
+    public static final String UMP_Sposob = "UMP_Sposób";
+    public static final String UMP_Prog = "UMP_Próg";
+    public static final String UMP_OpozDatyPrzesz = "UMP_OpóźDatyPrzesz";
+    public static final String UMP_LiczPrzesz = "UMP_LiczPrzesz";
+    public static final String UMP_JednPrzesz = "UMP_JednPrzesz";
+    public static final String UMP_AlgPodst = "UMP_AlgPodst";
+    public static final String UMP_AlgPodstTab = "UMP_AlgPodstTab";
+    public static final String UMP_AlgPodstMno = "UMP_AlgPodstMno";
+    public static final String UMP_AlgPodstPod = "UMP_AlgPodstPod";
+    public static final String UMP_AlgKarny = "UMP_AlgKarny";
+    public static final String UMP_AlgKarnyTab = "UMP_AlgKarnyTab";
+    public static final String UMP_AlgKarnyMno = "UMP_AlgKarnyMno";
+    public static final String UMP_AlgKarnyPod = "UMP_AlgKarnyPod";
+    public static final String UMP_AlgWm = "UMP_AlgWm";
+    public static final String UMP_AlgWmTab = "UMP_AlgWmTab";
+    public static final String UMP_AlgWmMno = "UMP_AlgWmMno";
+    public static final String UMP_AlgWmPod = "UMP_AlgWmPod";
+    public static final int ZGKL_A_LISTA = 1;
+    public static final int ZGKL_A_DODAJ = 2;
+    public static final int ZGKL_A_EDYTUJ = 3;
+    public static final String ZGKL_IdKlienta = "ZGKL_IdKlienta";
+    public static final String ZGKL_IdZgody = "ZGKL_IdZgody";
+    public static final String ZGKL_KodZgody = "ZGKL_KodZgody";
+    public static final String ZGKL_OpisZgody = "ZGKL_OpisZgody";
+    public static final String ZGKL_Zgoda = "ZGKL_Zgoda";
+    public static final String ZGKL_DataUdzielenia = "ZGKL_DataUdzielenia";
+    public static final String ZGKL_DataOdwolania = "ZGKL_DataOdwolania";
+    public static final int OPERACJA_A_ANULOWANIE_DLA_DEPOZYTU = 1;
+    public static final String OPER_ID = "Oper.ID";
+    public static final int TAB_REZ_A_POBRANIE = 1;
+    public static final int TAB_REZ_A_DODANIE = 2;
+    public static final int TAB_REZ_A_ZMIANA = 3;
+    public static final int TAB_REZ_A_USUN = 4;
+    public static final String UCRS_TXT = "UCRS";
+    public static final String UCRS_PREFIX_TXT = "UCRS.";
+    public static final String UCRS_ID = "UCRS.ID";
+    public static final String UCRS_IdKlienta = "UCRS.IdKlienta";
+    public static final String UCRS_KrajCRS = "UCRS.KrajCRS";
+    public static final String UCRS_Nip = "UCRS.Nip";
+    public static final String UCRS_PbNip = "UCRS.PbNip";
+    public static final String UCRS_Tin = "UCRS.Tin";
+    public static final String UCRS_KrajTin = "UCRS.KrajTin";
+    public static final String UCRS_PbTin = "UCRS.PbTin";
+    public static final String UCRS_StatusPodmiotu = "UCRS.StatusPodmiotu";
+    public static final String UCRS_DataOswiadczenia = "UCRS.DataOswiadczenia";
+    public static final String UCRS_DataWaznosci = "UCRS.DataWaznosci";
+    public static final String UCRS_Zrodlo = "UCRS.Zrodlo";
+    public static final String UCRS_Oddzial = "UCRS.Oddzial";
+    public static final String UCRS_ZmOkolicznosci = "UCRS.ZmOkolicznosci";
+    KlientDefBANK klient = new KlientDefBANK();
+
+    public defAPI() {
+    }
+
+    public int PIK_Otworz() {
+        return 1;
+    }
+
+    public int PIK_Zamknij() {
+        return 1;
+    }
+
+    public int PIK_OtworzSesje(String var1, String var2, String var3) {
+        return this.klient.OtworzSesje(var1, var2, var3);
+    }
+
+    public int PIK_ZamknijSesje(int var1) {
+        return this.klient.ZamknijSesje(var1);
+    }
+
+    public int PIK_WybierzSerwer(int var1, String var2, String var3, String var4) {
+        return this.klient.WybierzSerwer(var1, var2, var3, var4);
+    }
+
+    public int PIK_SprawdzSerwer(int var1, String var2, String var3, String var4) {
+        return this.klient.SprawdzSerwer(var1, var2, var3, var4);
+    }
+
+    public int PIK_WykonajProcedure(int var1, String var2) {
+        return this.klient.WykonajProcedure(var1, var2);
+    }
+
+    public int PIK_DoZmiennej(int var1, String var2, int var3, String var4) {
+        return this.klient.DoZmiennej(var1, var2, var3, var4);
+    }
+
+    public int PIK_ZeZmiennej(int var1, String var2, String[] var3) {
+        return this.klient.ZeZmiennej(var1, var2, var3);
+    }
+
+    public int PIK_UsunZmienna(int var1, String var2) {
+        return this.klient.UsunZmienna(var1, var2);
+    }
+
+    public int PIK_UsunWszystkieZmienne(int var1) {
+        return this.klient.UsunWszystkieZmienne(var1);
+    }
+
+    public int PIK_DajSaldo(int var1, String var2, String var3, String var4, String var5, String var6, String[] var7) {
+        return this.klient.DajSaldo(var1, var2, var3, var4, var5, var6, var7);
+    }
+
+    public int PIK_DajDekrety(int var1, String var2, String var3, String var4, String var5, String var6, String[] var7, String[] var8) {
+        return this.klient.DajDekrety(var1, var2, var3, var4, var5, var6, var7, var8);
+    }
+
+    public int PIK_DajDekret(int var1, String var2, String var3) {
+        return this.klient.DajDekret(var1, var2, var3);
+    }
+
+    public int PIK_DajListeDekretow(int var1, String var2, String var3, String var4, String var5, String var6, String var7, String[] var8, String[] var9) {
+        return this.klient.DajListeDekretow(var1, var2, var3, var4, var5, var6, var7, var8, var9);
+    }
+
+    public int PIK_WpiszKomunikat(int var1, String var2, String var3) {
+        return this.klient.WpiszKomunikat(var1, var2, var3);
+    }
+
+    public int PIK_WykonajZlecenie(int var1, String var2, String var3, String var4) {
+        return this.klient.WykonajZlecenie(var1, var2, var3, var4);
+    }
+
+    public int PIK_ZmienKomunikat(int var1, String var2) {
+        return this.klient.ZmienKomunikat(var1, var2);
+    }
+
+    public int PIK_PobierzKomunikat(int var1) {
+        return this.klient.PobierzKomunikat(var1);
+    }
+
+    public int PIK_DajKursyWalut(int var1) {
+        return this.klient.DajKursyWalut(var1);
+    }
+
+    public int PIK_PierwszyRekord(int var1) {
+        return this.klient.PierwszyRekord(var1);
+    }
+
+    public int PIK_NastepnyRekord(int var1) {
+        return this.klient.NastepnyRekord(var1);
+    }
+
+    public int PIK_LiczbaRekordow(int var1) {
+        return this.klient.LiczbaRekordow(var1);
+    }
+
+    public int PIK_SWIFT(int var1, int var2) {
+        return this.klient.SWIFT(var1, var2);
+    }
+
+    public int PIK_ZleceniaStale(int var1, int var2, String var3) {
+        return this.klient.ZleceniaStale(var1, var2, var3);
+    }
+
+    public int PIK_DajStatusTransakcji(int var1) {
+        return this.klient.DajStatusTransakcji(var1);
+    }
+
+    public String PIK_DajOpisBledu(int var1) {
+        return this.klient.DajOpisBledu(var1);
+    }
+
+    public int PIK_DajNrBledu(int var1) {
+        return this.klient.DajNrBledu(var1);
+    }
+
+    public int PIK_PlikLogu(String var1, int var2) {
+        return this.klient.PlikLogu(var1, var2);
+    }
+
+    public String PIK_DajNumerWersji() {
+        return this.klient.DajNumerWersji();
+    }
+
+    public int PIK_IdTransakcji(int var1, String var2, String var3) {
+        return this.klient.IdTransakcji(var1, var2, var3);
+    }
+
+    public String PIK_DajZwroconyIdTransakcji(int var1) {
+        return this.klient.DajZwroconyIdTransakcji(var1);
+    }
+
+    public int PIK_DajListeLokat(int var1, String var2) {
+        return this.klient.DajListeLokat(var1, var2);
+    }
+
+    public int PIK_DajRachunekBiezacy(int var1, int var2, String var3) {
+        return this.klient.DajRachunekBiezacy(var1, var2, var3);
+    }
+
+    public int PIK_Klient(int var1, int var2) {
+        return this.klient.Klient(var1, var2);
+    }
+
+    public int PIK_Klient_Pobierz(int var1, int var2) {
+        byte var3 = 0;
+        switch(var2) {
+        case 1:
+            var3 = 1;
+            break;
+        case 2:
+            var3 = 12;
+            break;
+        case 3:
+            var3 = 15;
+            break;
+        case 4:
+            var3 = 9;
+            break;
+        case 5:
+            var3 = 10;
+            break;
+        case 6:
+            var3 = 11;
+            break;
+        case 7:
+            var3 = 13;
+            break;
+        case 8:
+            var3 = 14;
+            break;
+        case 9:
+            var3 = 18;
+            break;
+        case 10:
+            var3 = 25;
+            break;
+        case 11:
+            var3 = 30;
+        }
+
+        return this.klient.Klient(var1, var3);
+    }
+
+    public int PIK_Uprawnienia(int var1, int var2, String[] var3) {
+        return this.klient.Uprawnienia(var1, var2, var3);
+    }
+
+    public int PIK_Autoryzacja(int var1, int var2, String[] var3) {
+        return this.klient.Autoryzacja(var1, var2, var3);
+    }
+
+    public int PIK_PocztaDajInfo(int var1, String var2, String var3) {
+        return this.klient.PocztaDajInfo(var1, var2, var3);
+    }
+
+    public int PIK_PocztaStempelNaId(int var1, String var2, String var3, String[] var4) {
+        return this.klient.PocztaStempelNaId(var1, var2, var3, var4);
+    }
+
+    public int PIK_PocztaNadrzedna(int var1, String var2, String[] var3, String var4, String[] var5) {
+        return this.klient.PocztaNadrzedna(var1, var2, var3, var4, var5);
+    }
+
+    public int PIK_PocztaSciezkaJedn(int var1, String var2, String var3, String var4, String[] var5) {
+        return this.klient.PocztaSciezkaJedn(var1, var2, var3, var4, var5);
+    }
+
+    public int PIK_StatusELIXIR(int var1, String var2, String var3, String[] var4, String[] var5, String[] var6, String[] var7, String[] var8, String[] var9, String[] var10, String[] var11, String[] var12, String[] var13, String[] var14) {
+        return this.klient.StatusELIXIR(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14);
+    }
+
+    public int PIK_DajDaneAdresowe(int var1, String var2, String[] var3, String[] var4, String[] var5, String[] var6, String[] var7, String[] var8, String[] var9, String[] var10, String[] var11, String[] var12, String[] var13, String[] var14, String[] var15, String[] var16, String[] var17, String[] var18) {
+        return this.klient.DajDaneAdresowe(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17, var18);
+    }
+
+    public int PIK_DajWolneSrodki(int var1, String var2, String var3, String[] var4) {
+        return this.klient.DajWolneSrodki(var1, var2, var3, var4);
+    }
+
+    public int PIK_DajListeAutoryzacji(int var1, String var2) {
+        return this.klient.DajListeAutoryzacji(var1, var2);
+    }
+
+    public int PIK_WstawCzynnosc(int var1, String var2, String var3, String var4, String var5, String var6) {
+        return this.klient.WstawCzynnoscNf(var1, var2, var3, var4, var5, var6);
+    }
+
+    public int PIK_DajListeProduktow(int var1, String var2, String var3, String var4, String var5) {
+        return this.klient.DajListeProduktow(var1, var2, var3, var4, var5);
+    }
+
+    public int PIK_UstawUsluge(String var1, String var2) {
+        return this.klient.UstawUsluge(var1, var2);
+    }
+
+    public int PIK_UstawUsluge(Properties var1) {
+        return this.klient.UstawUsluge(var1);
+    }
+
+    public int PIK_ZamknijUsluge() {
+        return this.klient.ZamknijUsluge();
+    }
+
+    public int PIK_AutoryzacjaOnline(int var1, int var2) {
+        return this.klient.AutoryzacjaOnline(var1, var2);
+    }
+
+    public int PIK_DajCorbaMinor(int var1) {
+        return this.klient.DajCorbaMinor(var1);
+    }
+
+    public int PIK_DajListeOkresow(int var1, String var2, String var3) {
+        return this.klient.DajListeOkresow(var1, var2, var3);
+    }
+
+    public int PIK_DajPostepPrzetwarzania(int var1, String var2, String[] var3) {
+        return this.klient.DajPostepPrzetwarzania(var1, var2, var3);
+    }
+
+    public int PIK_DajStan(int var1, int var2, String var3, String var4, String[] var5) {
+        return this.klient.DajStan(var1, var2, var3, var4, var5);
+    }
+
+    public int PIK_DodajKomunikat(int var1, String var2) {
+        return this.klient.DodajKomunikat(var1, var2);
+    }
+
+    public int PIK_DoZmiennejNr(int var1, int var2, int var3, String var4) {
+        return this.klient.DoZmiennej2(var1, var2, var3, var4);
+    }
+
+    public int PIK_JednostkaBanku(int var1, int var2) {
+        return this.klient.JednostkaBanku(var1, var2);
+    }
+
+    public int PIK_Kalendarz(int var1, int var2) {
+        return this.klient.Kalendarz(var1, var2);
+    }
+
+    public int PIK_Elixir(int var1, int var2) {
+        return this.klient.Elixir(var1, var2);
+    }
+
+    public int PIK_Katalog(String var1) {
+        return this.klient.Katalog(var1);
+    }
+
+    public int PIK_Ksiegowanie(int var1, int var2) {
+        return this.klient.Ksiegowanie(var1, var2);
+    }
+
+    public int PIK_PobierzPaczke(int var1, String var2) {
+        return this.klient.PobierzPaczke(var1, var2);
+    }
+
+    public int PIK_PocztaSzukaj(int var1, String var2, String var3, String var4, String var5, String var6) {
+        return this.klient.PocztaSzukaj(var1, var2, var3, var4, var5, var6);
+    }
+
+    public int PIK_PodajDokument(int var1, String[] var2, String[] var3, String[] var4, String[] var5, String[] var6, String[] var7, String[] var8, String[] var9, String[] var10, String[] var11, String[] var12, String[] var13, String[] var14, String[] var15, String[] var16, String[] var17) {
+        return this.klient.PodajDokument(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13, var14, var15, var16, var17);
+    }
+
+    public int PIK_Pralnia(int var1, int var2) {
+        return this.klient.PraniePieniedzy(var1, var2);
+    }
+
+    public int PIK_RaportRachMasowy(int var1, String var2, String var3, String var4) {
+        return this.klient.RaportRachMasowy(var1, var2, var3, var4);
+    }
+
+    public int PIK_Slownik(int var1, int var2) {
+        return this.klient.Slownik(var1, var2);
+    }
+
+    public int PIK_UmowaDP(int var1, int var2, String[] var3) {
+        return this.klient.UmowaDP(var1, var2, var3);
+    }
+
+    public int PIK_UmowaRB(int var1, int var2, String[] var3) {
+        return this.klient.UmowaRB(var1, var2, var3);
+    }
+
+    public int PIK_UmowaKR(int var1, int var2) {
+        return this.klient.UmowaKR(var1, var2);
+    }
+
+    public int PIK_UmowaRS(int var1, int var2) {
+        return this.klient.UmowaRS(var1, var2);
+    }
+
+    public int PIK_ZabezpieczenieKR(int var1, int var2) {
+        return this.klient.ZabezpieczenieKR(var1, var2);
+    }
+
+    public int PIK_UrzadSkarbowy(int var1, int var2) {
+        return this.klient.UrzadSkarbowy(var1, var2);
+    }
+
+    public int PIK_MIGDZ(int var1, int var2) {
+        return this.klient.MIGDZ(var1, var2);
+    }
+
+    public int PIK_Wyciag(int var1, int var2) {
+        return this.klient.Wyciag(var1, var2);
+    }
+
+    public int PIK_UsunWszystkieZmienneNr(int var1, int var2) {
+        return this.klient.UsunWszystkieZmienne2(var1, var2);
+    }
+
+    public int PIK_UsunZmiennaNr(int var1, int var2, int var3) {
+        return this.klient.UsunZmienna2(var1, var2, var3);
+    }
+
+    public int PIK_WpiszPaczke(int var1, String var2, String[] var3) {
+        return this.klient.WpiszPaczke(var1, var2, var3);
+    }
+
+    public int PIK_WybierzDokumenty(int var1, String var2, String var3, int var4, int var5, String var6) {
+        return this.klient.WybierzDokumenty(var1, var2, var3, var4, var5, var6);
+    }
+
+    public int PIK_WybierzOperatora(int var1, String var2) {
+        return this.klient.WybierzOperatora(var1, var2);
+    }
+
+    public int PIK_WyplataPLT(int var1, int var2) {
+        return this.klient.WyplataPLT(var1, var2);
+    }
+
+    public int PIK_ZeZmiennejNr(int var1, int var2, int var3, String[] var4) {
+        return this.klient.ZeZmiennej2(var1, var2, var3, var4);
+    }
+
+    public int PIK_Atrybuty(int var1, int var2) {
+        return this.klient.Atrybuty(var1, var2);
+    }
+
+    public int PIK_DajListeRach(int var1, int var2) {
+        return this.klient.ListaRach(var1, var2);
+    }
+
+    public int PIK_Oprocentowanie(int var1, int var2) {
+        return this.klient.Oprocentowanie(var1, var2);
+    }
+
+    public int PIK_RachunkiMasowe(int var1, int var2) {
+        return this.klient.RachunkiMasowe(var1, var2);
+    }
+
+    public int PIK_Waluty(int var1, int var2) {
+        return this.klient.Waluty(var1, var2);
+    }
+
+    public int PIK_ZleceniaWyplaty(int var1, int var2) {
+        return this.klient.ZleceniaWyplaty(var1, var2);
+    }
+
+    public int PIK_ListaOperacjiKR(int var1, int var2) {
+        return this.klient.ListaOperacjiKR(var1, var2);
+    }
+
+    public int PIK_Depozyty(int var1, int var2) {
+        return this.klient.Depozyty(var1, var2);
+    }
+
+    public int PIK_UpowaznieniaPZ(int var1, int var2) {
+        return this.klient.UpowaznieniaPZ(var1, var2);
+    }
+
+    public int PIK_Rachunki(int var1, int var2) {
+        return this.klient.Rachunki(var1, var2);
+    }
+
+    public int PIK_Zdarzenia(int var1, int var2) {
+        return this.klient.Zdarzenia(var1, var2);
+    }
+
+    public int PIK_UmowaUL(int var1, int var2) {
+        return this.klient.UmowaUL(var1, var2);
+    }
+
+    public int PIK_SEPA(int var1, int var2) {
+        return this.klient.SEPA(var1, var2);
+    }
+
+    public int PIK_WyciagRbParam(int var1, int var2, String var3, String var4) {
+        return this.klient.WyciagRbParam(var1, var2, var3, var4);
+    }
+
+    public int PIK_EuroRozliczenie(int var1, int var2) {
+        return this.klient.EuroRozliczenie(var1, var2);
+    }
+
+    public int PIK_Umowy(int var1, int var2) {
+        return this.klient.Umowy(var1, var2);
+    }
+
+    public int PIK_Aml(int var1, int var2) {
+        return this.klient.Aml(var1, var2);
+    }
+
+    public int PIK_WyplataGotowkowa(int var1, int var2) {
+        return this.klient.WyplataGotowkowa(var1, var2);
+    }
+
+    public int PIK_Pelnomocnictwo(int var1, int var2) {
+        return this.klient.Pelnomocnictwo(var1, var2);
+    }
+
+    public int PIK_HistoriaOperacjiPZ(int var1) {
+        return this.klient.HistoriaOperacjiPZ(var1);
+    }
+
+    public int PIK_OperacjePZ(int var1, int var2) {
+        return this.klient.OperacjePZ(var1, var2);
+    }
+
+    public int PIK_Relacje(int var1, int var2) {
+        return this.klient.Relacje(var1, var2);
+    }
+
+    public int PIK_ZlecenieNBP(int var1, int var2) {
+        return this.klient.ZlecenieNBP(var1, var2);
+    }
+
+    public int PIK_RejestrOplat(int var1, int var2) {
+        return this.klient.RejestrOplat(var1, var2);
+    }
+
+    public int PIK_ZestawieniaOplat(int var1, int var2) {
+        return this.klient.ZestawieniaOplat(var1, var2);
+    }
+
+    public int PIK_Zaangazowanie(int var1, int var2) {
+        return this.klient.Zaangazowanie(var1, var2);
+    }
+
+    public int PIK_Monit(int var1) {
+        return this.klient.Monit(var1);
+    }
+
+    public int PIK_ExpressElixir(int var1, int var2) {
+        return this.klient.ExpressElixir(var1, var2);
+    }
+
+    public int PIK_Stornowanie(int var1, int var2) {
+        return this.klient.Stornowanie(var1, var2);
+    }
+
+    public int PIK_DajDokument(int var1, int var2) {
+        return this.klient.DajDokument(var1, var2);
+    }
+
+    public int PIK_UmowaParametry(int var1, int var2) {
+        return this.klient.UmowaParametry(var1, var2);
+    }
+
+    public int PIK_ZgodyKlienta(int var1, int var2) {
+        return this.klient.ZgodyKlienta(var1, var2);
+    }
+
+    public int PIK_Operacja(int var1, int var2) {
+        return this.klient.Operacja(var1, var2);
+    }
+
+    public int PIK_TabeleRezydencjiCRS(int var1, int var2) {
+        return this.klient.TabeleRezydencjiCRS(var1, var2);
+    }
+
+    public int PIK_STIR(int var1, int var2) {
+        return this.klient.STIR(var1, var2);
+    }
 };
