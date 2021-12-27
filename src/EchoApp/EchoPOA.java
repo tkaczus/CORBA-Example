@@ -69,6 +69,7 @@ public abstract class EchoPOA extends org.omg.PortableServer.Servant
             }
 
             default:
+                System.out.println("out = " + out);
                 throw new org.omg.CORBA.BAD_OPERATION(0, org.omg.CORBA.CompletionStatus.COMPLETED_MAYBE);
         }
         System.out.println("out = " + out);
